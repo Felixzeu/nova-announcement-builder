@@ -37,7 +37,7 @@ body.champ-bg {
 .header {
     margin-bottom: 24px;
     padding-bottom: 16px;
-    border-bottom: 1px solid rgba(26, 26, 46, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-top {
@@ -63,7 +63,7 @@ body.champ-bg .header-top h1 {
 }
 
 .header .subtitle {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 1rem;
     font-weight: 400;
     margin: 0;
@@ -72,7 +72,7 @@ body.champ-bg .header-top h1 {
 
 body.nzr-bg .header .subtitle,
 body.champ-bg .header .subtitle {
-    color: rgba(26, 26, 46, 0.7);
+    color: rgba(26, 26, 46, 0.6);
 }
 
 /* LANGUAGE SELECTOR */
@@ -80,15 +80,15 @@ body.champ-bg .header .subtitle {
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: rgba(26, 26, 46, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
     padding: 6px 14px;
     border-radius: 8px;
-    border: 1px solid rgba(26, 26, 46, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.5s ease;
 }
 
 .language-selector .lang-label {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -98,12 +98,12 @@ body.champ-bg .header .subtitle {
 
 body.nzr-bg .language-selector .lang-label,
 body.champ-bg .language-selector .lang-label {
-    color: rgba(26, 26, 46, 0.7);
+    color: rgba(26, 26, 46, 0.6);
 }
 
 .language-selector select {
-    background-color: rgba(26, 26, 46, 0.15);
-    border: 1px solid rgba(26, 26, 46, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
     color: #ffffff;
     padding: 4px 10px;
@@ -156,8 +156,8 @@ body.champ-bg .language-selector select {
 
 body.nzr-bg .card,
 body.champ-bg .card {
-    background-color: rgba(26, 26, 46, 0.7);
-    border-color: rgba(26, 26, 46, 0.2);
+    background-color: rgba(26, 26, 46, 0.6);
+    border-color: rgba(26, 26, 46, 0.15);
 }
 
 .card h2 {
@@ -175,7 +175,7 @@ body.champ-bg .card {
 body.nzr-bg .card h2,
 body.champ-bg .card h2 {
     color: #1a1a2e;
-    border-bottom-color: rgba(26, 26, 46, 0.2);
+    border-bottom-color: rgba(26, 26, 46, 0.15);
 }
 
 .card h3 {
@@ -191,7 +191,7 @@ body.champ-bg .card h2 {
 
 body.nzr-bg .card h3,
 body.champ-bg .card h3 {
-    color: #1a1a2e;
+    color: rgba(26, 26, 46, 0.7);
 }
 
 /* FORM ELEMENTI */
@@ -210,15 +210,15 @@ body.champ-bg .card h3 {
 
 body.nzr-bg .form-group label,
 body.champ-bg .form-group label {
-    color: #1a1a2e;
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 8px 12px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
     color: #ffffff;
     font-size: 0.9rem;
@@ -229,8 +229,8 @@ body.nzr-bg .form-group input,
 body.champ-bg .form-group input,
 body.nzr-bg .form-group select,
 body.champ-bg .form-group select {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: rgba(26, 26, 46, 0.2);
+    background-color: rgba(26, 26, 46, 0.1);
+    border-color: rgba(26, 26, 46, 0.15);
     color: #1a1a2e;
 }
 
@@ -257,8 +257,8 @@ body.champ-bg .form-group input::placeholder {
 }
 
 .server-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
     padding: 8px 14px;
     border-radius: 6px;
@@ -272,19 +272,19 @@ body.champ-bg .form-group input::placeholder {
 
 body.nzr-bg .server-btn,
 body.champ-bg .server-btn {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: rgba(26, 26, 46, 0.2);
-    color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.1);
+    border-color: rgba(26, 26, 46, 0.15);
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .server-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 }
 
 body.nzr-bg .server-btn:hover,
 body.champ-bg .server-btn:hover {
-    background-color: rgba(26, 26, 46, 0.3);
+    background-color: rgba(26, 26, 46, 0.2);
     color: #1a1a2e;
 }
 
@@ -313,8 +313,8 @@ body.champ-bg .server-btn.active {
 }
 
 .session-type-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
     padding: 6px 12px;
     border-radius: 4px;
@@ -328,19 +328,19 @@ body.champ-bg .server-btn.active {
 
 body.nzr-bg .session-type-btn,
 body.champ-bg .session-type-btn {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: rgba(26, 26, 46, 0.2);
-    color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.1);
+    border-color: rgba(26, 26, 46, 0.15);
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .session-type-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 }
 
 body.nzr-bg .session-type-btn:hover,
 body.champ-bg .session-type-btn:hover {
-    background-color: rgba(26, 26, 46, 0.3);
+    background-color: rgba(26, 26, 46, 0.2);
     color: #1a1a2e;
 }
 
@@ -368,8 +368,8 @@ body.champ-bg .session-type-btn.active {
 }
 
 .game-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
     padding: 6px 14px;
     border-radius: 4px;
@@ -383,19 +383,19 @@ body.champ-bg .session-type-btn.active {
 
 body.nzr-bg .game-btn,
 body.champ-bg .game-btn {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: rgba(26, 26, 46, 0.2);
-    color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.1);
+    border-color: rgba(26, 26, 46, 0.15);
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .game-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 }
 
 body.nzr-bg .game-btn:hover,
 body.champ-bg .game-btn:hover {
-    background-color: rgba(26, 26, 46, 0.3);
+    background-color: rgba(26, 26, 46, 0.2);
     color: #1a1a2e;
 }
 
@@ -418,8 +418,8 @@ body.champ-bg .game-btn.active {
 
 /* TOGGLE BUTTON */
 .toggle-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
     padding: 8px 20px;
     border-radius: 6px;
@@ -433,9 +433,9 @@ body.champ-bg .game-btn.active {
 
 body.nzr-bg .toggle-btn,
 body.champ-bg .toggle-btn {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: rgba(26, 26, 46, 0.2);
-    color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.1);
+    border-color: rgba(26, 26, 46, 0.15);
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .toggle-btn.active {
@@ -469,8 +469,8 @@ body.champ-bg .toggle-btn.active {
 }
 
 .quick-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
     padding: 5px 10px;
     border-radius: 4px;
@@ -481,19 +481,19 @@ body.champ-bg .toggle-btn.active {
 
 body.nzr-bg .quick-btn,
 body.champ-bg .quick-btn {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: rgba(26, 26, 46, 0.2);
-    color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.1);
+    border-color: rgba(26, 26, 46, 0.15);
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .quick-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 }
 
 body.nzr-bg .quick-btn:hover,
 body.champ-bg .quick-btn:hover {
-    background-color: rgba(26, 26, 46, 0.3);
+    background-color: rgba(26, 26, 46, 0.2);
     color: #1a1a2e;
 }
 
@@ -515,8 +515,8 @@ body.champ-bg .quick-btn.active {
 }
 
 .quick-nzr-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
     padding: 5px 10px;
     border-radius: 4px;
@@ -527,19 +527,19 @@ body.champ-bg .quick-btn.active {
 
 body.nzr-bg .quick-nzr-btn,
 body.champ-bg .quick-nzr-btn {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: rgba(26, 26, 46, 0.2);
-    color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.1);
+    border-color: rgba(26, 26, 46, 0.15);
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .quick-nzr-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 }
 
 body.nzr-bg .quick-nzr-btn:hover,
 body.champ-bg .quick-nzr-btn:hover {
-    background-color: rgba(26, 26, 46, 0.3);
+    background-color: rgba(26, 26, 46, 0.2);
     color: #1a1a2e;
 }
 
@@ -572,8 +572,8 @@ body.champ-bg .quick-nzr-btn.active {
 }
 
 .hour-btn {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
     padding: 5px 4px;
     border-radius: 4px;
@@ -585,19 +585,19 @@ body.champ-bg .quick-nzr-btn.active {
 
 body.nzr-bg .hour-btn,
 body.champ-bg .hour-btn {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: rgba(26, 26, 46, 0.2);
-    color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.1);
+    border-color: rgba(26, 26, 46, 0.15);
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .hour-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 }
 
 body.nzr-bg .hour-btn:hover,
 body.champ-bg .hour-btn:hover {
-    background-color: rgba(26, 26, 46, 0.3);
+    background-color: rgba(26, 26, 46, 0.2);
     color: #1a1a2e;
 }
 
@@ -630,7 +630,7 @@ body.champ-bg .hour-btn.active {
     display: grid;
     grid-template-columns: 90px 1fr 1fr;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.03);
     padding: 4px 10px;
     border-radius: 4px;
     gap: 6px;
@@ -639,7 +639,7 @@ body.champ-bg .hour-btn.active {
 
 body.nzr-bg .timestamp-item,
 body.champ-bg .timestamp-item {
-    background-color: rgba(26, 26, 46, 0.1);
+    background-color: rgba(26, 26, 46, 0.08);
 }
 
 .format-label {
@@ -651,7 +651,7 @@ body.champ-bg .timestamp-item {
 
 body.nzr-bg .format-label,
 body.champ-bg .format-label {
-    color: #1a1a2e;
+    color: rgba(26, 26, 46, 0.7);
 }
 
 .format-code {
@@ -669,8 +669,8 @@ body.champ-bg .format-label {
 
 body.nzr-bg .format-code,
 body.champ-bg .format-code {
-    background-color: rgba(26, 26, 46, 0.1);
-    color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.08);
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .format-code:hover {
@@ -679,7 +679,7 @@ body.champ-bg .format-code {
 
 body.nzr-bg .format-code:hover,
 body.champ-bg .format-code:hover {
-    background-color: rgba(26, 26, 46, 0.2);
+    background-color: rgba(26, 26, 46, 0.15);
 }
 
 .format-preview {
@@ -691,17 +691,17 @@ body.champ-bg .format-code:hover {
 
 body.nzr-bg .format-preview,
 body.champ-bg .format-preview {
-    color: #1a1a2e;
+    color: rgba(26, 26, 46, 0.7);
 }
 
 /* PREVIEW BOX */
 .preview-box {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     padding: 14px;
     border-radius: 6px;
     min-height: 300px;
     margin-bottom: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     font-family: 'Courier New', monospace;
     white-space: pre-wrap;
     word-break: break-word;
@@ -715,8 +715,8 @@ body.champ-bg .format-preview {
 
 body.nzr-bg .preview-box,
 body.champ-bg .preview-box {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: rgba(26, 26, 46, 0.2);
+    background-color: rgba(26, 26, 46, 0.1);
+    border-color: rgba(26, 26, 46, 0.1);
     color: #1a1a2e;
 }
 
@@ -724,7 +724,7 @@ body.champ-bg .preview-box {
 .btn-secondary {
     flex: 1;
     padding: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
     border: none;
     border-radius: 6px;
     color: rgba(255, 255, 255, 0.7);
@@ -737,18 +737,18 @@ body.champ-bg .preview-box {
 
 body.nzr-bg .btn-secondary,
 body.champ-bg .btn-secondary {
-    background-color: rgba(26, 26, 46, 0.15);
-    color: #1a1a2e;
+    background-color: rgba(26, 26, 46, 0.1);
+    color: rgba(26, 26, 46, 0.8);
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
 }
 
 body.nzr-bg .btn-secondary:hover,
 body.champ-bg .btn-secondary:hover {
-    background-color: rgba(26, 26, 46, 0.3);
+    background-color: rgba(26, 26, 46, 0.2);
     color: #1a1a2e;
 }
 
