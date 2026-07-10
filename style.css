@@ -283,6 +283,28 @@ body::after {
     color: white;
 }
 
+.quick-nzr-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.quick-nzr-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.quick-nzr-btn.active {
+    background: #6c6cff;
+    border-color: #6c6cff;
+    color: white;
+}
+
 .session-type-buttons {
     display: flex;
     flex-wrap: wrap;
