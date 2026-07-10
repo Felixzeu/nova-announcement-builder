@@ -30,32 +30,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const formatPreviews = document.querySelectorAll('.format-preview');
     const formatCodes = document.querySelectorAll('.format-code');
 
-    // Cards
-    const setupCard = document.getElementById('setupCard');
-    const timestampCard = document.getElementById('timestampCard');
-    const generatedCard = document.getElementById('generatedCard');
-
     let selectedServer = 'Nova No Zone Rules';
     let selectedType = 'Duo';
     let selectedReacts = 55;
     let isLateNight = false;
     let currentLang = 'it';
 
-    // --- FUNZIONE PER CAMBIARE COLORE DELLE CARD ---
-    function updateCardColors(server) {
-        // Rimuovi tutte le classi
-        setupCard.classList.remove('nzr-mode', 'champ-mode');
-        timestampCard.classList.remove('nzr-mode', 'champ-mode');
-        generatedCard.classList.remove('nzr-mode', 'champ-mode');
+    // --- FUNZIONE PER CAMBIARE COLORE DELLO SFONDO ---
+    function updateBackgroundColor(server) {
+        // Rimuovi tutte le classi dal body
+        document.body.classList.remove('nzr-bg', 'champ-bg');
         
         if (server === 'Nova No Zone Rules') {
-            setupCard.classList.add('nzr-mode');
-            timestampCard.classList.add('nzr-mode');
-            generatedCard.classList.add('nzr-mode');
+            document.body.classList.add('nzr-bg');
         } else if (server === 'Nova Champion Division') {
-            setupCard.classList.add('champ-mode');
-            timestampCard.classList.add('champ-mode');
-            generatedCard.classList.add('champ-mode');
+            document.body.classList.add('champ-bg');
         }
     }
 
@@ -290,8 +279,8 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedServer = this.dataset.server;
             serverNameInput.value = selectedServer;
             
-            // Aggiorna i colori delle card
-            updateCardColors(selectedServer);
+            // Aggiorna il colore dello sfondo
+            updateBackgroundColor(selectedServer);
             
             if (selectedServer === 'Nova No Zone Rules') {
                 championFields.style.display = 'none';
@@ -650,7 +639,7 @@ document.addEventListener('DOMContentLoaded', function() {
     applyLanguage('it');
     
     // Imposta colore iniziale (No Zone Rules = #00C5FF)
-    updateCardColors('Nova No Zone Rules');
+    updateBackgroundColor('Nova No Zone Rules');
     
     generateAnnouncement();
 });
