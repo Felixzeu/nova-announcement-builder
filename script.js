@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return `${year}-${month}-${day}T${hours}:${minutes}`;
     }
 
+    // LATE NIGHT TOGGLE
     lateNightToggle.addEventListener('click', function() {
         isLateNight = !isLateNight;
         this.textContent = isLateNight ? 'ON' : 'OFF';
@@ -61,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         generateAnnouncement();
     });
 
+    // SERVER SELECTION
     document.querySelectorAll('.server-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.server-btn').forEach(b => b.classList.remove('active'));
@@ -82,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // SESSION TYPE
     document.querySelectorAll('.session-type-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.session-type-btn').forEach(b => b.classList.remove('active'));
@@ -94,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // GAME COUNT
     document.querySelectorAll('.game-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.game-btn').forEach(b => b.classList.remove('active'));
@@ -103,22 +107,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // GAME DELAY
     gameDelay.addEventListener('input', function() {
         gameDelayDisplay.textContent = `+${this.value} min`;
         generateAnnouncement();
     });
 
+    // LOBBY BUTTONS
     document.querySelectorAll('.lobby-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             announcementPreview.textContent += `\n${this.textContent} selected`;
         });
     });
 
+    // GENERATE ANNOUNCEMENT
     function generateAnnouncement() {
         let announcement = [];
         const lateNightText = isLateNight ? 'Late Night ' : '';
 
         if (selectedServer === 'Nova No Zone Rules') {
+            // ===== NO ZONE RULES =====
             const startDate = new Date(nzrStartTime.value);
             if (isNaN(startDate.getTime())) {
                 announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
@@ -158,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
             announcement.push('-# @everyone');
 
         } else {
+            // ===== CHAMPION DIVISION =====
             const regDate = new Date(registrationTime.value);
             if (isNaN(regDate.getTime())) {
                 announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
@@ -171,28 +180,26 @@ document.addEventListener('DOMContentLoaded', function() {
             const regUnix = toUnixTimestamp(regDate);
             const gameUnix = regUnix + (dur * 60);
 
-            announcement.push(`@everyone`);
+            announcement.push(`### ${lateNightText}${selectedType} Practice Session <:champion:1472618819502608404>`);
             announcement.push('');
-            announcement.push(`**${selectedServer} Practice Session**`);
+            announcement.push(`> * **Registration Opens:** ${formatDiscordTime(regUnix, 't')} `);
+            announcement.push(`> * **Game 1/${games}:** ${formatDiscordTime(gameUnix, 't')} `);
             announcement.push('');
-            announcement.push(`:ArrowRight: Registration opens @`);
-            announcement.push(`${formatDiscordTime(regUnix, 't')}`);
+            announcement.push(`Staff in charge: <@${staff}> `);
             announcement.push('');
-            announcement.push(`:ArrowRight: First Game Commences @`);
-            announcement.push(`${formatDiscordTime(gameUnix, 't')}`);
+            announcement.push(`**-** Session lasts **${games} games**, **Miss a single game and you will be banned.**`);
+            announcement.push(`**-** Make sure to read https://discord.com/channels/1471487091551633410/1471490037945204918 & https://discord.com/channels/1471487091551633410/1471489805979484333 **before** playing.`);
+            announcement.push(`**-** Bottom 3 will lose access.`);
             announcement.push('');
-            announcement.push(`The host for this session is:`);
-            announcement.push(`<@${staff}>, Direct Message them for help.`);
+            announcement.push(`**Need at least ${reacts}+ reacts to host ** (1 per duo)`);
             announcement.push('');
-            announcement.push(`- Session lasts ${games} Games. **Miss a single game and you will be banned.**`);
-            announcement.push(`- Make sure to read <#1282840995846950962>, <#1282841044521717761> & <#1282841572336996372> before the games.`);
-            announcement.push('');
-            announcement.push(`Required at least **${reacts}+ Reacts** for 1 lobby and **${reacts * 2}+ Reacts** for a 2nd lobby (1 per duo).`);
+            announcement.push('@everyone');
         }
 
         announcementPreview.textContent = announcement.join('\n');
     }
 
+    // QUICK BUTTONS (Champion)
     document.querySelectorAll('.quick-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const minutes = parseInt(this.dataset.minutes);
@@ -206,6 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // QUICK BUTTONS (NZR)
     document.querySelectorAll('.quick-nzr-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const minutes = parseInt(this.dataset.minutes);
@@ -219,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // QUICK HOURS
     document.querySelectorAll('.hour-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const hour = parseInt(this.dataset.hour);
@@ -236,6 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // COPY FUNCTIONS
     function copyToClipboard(text, button) {
         if (!text || text.startsWith('⚠️')) {
             alert('Genera prima un annuncio!');
@@ -278,6 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
         copyToClipboard(`<t:${unix}:t>`, this);
     });
 
+    // TIMESTAMP HELPER
     function updateTimestampPreviews(unixTimestamp) {
         if (!unixTimestamp || isNaN(unixTimestamp) || unixTimestamp <= 0) {
             formatPreviews.forEach(el => el.textContent = '-');
@@ -352,11 +363,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // LANGUAGE SELECTOR
     languageSelect.addEventListener('change', function() {
         currentLang = this.value;
         generateAnnouncement();
     });
 
+    // INIT
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
     now.setSeconds(0, 0);
