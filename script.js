@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameDuration = document.getElementById('gameDuration');
     const staffId = document.getElementById('staffId');
     const gameCountInput = document.getElementById('gameCount');
-    const roleId = document.getElementById('roleId');
     
     // NZR fields
     const nzrFields = document.getElementById('nzrFields');
@@ -31,11 +30,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const formatPreviews = document.querySelectorAll('.format-preview');
     const formatCodes = document.querySelectorAll('.format-code');
 
+    // Cards
+    const setupCard = document.getElementById('setupCard');
+    const timestampCard = document.getElementById('timestampCard');
+    const generatedCard = document.getElementById('generatedCard');
+
     let selectedServer = 'Nova No Zone Rules';
     let selectedType = 'Duo';
     let selectedReacts = 55;
     let isLateNight = false;
     let currentLang = 'it';
+
+    // --- FUNZIONE PER CAMBIARE COLORE DELLE CARD ---
+    function updateCardColors(server) {
+        // Rimuovi tutte le classi
+        setupCard.classList.remove('nzr-mode', 'champ-mode');
+        timestampCard.classList.remove('nzr-mode', 'champ-mode');
+        generatedCard.classList.remove('nzr-mode', 'champ-mode');
+        
+        if (server === 'Nova No Zone Rules') {
+            setupCard.classList.add('nzr-mode');
+            timestampCard.classList.add('nzr-mode');
+            generatedCard.classList.add('nzr-mode');
+        } else if (server === 'Nova Champion Division') {
+            setupCard.classList.add('champ-mode');
+            timestampCard.classList.add('champ-mode');
+            generatedCard.classList.add('champ-mode');
+        }
+    }
 
     // --- TRADUZIONI ---
     const translations = {
@@ -51,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ FIRST GAME DURATION (minutes)',
             staff: '👤 STAFF IN CHARGE (Discord ID)',
             games: '🎮 NUMBER OF GAMES',
-            role: '🏅 ROLE ID (optional)',
             firstSession: '📅 FIRST SESSION DATE',
             totalSessions: '📊 TOTAL SESSIONS',
             gap: '⏱️ GAP BETWEEN SESSIONS (minutes)',
@@ -83,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ DURATA PRIMA PARTITA (minuti)',
             staff: '👤 STAFF IN CHARGE (Discord ID)',
             games: '🎮 NUMERO DI PARTITE',
-            role: '🏅 ROLE ID (opzionale)',
             firstSession: '📅 DATA PRIMA SESSIONE',
             totalSessions: '📊 NUMERO TOTALE SESSIONI',
             gap: '⏱️ GAP TRA SESSIONI (minuti)',
@@ -115,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ DURACIÓN DEL PRIMER JUEGO (minutos)',
             staff: '👤 PERSONAL A CARGO (ID Discord)',
             games: '🎮 NÚMERO DE JUEGOS',
-            role: '🏅 ROLE ID (opcional)',
             firstSession: '📅 FECHA DE LA PRIMERA SESIÓN',
             totalSessions: '📊 TOTAL DE SESIONES',
             gap: '⏱️ ESPACIO ENTRE SESIONES (minutos)',
@@ -147,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ DURÉE DU PREMIER JEU (minutes)',
             staff: '👤 PERSONNEL RESPONSABLE (ID Discord)',
             games: '🎮 NOMBRE DE JEUX',
-            role: '🏅 ROLE ID (optionnel)',
             firstSession: '📅 DATE DE LA PREMIÈRE SESSION',
             totalSessions: '📊 TOTAL DES SESSIONS',
             gap: '⏱️ ÉCART ENTRE LES SESSIONS (minutes)',
@@ -179,7 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ DAUER DES ERSTEN SPIELS (Minuten)',
             staff: '👤 VERANTWORTLICHER MITARBEITER (Discord ID)',
             games: '🎮 ANZAHL DER SPIELE',
-            role: '🏅 ROLE ID (optional)',
             firstSession: '📅 DATUM DER ERSTEN SITZUNG',
             totalSessions: '📊 GESAMTZAHL DER SITZUNGEN',
             gap: '⏱️ ABSTAND ZWISCHEN SITZUNGEN (Minuten)',
@@ -217,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('durationLabel').textContent = t.duration;
         document.getElementById('staffLabel').textContent = t.staff;
         document.getElementById('gamesLabel').textContent = t.games;
-        document.getElementById('roleLabel').textContent = t.role;
         document.getElementById('firstSessionLabel').textContent = t.firstSession;
         document.getElementById('nzrNowBtn').textContent = t.now;
         document.getElementById('totalSessionsLabel').textContent = t.totalSessions;
@@ -273,6 +289,9 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             selectedServer = this.dataset.server;
             serverNameInput.value = selectedServer;
+            
+            // Aggiorna i colori delle card
+            updateCardColors(selectedServer);
             
             if (selectedServer === 'Nova No Zone Rules') {
                 championFields.style.display = 'none';
@@ -371,37 +390,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const games = parseInt(gameCountInput.value) || 2;
             const dur = parseInt(gameDuration.value) || 15;
             const reacts = selectedReacts;
-            const role = roleId.value.trim();
 
             const regUnix = toUnixTimestamp(regDate);
             const gameUnix = regUnix + (dur * 60);
 
-            // Header con emoji champion
             announcement.push(`### ${lateNightText}${selectedType} Practice Session <:champion:1472618819502608404>`);
             announcement.push('');
             
-            // Orari
             announcement.push(`> * **Registration Opens:** ${formatDiscordTime(regUnix, 't')} `);
             announcement.push(`> * **Game 1/${games}:** ${formatDiscordTime(gameUnix, 't')} `);
             announcement.push('');
             
-            // Staff
             announcement.push(`Staff in charge: <@${staff}> `);
             announcement.push('');
             
-            // Regole
             announcement.push(`**-** Session lasts **${games} games**, **Miss a single game and you will be banned.**`);
             announcement.push(`**-** Make sure to read https://discord.com/channels/1471487091551633410/1471490037945204918 & https://discord.com/channels/1471487091551633410/1471489805979484333 **before** playing.`);
-            
-            // Role (se presente)
-            if (role) {
-                announcement.push(`**-** Playing this session will grant you the <@&${role}> role. https://discord.com/channels/1471487091551633410/1521106660368842772`);
-            }
-            
             announcement.push(`**-** Bottom 3 will lose access.`);
             announcement.push('');
             
-            // Reazioni
             announcement.push(`**Need at least ${reacts}+ reacts to host ** (1 per duo)`);
             announcement.push('');
             announcement.push('@everyone');
@@ -609,7 +616,7 @@ document.addEventListener('DOMContentLoaded', function() {
     dateTimePicker.addEventListener('input', handleDateTimePicker);
 
     // --- EVENTI GENERATORE ---
-    [registrationTime, gameDuration, staffId, roleId,
+    [registrationTime, gameDuration, staffId,
      nzrStartTime, nzrSessionCount, nzrGap].forEach(el => {
         if (el) {
             el.addEventListener('change', generateAnnouncement);
@@ -641,5 +648,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Applica lingua iniziale
     applyLanguage('it');
+    
+    // Imposta colore iniziale (No Zone Rules = #00C5FF)
+    updateCardColors('Nova No Zone Rules');
+    
     generateAnnouncement();
 });
