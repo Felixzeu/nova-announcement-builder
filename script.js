@@ -113,13 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         generateAnnouncement();
     });
 
-    // LOBBY BUTTONS
-    document.querySelectorAll('.lobby-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            announcementPreview.textContent += `\n${this.textContent} selected`;
-        });
-    });
-
     // GENERATE ANNOUNCEMENT
     function generateAnnouncement() {
         let announcement = [];
