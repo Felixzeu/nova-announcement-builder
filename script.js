@@ -36,17 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let isLateNight = false;
     let currentLang = 'it';
 
-    // --- FUNZIONE PER CAMBIARE COLORE DELLO SFONDO ---
-    function updateBackgroundColor(server) {
-        document.body.classList.remove('nzr-bg', 'champ-bg');
-        
-        if (server === 'Nova No Zone Rules') {
-            document.body.classList.add('nzr-bg');
-        } else if (server === 'Nova Champion Division') {
-            document.body.classList.add('champ-bg');
-        }
-    }
-
     // --- TRADUZIONI ---
     const translations = {
         en: {
@@ -277,9 +266,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             selectedServer = this.dataset.server;
             serverNameInput.value = selectedServer;
-            
-            // Aggiorna il colore dello sfondo
-            updateBackgroundColor(selectedServer);
             
             if (selectedServer === 'Nova No Zone Rules') {
                 championFields.style.display = 'none';
@@ -636,9 +622,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Applica lingua iniziale
     applyLanguage('it');
-    
-    // Imposta colore iniziale (No Zone Rules = #00C5FF)
-    updateBackgroundColor('Nova No Zone Rules');
     
     generateAnnouncement();
 });
