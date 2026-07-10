@@ -82,6 +82,25 @@
                             </div>
                             <input type="hidden" id="gameCount" value="2">
                         </div>
+
+                        <div class="form-group">
+                            <label>🏷️ TIPO SESSIONE</label>
+                            <div class="session-type-buttons">
+                                <button class="session-type-btn active" data-type="Duo" data-reacts="55">Duo</button>
+                                <button class="session-type-btn" data-type="Trio" data-reacts="40">Trio</button>
+                                <button class="session-type-btn" data-type="Squad" data-reacts="55">Squad</button>
+                                <button class="session-type-btn" data-type="Reload" data-reacts="30">Reload</button>
+                                <button class="session-type-btn" data-type="Solo" data-reacts="110">Solo</button>
+                            </div>
+                            <input type="hidden" id="sessionType" value="Duo">
+                            <input type="hidden" id="requiredReacts" value="55">
+                        </div>
+
+                        <div class="form-group">
+                            <label>🌙 LATE NIGHT</label>
+                            <button id="lateNightToggle" class="toggle-btn">OFF</button>
+                            <input type="hidden" id="lateNight" value="false">
+                        </div>
                     </div>
 
                     <!-- Campi per No Zone Rules -->
@@ -107,25 +126,25 @@
                             <label>⏱️ GAP TRA SESSIONI (minuti)</label>
                             <input type="number" id="nzrGap" value="80" placeholder="es. 80">
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label>🏷️ TIPO SESSIONE</label>
-                        <div class="session-type-buttons">
-                            <button class="session-type-btn active" data-type="Duo" data-reacts="55">Duo</button>
-                            <button class="session-type-btn" data-type="Trio" data-reacts="40">Trio</button>
-                            <button class="session-type-btn" data-type="Squad" data-reacts="55">Squad</button>
-                            <button class="session-type-btn" data-type="Reload" data-reacts="30">Reload</button>
-                            <button class="session-type-btn" data-type="Solo" data-reacts="110">Solo</button>
+                        <div class="form-group">
+                            <label>🏷️ TIPO SESSIONE</label>
+                            <div class="session-type-buttons">
+                                <button class="session-type-btn active" data-type="Duo" data-reacts="55">Duo</button>
+                                <button class="session-type-btn" data-type="Trio" data-reacts="40">Trio</button>
+                                <button class="session-type-btn" data-type="Squad" data-reacts="55">Squad</button>
+                                <button class="session-type-btn" data-type="Reload" data-reacts="30">Reload</button>
+                                <button class="session-type-btn" data-type="Solo" data-reacts="110">Solo</button>
+                            </div>
+                            <input type="hidden" id="sessionType" value="Duo">
+                            <input type="hidden" id="requiredReacts" value="55">
                         </div>
-                        <input type="hidden" id="sessionType" value="Duo">
-                        <input type="hidden" id="requiredReacts" value="55">
-                    </div>
 
-                    <div class="form-group">
-                        <label>🌙 LATE NIGHT</label>
-                        <button id="lateNightToggle" class="toggle-btn">OFF</button>
-                        <input type="hidden" id="lateNight" value="false">
+                        <div class="form-group">
+                            <label>🌙 LATE NIGHT</label>
+                            <button id="lateNightToggle" class="toggle-btn">OFF</button>
+                            <input type="hidden" id="lateNight" value="false">
+                        </div>
                     </div>
                 </div>
 
