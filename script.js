@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const formatPreviews = document.querySelectorAll('.format-preview');
     const formatCodes = document.querySelectorAll('.format-code');
 
-    let selectedServer = 'Nova Division 0';
+    let selectedServer = 'Nova No Zone Rules';
     let selectedType = 'Duo';
     let selectedReacts = 55;
     let isLateNight = false;
@@ -269,12 +269,13 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedDelay = parseInt(this.dataset.delay) || 15;
             serverNameInput.value = selectedServer;
             
-            // Aggiorna il game delay display se necessario
+            // Aggiorna il game delay display
             if (document.getElementById('gameDelay')) {
                 document.getElementById('gameDelay').value = selectedDelay;
                 document.getElementById('gameDelayDisplay').textContent = `+${selectedDelay} min`;
             }
             
+            // Mostra/nasconde campi in base al server
             if (selectedServer === 'Nova No Zone Rules') {
                 championFields.style.display = 'none';
                 nzrFields.style.display = 'block';
@@ -361,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
             announcement.push('-# @everyone');
 
         } else {
-            // ===== CHAMPION DIVISION =====
+            // ===== CHAMPION DIVISION / DIVISION 0,3,2,24/7,SOLOS =====
             const regDate = new Date(registrationTime.value);
             if (isNaN(regDate.getTime())) {
                 announcementPreview.textContent = currentLang === 'it' ? '⚠️ Inserisci una data e ora valida.' : '⚠️ Please enter a valid date and time.';
@@ -376,21 +377,26 @@ document.addEventListener('DOMContentLoaded', function() {
             const regUnix = toUnixTimestamp(regDate);
             const gameUnix = regUnix + (dur * 60);
 
+            // Header con emoji champion
             announcement.push(`### ${lateNightText}${selectedType} Practice Session <:champion:1472618819502608404>`);
             announcement.push('');
             
+            // Orari
             announcement.push(`> * **Registration Opens:** ${formatDiscordTime(regUnix, 't')} `);
             announcement.push(`> * **Game 1/${games}:** ${formatDiscordTime(gameUnix, 't')} `);
             announcement.push('');
             
+            // Staff
             announcement.push(`Staff in charge: <@${staff}> `);
             announcement.push('');
             
+            // Regole
             announcement.push(`**-** Session lasts **${games} games**, **Miss a single game and you will be banned.**`);
             announcement.push(`**-** Make sure to read https://discord.com/channels/1471487091551633410/1471490037945204918 & https://discord.com/channels/1471487091551633410/1471489805979484333 **before** playing.`);
             announcement.push(`**-** Bottom 3 will lose access.`);
             announcement.push('');
             
+            // Reazioni
             announcement.push(`**Need at least ${reacts}+ reacts to host ** (1 per duo)`);
             announcement.push('');
             announcement.push('@everyone');
