@@ -1,21 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const registrationTime = document.getElementById('registrationTime');
-    const staffId = document.getElementById('staffId');
-    const gameCountInput = document.getElementById('gameCount');
+    const serverNameInput = document.getElementById('serverName');
+    const sessionTypeInput = document.getElementById('sessionType');
+    const requiredReactsInput = document.getElementById('requiredReacts');
+    const lateNightInput = document.getElementById('lateNight');
     const lateNightToggle = document.getElementById('lateNightToggle');
+    const languageSelect = document.getElementById('languageSelect');
     const gameDelay = document.getElementById('gameDelay');
     const gameDelayDisplay = document.getElementById('gameDelayDisplay');
+    
+    const championFields = document.getElementById('championFields');
+    const registrationTime = document.getElementById('registrationTime');
+    const gameDuration = document.getElementById('gameDuration');
+    const staffId = document.getElementById('staffId');
+    const gameCountInput = document.getElementById('gameCount');
+    
+    const nzrFields = document.getElementById('nzrFields');
+    const nzrStartTime = document.getElementById('nzrStartTime');
+    const nzrSessionCount = document.getElementById('nzrSessionCount');
+    const nzrGap = document.getElementById('nzrGap');
+    
     const announcementPreview = document.getElementById('announcementPreview');
     const copyAnnouncementBtn = document.getElementById('copyAnnouncementBtn');
     const copyRegTimestampBtn = document.getElementById('copyRegTimestampBtn');
     const copyGameTimestampBtn = document.getElementById('copyGameTimestampBtn');
+
     const timestampInput = document.getElementById('timestampInput');
     const dateTimePicker = document.getElementById('dateTimePicker');
     const formatPreviews = document.querySelectorAll('.format-preview');
     const formatCodes = document.querySelectorAll('.format-code');
-    const languageSelect = document.getElementById('languageSelect');
 
-    let selectedServer = 'Nova Division 0';
+    let selectedServer = 'Nova No Zone Rules';
     let selectedType = 'Duo';
     let selectedReacts = 55;
     let isLateNight = false;
@@ -43,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         isLateNight = !isLateNight;
         this.textContent = isLateNight ? 'ON' : 'OFF';
         this.classList.toggle('active');
+        lateNightInput.value = isLateNight ? 'true' : 'false';
         generateAnnouncement();
     });
 
@@ -52,9 +67,17 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             selectedServer = this.dataset.server;
             selectedDelay = parseInt(this.dataset.delay) || 15;
-            document.getElementById('serverName').value = selectedServer;
+            serverNameInput.value = selectedServer;
             gameDelay.value = selectedDelay;
             gameDelayDisplay.textContent = `+${selectedDelay} min`;
+            
+            if (selectedServer === 'Nova No Zone Rules') {
+                championFields.style.display = 'none';
+                nzrFields.style.display = 'block';
+            } else {
+                championFields.style.display = 'block';
+                nzrFields.style.display = 'none';
+            }
             generateAnnouncement();
         });
     });
@@ -65,8 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             selectedType = this.dataset.type;
             selectedReacts = parseInt(this.dataset.reacts) || 55;
-            document.getElementById('sessionType').value = selectedType;
-            document.getElementById('requiredReacts').value = selectedReacts;
+            sessionTypeInput.value = selectedType;
+            requiredReactsInput.value = selectedReacts;
             generateAnnouncement();
         });
     });
@@ -95,37 +118,77 @@ document.addEventListener('DOMContentLoaded', function() {
         let announcement = [];
         const lateNightText = isLateNight ? 'Late Night ' : '';
 
-        const regDate = new Date(registrationTime.value);
-        if (isNaN(regDate.getTime())) {
-            announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
-            return;
+        if (selectedServer === 'Nova No Zone Rules') {
+            const startDate = new Date(nzrStartTime.value);
+            if (isNaN(startDate.getTime())) {
+                announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
+                return;
+            }
+
+            const sessions = parseInt(nzrSessionCount.value) || 8;
+            const gap = parseInt(nzrGap.value) || 80;
+            const startUnix = toUnixTimestamp(startDate);
+            const emojis = [
+                '1_:1362589687339810906',
+                '2_:1362589778922573894',
+                '3_:1362589811269173258',
+                '4_:1362589694583635999',
+                '5_:1362589682424086538',
+                '6_:1362589690343198800',
+                '7_:1362589688745168907',
+                '8_:1362589685595242628'
+            ];
+
+            announcement.push(`## **${lateNightText}${selectedType} Practice Sessions <:nzr:1433978431804280852>**`);
+            announcement.push('');
+            for (let i = 0; i < Math.min(sessions, emojis.length); i++) {
+                const sessionTime = startUnix + (i * gap * 60);
+                announcement.push(`- **Session** <:${emojis[i]}>`);
+                announcement.push(`  - **Registration:** ${formatDiscordTime(sessionTime, 't')}`);
+                announcement.push(`  - **First Game:** ${formatDiscordTime(sessionTime + 600, 't')}`);
+                announcement.push('');
+            }
+            announcement.push(`* **Information <:Info:1342824791039541328>**`);
+            announcement.push(`  * Session lasts **__2 Games__**`);
+            announcement.push(`  * Top 1 = <@&1443285911839178844>`);
+            announcement.push(`  * Top 5 = [**Champion Division Access**](<https://discord.com/channels/1267285458962878464/1471321891850424361>) <:newdiv:1472341015968088126>`);
+            announcement.push(`  * https://discord.com/channels/1267285458962878464/1492700150831911122 & https://discord.com/channels/1267285458962878464/1492703045879070871`);
+            announcement.push(`_ _`);
+            announcement.push('`React if playing!`');
+            announcement.push('-# @everyone');
+
+        } else {
+            const regDate = new Date(registrationTime.value);
+            if (isNaN(regDate.getTime())) {
+                announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
+                return;
+            }
+
+            const staff = staffId.value.trim() || 'ID_STAFF';
+            const games = parseInt(gameCountInput.value) || 2;
+            const dur = parseInt(gameDuration.value) || 15;
+            const reacts = selectedReacts;
+            const regUnix = toUnixTimestamp(regDate);
+            const gameUnix = regUnix + (dur * 60);
+
+            announcement.push(`@everyone`);
+            announcement.push('');
+            announcement.push(`**${selectedServer} Practice Session**`);
+            announcement.push('');
+            announcement.push(`:ArrowRight: Registration opens @`);
+            announcement.push(`${formatDiscordTime(regUnix, 't')}`);
+            announcement.push('');
+            announcement.push(`:ArrowRight: First Game Commences @`);
+            announcement.push(`${formatDiscordTime(gameUnix, 't')}`);
+            announcement.push('');
+            announcement.push(`The host for this session is:`);
+            announcement.push(`<@${staff}>, Direct Message them for help.`);
+            announcement.push('');
+            announcement.push(`- Session lasts ${games} Games. **Miss a single game and you will be banned.**`);
+            announcement.push(`- Make sure to read <#1282840995846950962>, <#1282841044521717761> & <#1282841572336996372> before the games.`);
+            announcement.push('');
+            announcement.push(`Required at least **${reacts}+ Reacts** for 1 lobby and **${reacts * 2}+ Reacts** for a 2nd lobby (1 per duo).`);
         }
-
-        const staff = staffId.value.trim() || 'ID_STAFF';
-        const games = parseInt(gameCountInput.value) || 2;
-        const reacts = selectedReacts;
-        const delay = parseInt(gameDelay.value) || 15;
-
-        const regUnix = toUnixTimestamp(regDate);
-        const gameUnix = regUnix + (delay * 60);
-
-        announcement.push(`@everyone`);
-        announcement.push('');
-        announcement.push(`**${selectedServer} Practice Session**`);
-        announcement.push('');
-        announcement.push(`:ArrowRight: Registration opens @`);
-        announcement.push(`${formatDiscordTime(regUnix, 't')}`);
-        announcement.push('');
-        announcement.push(`:ArrowRight: First Game Commences @`);
-        announcement.push(`${formatDiscordTime(gameUnix, 't')}`);
-        announcement.push('');
-        announcement.push(`The host for this session is:`);
-        announcement.push(`<@${staff}>, Direct Message them for help.`);
-        announcement.push('');
-        announcement.push(`- Session lasts ${games} Games. **Miss a single game and you will be banned.**`);
-        announcement.push(`- Make sure to read <#1282840995846950962>, <#1282841044521717761> & <#1282841572336996372> before the games.`);
-        announcement.push('');
-        announcement.push(`Required at least **${reacts}+ Reacts** for 1 lobby and **${reacts * 2}+ Reacts** for a 2nd lobby (1 per duo).`);
 
         announcementPreview.textContent = announcement.join('\n');
     }
@@ -143,6 +206,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    document.querySelectorAll('.quick-nzr-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const minutes = parseInt(this.dataset.minutes);
+            const now = new Date();
+            now.setMinutes(now.getMinutes() + minutes);
+            now.setSeconds(0, 0);
+            nzrStartTime.value = formatDateForInput(now);
+            document.querySelectorAll('.quick-nzr-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            generateAnnouncement();
+        });
+    });
+
     document.querySelectorAll('.hour-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const hour = parseInt(this.dataset.hour);
@@ -151,7 +227,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (now < new Date()) {
                 now.setDate(now.getDate() + 1);
             }
-            registrationTime.value = formatDateForInput(now);
+            const dateStr = formatDateForInput(now);
+            registrationTime.value = dateStr;
+            nzrStartTime.value = dateStr;
             document.querySelectorAll('.hour-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             generateAnnouncement();
@@ -267,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
     timestampInput.addEventListener('input', handleTimestampInput);
     dateTimePicker.addEventListener('input', handleDateTimePicker);
 
-    [registrationTime, staffId].forEach(el => {
+    [registrationTime, gameDuration, staffId, nzrStartTime, nzrSessionCount, nzrGap].forEach(el => {
         if (el) {
             el.addEventListener('change', generateAnnouncement);
             el.addEventListener('input', generateAnnouncement);
@@ -282,10 +360,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
     now.setSeconds(0, 0);
-    registrationTime.value = formatDateForInput(now);
+    const dateStr = formatDateForInput(now);
+    registrationTime.value = dateStr;
+    nzrStartTime.value = dateStr;
 
     const nowHelper = new Date();
     dateTimePicker.value = formatDateForInput(nowHelper);
     handleDateTimePicker();
+    
+    nzrFields.style.display = 'none';
     generateAnnouncement();
 });
