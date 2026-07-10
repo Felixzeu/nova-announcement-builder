@@ -17,14 +17,14 @@ body {
     transition: background-color 0.5s ease;
 }
 
-/* Sfondo per No Zone Rules */
+/* SFONDO PER NO ZONE RULES - BLU */
 body.nzr-bg {
-    background-color: #00C5FF;
+    background-color: #00C5FF !important;
 }
 
-/* Sfondo per Champion Division */
+/* SFONDO PER CHAMPION DIVISION - GIALLO */
 body.champ-bg {
-    background-color: #FEFF00;
+    background-color: #FEFF00 !important;
 }
 
 .container {
