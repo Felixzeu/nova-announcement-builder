@@ -107,10 +107,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // GAME DELAY
+    // GAME DELAY - SLIDER
     gameDelay.addEventListener('input', function() {
         gameDelayDisplay.textContent = `+${this.value} min`;
         generateAnnouncement();
+    });
+
+    // LOBBY BUTTONS - ora non fanno più nulla di visibile
+    document.querySelectorAll('.lobby-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // I bottoni sono solo per mostrare le opzioni
+            console.log(this.textContent + ' clicked');
+        });
     });
 
     // GENERATE ANNOUNCEMENT
