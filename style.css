@@ -13,14 +13,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    
-    /* SFONDO COME NELLA FOTO */
     background: linear-gradient(135deg, #00C5FF 0%, #0099CC 50%, #006699 100%);
     background-attachment: fixed;
     position: relative;
 }
 
-/* LINE DECORATIVE - come nella foto */
 body::before {
     content: '';
     position: fixed;
@@ -43,7 +40,6 @@ body::before {
     z-index: 0;
 }
 
-/* CERCHI DECORATIVI */
 body::after {
     content: '';
     position: fixed;
@@ -65,7 +61,6 @@ body::after {
     z-index: 1;
 }
 
-/* HEADER */
 .header {
     margin-bottom: 24px;
     padding-bottom: 16px;
@@ -97,7 +92,6 @@ body::after {
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* LANGUAGE SELECTOR */
 .language-selector {
     display: flex;
     align-items: center;
@@ -132,28 +126,24 @@ body::after {
     border-color: #6c6cff;
 }
 
-/* MAIN GRID */
 .main-grid {
     display: grid;
     grid-template-columns: 340px 1fr;
     gap: 24px;
 }
 
-/* LEFT COLUMN */
 .left-column {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* RIGHT COLUMN */
 .right-column {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* CARD */
 .card {
     background: rgba(26, 26, 46, 0.75);
     border-radius: 12px;
@@ -180,17 +170,6 @@ body::after {
     padding-bottom: 8px;
 }
 
-.card h3 {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 8px;
-    margin-top: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-}
-
-/* SERVER LIST */
 .server-list {
     display: flex;
     flex-direction: column;
@@ -240,7 +219,6 @@ body::after {
     background: rgba(108, 108, 255, 0.2);
 }
 
-/* FORM ELEMENTI */
 .form-group {
     margin-bottom: 12px;
 }
@@ -276,7 +254,35 @@ body::after {
     color: rgba(255, 255, 255, 0.3);
 }
 
-/* SESSION TYPE BUTTONS */
+.quick-minutes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.quick-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.quick-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.quick-btn.active {
+    background: #6c6cff;
+    border-color: #6c6cff;
+    color: white;
+}
+
 .session-type-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -308,7 +314,6 @@ body::after {
     color: white;
 }
 
-/* GAME BUTTONS */
 .game-buttons {
     display: flex;
     gap: 4px;
@@ -339,7 +344,6 @@ body::after {
     color: white;
 }
 
-/* TOGGLE BUTTON */
 .toggle-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
@@ -365,37 +369,6 @@ body::after {
     opacity: 0.8;
 }
 
-/* PULSANTI RAPIDI MINUTI */
-.quick-minutes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 4px;
-}
-
-.quick-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 4px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    transition: all 0.3s ease;
-}
-
-.quick-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.quick-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-}
-
-/* LOBBY GRID */
 .lobby-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -419,7 +392,6 @@ body::after {
     color: #ffffff;
 }
 
-/* RANGE SLIDER */
 input[type="range"] {
     width: 100%;
     padding: 0;
@@ -474,7 +446,6 @@ input[type="range"]::-moz-range-thumb {
     font-weight: 600;
 }
 
-/* QUICK HOURS GRID */
 .quick-hours-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -504,7 +475,48 @@ input[type="range"]::-moz-range-thumb {
     color: white;
 }
 
-/* TIMESTAMP HELPER */
+.preview-box {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border-radius: 6px;
+    min-height: 200px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.75rem;
+    max-height: 400px;
+    overflow-y: auto;
+    line-height: 1.5;
+}
+
+.btn-secondary {
+    flex: 1;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.button-group {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+}
+
 .timestamp-grid {
     margin-top: 8px;
     display: flex;
@@ -514,7 +526,7 @@ input[type="range"]::-moz-range-thumb {
 
 .timestamp-item {
     display: grid;
-    grid-template-columns: 70px 1fr 1fr;
+    grid-template-columns: 80px 1fr 1fr;
     align-items: center;
     background: rgba(255, 255, 255, 0.03);
     padding: 3px 8px;
@@ -550,51 +562,6 @@ input[type="range"]::-moz-range-thumb {
     text-align: right;
 }
 
-/* PREVIEW BOX */
-.preview-box {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 12px;
-    border-radius: 6px;
-    min-height: 200px;
-    margin-bottom: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    font-family: 'Courier New', monospace;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 0.75rem;
-    max-height: 400px;
-    overflow-y: auto;
-    line-height: 1.5;
-}
-
-/* PULSANTI PRINCIPALI */
-.btn-secondary {
-    flex: 1;
-    padding: 6px;
-    background: rgba(255, 255, 255, 0.05);
-    border: none;
-    border-radius: 6px;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.7rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    text-align: center;
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-}
-
-.button-group {
-    display: flex;
-    gap: 6px;
-    margin-top: 6px;
-}
-
-/* RESPONSIVE */
 @media (max-width: 1024px) {
     .main-grid {
         grid-template-columns: 1fr;
