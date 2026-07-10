@@ -13,7 +13,7 @@
             <div class="header-top">
                 <h1>⚡ Nova Announcement Builder</h1>
                 <div class="language-selector">
-                    <span class="lang-label" id="langLabel">🌐 PAGE LANGUAGE</span>
+                    <span class="lang-label">🌐 PAGE LANGUAGE</span>
                     <select id="languageSelect">
                         <option value="en">🇬🇧 English</option>
                         <option value="it" selected>🇮🇹 Italiano</option>
@@ -23,14 +23,15 @@
                     </select>
                 </div>
             </div>
-            <p class="subtitle" id="subtitleText">Select a server, lobby and time — the announcement generates automatically. Then just copy it.</p>
+            <p class="subtitle">Select a server, lobby and time — the announcement generates automatically. Then just copy it.</p>
         </div>
 
         <!-- MAIN CONTENT -->
         <div class="main-grid">
-            <!-- COLONNA DI SINISTRA: SERVER LIST -->
+            <!-- COLONNA DI SINISTRA -->
             <div class="left-column">
-                <div class="card servers-card">
+                <!-- SERVERS -->
+                <div class="card">
                     <h2>📡 SERVERS</h2>
                     <div class="server-list">
                         <button class="server-btn active" data-server="Nova Division 0" data-delay="15">
@@ -63,10 +64,10 @@
 
                 <!-- SETUP -->
                 <div class="card">
-                    <h2 id="setupTitle">⚙️ SETUP</h2>
+                    <h2>⚙️ SETUP</h2>
 
                     <div class="form-group">
-                        <label id="registrationLabel">📅 REGISTRATION OPENS</label>
+                        <label>📅 REGISTRATION OPENS</label>
                         <input type="datetime-local" id="registrationTime">
                     </div>
 
@@ -78,12 +79,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label id="staffLabel">👤 STAFF IN CHARGE (Discord ID)</label>
+                        <label>👤 STAFF IN CHARGE (Discord ID)</label>
                         <input type="text" id="staffId" value="640637074491441152" placeholder="Discord ID dello staff">
                     </div>
 
                     <div class="form-group">
-                        <label id="sessionTypeLabel">🏷️ TIPO SESSIONE</label>
+                        <label>🏷️ TIPO SESSIONE</label>
                         <div class="session-type-buttons">
                             <button class="session-type-btn active" data-type="Duo" data-reacts="55">Duo</button>
                             <button class="session-type-btn" data-type="Trio" data-reacts="40">Trio</button>
@@ -96,13 +97,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label id="lateNightLabel">🌙 LATE NIGHT</label>
+                        <label>🌙 LATE NIGHT</label>
                         <button id="lateNightToggle" class="toggle-btn">OFF</button>
                         <input type="hidden" id="lateNight" value="false">
                     </div>
 
                     <div class="form-group">
-                        <label id="gamesLabel">🎮 NUMERO DI PARTITE</label>
+                        <label>🎮 NUMERO DI PARTITE</label>
                         <div class="game-buttons">
                             <button class="game-btn active" data-games="2">2 Games</button>
                             <button class="game-btn" data-games="3">3 Games</button>
@@ -157,7 +158,7 @@
 
                 <!-- GENERATED MESSAGE -->
                 <div class="card">
-                    <h2 id="generatedTitle">📋 GENERATED MESSAGE</h2>
+                    <h2>📋 GENERATED MESSAGE</h2>
                     <div id="announcementPreview" class="preview-box"></div>
                     <div class="button-group">
                         <button id="copyAnnouncementBtn" class="btn-secondary">📋 Copy Announcement</button>
@@ -168,49 +169,49 @@
 
                 <!-- DISCORD TIMESTAMP HELPER -->
                 <div class="card">
-                    <h2 id="timestampTitle">⏰ Discord Timestamp Helper</h2>
+                    <h2>⏰ Discord Timestamp Helper</h2>
                     <div class="form-group">
-                        <label id="unixLabel">Unix Timestamp</label>
+                        <label>Unix Timestamp</label>
                         <input type="number" id="timestampInput" placeholder="Inserisci timestamp...">
                     </div>
                     <div class="form-group">
-                        <label id="datePickerLabel">📅 Selezione Data/ora</label>
+                        <label>📅 Selezione Data/ora</label>
                         <input type="datetime-local" id="dateTimePicker">
                     </div>
 
                     <div class="timestamp-grid">
                         <div class="timestamp-item">
-                            <span class="format-label" id="shortDateLabel">Data Corta</span>
+                            <span class="format-label">Short Date</span>
                             <span class="format-code" data-format="d">&lt;t:TIMESTAMP:d&gt;</span>
                             <span class="format-preview" data-format="d">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="longDateLabel">Data Lunga</span>
+                            <span class="format-label">Long Date</span>
                             <span class="format-code" data-format="D">&lt;t:TIMESTAMP:D&gt;</span>
                             <span class="format-preview" data-format="D">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="shortTimeLabel">Ora Corta</span>
+                            <span class="format-label">Short Time</span>
                             <span class="format-code" data-format="t">&lt;t:TIMESTAMP:t&gt;</span>
                             <span class="format-preview" data-format="t">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="longTimeLabel">Ora Lunga</span>
+                            <span class="format-label">Long Time</span>
                             <span class="format-code" data-format="T">&lt;t:TIMESTAMP:T&gt;</span>
                             <span class="format-preview" data-format="T">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="shortDateTimeLabel">Data/Ora Corta</span>
+                            <span class="format-label">Short Date/Time</span>
                             <span class="format-code" data-format="f">&lt;t:TIMESTAMP:f&gt;</span>
                             <span class="format-preview" data-format="f">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="longDateTimeLabel">Data/Ora Lunga</span>
+                            <span class="format-label">Long Date/Time</span>
                             <span class="format-code" data-format="F">&lt;t:TIMESTAMP:F&gt;</span>
                             <span class="format-preview" data-format="F">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="relativeTimeLabel">Tempo Relativo</span>
+                            <span class="format-label">Relative Time</span>
                             <span class="format-code" data-format="R">&lt;t:TIMESTAMP:R&gt;</span>
                             <span class="format-preview" data-format="R">-</span>
                         </div>
