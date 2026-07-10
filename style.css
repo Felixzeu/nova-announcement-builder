@@ -135,7 +135,7 @@ body::after {
 /* MAIN GRID */
 .main-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 340px 1fr;
     gap: 24px;
 }
 
@@ -143,21 +143,21 @@ body::after {
 .left-column {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
 
 /* RIGHT COLUMN */
 .right-column {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
 
 /* CARD */
 .card {
     background: rgba(26, 26, 46, 0.75);
     border-radius: 12px;
-    padding: 20px;
+    padding: 18px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
@@ -170,29 +170,79 @@ body::after {
 }
 
 .card h2 {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 10px;
+    padding-bottom: 8px;
 }
 
 .card h3 {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 10px;
-    margin-top: 16px;
+    margin-bottom: 8px;
+    margin-top: 12px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+}
+
+/* SERVER LIST */
+.server-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.server-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    font-family: inherit;
+}
+
+.server-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.server-btn.active {
+    background: rgba(108, 108, 255, 0.3);
+    border-color: #6c6cff;
+}
+
+.server-btn .server-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.server-btn .server-delay {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.server-btn.active .server-delay {
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(108, 108, 255, 0.2);
 }
 
 /* FORM ELEMENTI */
 .form-group {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
 .form-group label {
@@ -200,18 +250,18 @@ body::after {
     margin-bottom: 4px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 8px 12px;
+    padding: 6px 10px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
     color: #ffffff;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: all 0.3s ease;
 }
 
@@ -226,38 +276,6 @@ body::after {
     color: rgba(255, 255, 255, 0.3);
 }
 
-/* SERVER BUTTONS */
-.server-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.server-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.8);
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    text-align: left;
-    width: 100%;
-}
-
-.server-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.server-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-}
-
 /* SESSION TYPE BUTTONS */
 .session-type-buttons {
     display: flex;
@@ -269,10 +287,10 @@ body::after {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
-    padding: 6px 12px;
+    padding: 4px 10px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     transition: all 0.3s ease;
     font-weight: 500;
     flex: 1;
@@ -300,10 +318,10 @@ body::after {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
-    padding: 6px 14px;
+    padding: 4px 12px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     transition: all 0.3s ease;
     font-weight: 500;
     flex: 1;
@@ -326,10 +344,10 @@ body::after {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
-    padding: 8px 20px;
+    padding: 6px 16px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     transition: all 0.3s ease;
     width: 100%;
@@ -359,7 +377,7 @@ body::after {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
-    padding: 5px 10px;
+    padding: 4px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.7rem;
@@ -377,33 +395,86 @@ body::after {
     color: white;
 }
 
-.quick-nzr-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    transition: all 0.3s ease;
+/* LOBBY GRID */
+.lobby-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
 }
 
-.quick-nzr-btn:hover {
+.lobby-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.65rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.lobby-btn:hover {
     background: rgba(255, 255, 255, 0.12);
     color: #ffffff;
 }
 
-.quick-nzr-btn.active {
+/* RANGE SLIDER */
+input[type="range"] {
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
     background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
+    cursor: pointer;
+    margin-top: -5px;
 }
 
-/* QUICK HOURS */
-.quick-hours-section {
-    margin-top: 10px;
+input[type="range"]::-moz-range-track {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+    border: none;
 }
 
+input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #6c6cff;
+    cursor: pointer;
+    border: none;
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 2px;
+}
+
+#gameDelayDisplay {
+    color: #6c6cff;
+    font-weight: 600;
+}
+
+/* QUICK HOURS GRID */
 .quick-hours-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -435,32 +506,32 @@ body::after {
 
 /* TIMESTAMP HELPER */
 .timestamp-grid {
-    margin-top: 10px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
 }
 
 .timestamp-item {
     display: grid;
-    grid-template-columns: 90px 1fr 1fr;
+    grid-template-columns: 70px 1fr 1fr;
     align-items: center;
     background: rgba(255, 255, 255, 0.03);
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 4px;
     gap: 6px;
 }
 
 .format-label {
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.65rem;
 }
 
 .format-code {
     font-family: 'Courier New', monospace;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.6rem;
     background: rgba(255, 255, 255, 0.05);
     padding: 2px 6px;
     border-radius: 3px;
@@ -474,38 +545,38 @@ body::after {
 }
 
 .format-preview {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.65rem;
     text-align: right;
 }
 
 /* PREVIEW BOX */
 .preview-box {
     background: rgba(0, 0, 0, 0.2);
-    padding: 14px;
+    padding: 12px;
     border-radius: 6px;
-    min-height: 300px;
-    margin-bottom: 10px;
+    min-height: 200px;
+    margin-bottom: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     font-family: 'Courier New', monospace;
     white-space: pre-wrap;
     word-break: break-word;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 0.78rem;
-    max-height: 600px;
+    font-size: 0.75rem;
+    max-height: 400px;
     overflow-y: auto;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* PULSANTI PRINCIPALI */
 .btn-secondary {
     flex: 1;
-    padding: 8px;
+    padding: 6px;
     background: rgba(255, 255, 255, 0.05);
     border: none;
     border-radius: 6px;
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.5s ease;
@@ -530,8 +601,8 @@ body::after {
         gap: 20px;
     }
     .preview-box {
-        min-height: 200px;
-        max-height: 400px;
+        min-height: 150px;
+        max-height: 300px;
     }
 }
 
@@ -570,6 +641,9 @@ body::after {
     .game-buttons {
         flex-direction: column;
     }
+    .lobby-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (max-width: 500px) {
@@ -579,7 +653,7 @@ body::after {
     .header-top h1 {
         font-size: 1.3rem;
     }
-    .server-buttons {
-        flex-direction: column;
+    .lobby-grid {
+        grid-template-columns: 1fr;
     }
 }
