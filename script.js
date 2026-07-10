@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- FUNZIONE PER CAMBIARE COLORE DELLO SFONDO ---
     function updateBackgroundColor(server) {
-        // Rimuovi tutte le classi dal body
         document.body.classList.remove('nzr-bg', 'champ-bg');
         
         if (server === 'Nova No Zone Rules') {
