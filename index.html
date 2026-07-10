@@ -31,14 +31,14 @@
             <!-- COLONNA DI SINISTRA -->
             <div class="left-column">
                 <!-- SETUP -->
-                <div class="card">
+                <div class="card" id="setupCard">
                     <h2 id="setupTitle">📋 SETUP</h2>
 
                     <div class="form-group">
                         <label id="serverLabel">🌐 SERVER</label>
                         <div class="server-buttons">
-                            <button class="server-btn active" data-server="Nova No Zone Rules">Nova No Zone Rules</button>
-                            <button class="server-btn" data-server="Nova Champion Division">Nova Champion Division</button>
+                            <button class="server-btn active" data-server="Nova No Zone Rules" id="nzrBtn">Nova No Zone Rules</button>
+                            <button class="server-btn" data-server="Nova Champion Division" id="champBtn">Nova Champion Division</button>
                         </div>
                         <input type="hidden" id="serverName" value="Nova No Zone Rules">
                     </div>
@@ -94,11 +94,6 @@
                             </div>
                             <input type="hidden" id="gameCount" value="2">
                         </div>
-
-                        <div class="form-group">
-                            <label id="roleLabel">🏅 ROLE ID (opzionale)</label>
-                            <input type="text" id="roleId" value="1521712260370796584" placeholder="es. 1521712260370796584">
-                        </div>
                     </div>
 
                     <!-- Campi per No Zone Rules -->
@@ -146,7 +141,7 @@
                 </div>
 
                 <!-- DISCORD TIMESTAMP HELPER -->
-                <div class="card">
+                <div class="card" id="timestampCard">
                     <h2 id="timestampTitle">⏰ Discord Timestamp Helper</h2>
                     <div class="form-group">
                         <label id="unixLabel">Unix Timestamp</label>
@@ -199,7 +194,7 @@
 
             <!-- COLONNA DI DESTRA: GENERATED MESSAGE -->
             <div class="right-column">
-                <div class="card">
+                <div class="card" id="generatedCard">
                     <h2 id="generatedTitle">📋 GENERATED MESSAGE</h2>
                     <div id="announcementPreview" class="preview-box"></div>
                     <div class="button-group">
