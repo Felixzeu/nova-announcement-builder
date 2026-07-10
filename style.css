@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     
-    /* SFONDO CON GRADIENTE E LINEE - COME NELLA FOTO */
+    /* SFONDO COME NELLA FOTO */
     background: linear-gradient(135deg, #00C5FF 0%, #0099CC 50%, #006699 100%);
     background-attachment: fixed;
     position: relative;
@@ -31,19 +31,19 @@ body::before {
     background: 
         repeating-linear-gradient(90deg, 
             transparent 0px, 
-            rgba(255, 255, 255, 0.06) 1px, 
+            rgba(255, 255, 255, 0.05) 1px, 
             transparent 2px
         ),
         repeating-linear-gradient(0deg, 
             transparent 0px, 
-            rgba(255, 255, 255, 0.06) 1px, 
+            rgba(255, 255, 255, 0.05) 1px, 
             transparent 2px
         );
     pointer-events: none;
     z-index: 0;
 }
 
-/* CERCHI DECORATIVI - come nella foto */
+/* CERCHI DECORATIVI */
 body::after {
     content: '';
     position: fixed;
