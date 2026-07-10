@@ -14,6 +14,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    transition: background-color 0.5s ease;
+}
+
+/* Sfondo per No Zone Rules */
+body.nzr-bg {
+    background-color: #00C5FF;
+}
+
+/* Sfondo per Champion Division */
+body.champ-bg {
+    background-color: #FEFF00;
 }
 
 .container {
@@ -26,7 +37,7 @@ body {
 .header {
     margin-bottom: 24px;
     padding-bottom: 16px;
-    border-bottom: 1px solid #3a3a5a;
+    border-bottom: 1px solid rgba(26, 26, 46, 0.3);
 }
 
 .header-top {
@@ -43,13 +54,25 @@ body {
     font-weight: 700;
     color: #ffffff;
     letter-spacing: -0.5px;
+    transition: color 0.5s ease;
+}
+
+body.nzr-bg .header-top h1,
+body.champ-bg .header-top h1 {
+    color: #1a1a2e;
 }
 
 .header .subtitle {
-    color: #8888aa;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 1rem;
     font-weight: 400;
     margin: 0;
+    transition: color 0.5s ease;
+}
+
+body.nzr-bg .header .subtitle,
+body.champ-bg .header .subtitle {
+    color: rgba(26, 26, 46, 0.7);
 }
 
 /* LANGUAGE SELECTOR */
@@ -57,28 +80,41 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: #2a2a45;
+    background-color: rgba(26, 26, 46, 0.2);
     padding: 6px 14px;
     border-radius: 8px;
-    border: 1px solid #3a3a5a;
+    border: 1px solid rgba(26, 26, 46, 0.2);
+    transition: all 0.5s ease;
 }
 
 .language-selector .lang-label {
-    color: #8888bb;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    transition: color 0.5s ease;
+}
+
+body.nzr-bg .language-selector .lang-label,
+body.champ-bg .language-selector .lang-label {
+    color: rgba(26, 26, 46, 0.7);
 }
 
 .language-selector select {
-    background-color: #1e1e32;
-    border: 1px solid #3a3a5a;
+    background-color: rgba(26, 26, 46, 0.15);
+    border: 1px solid rgba(26, 26, 46, 0.2);
     border-radius: 6px;
     color: #ffffff;
     padding: 4px 10px;
     font-size: 0.85rem;
     cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+body.nzr-bg .language-selector select,
+body.champ-bg .language-selector select {
+    color: #1a1a2e;
 }
 
 .language-selector select:focus {
@@ -109,242 +145,53 @@ body {
 
 /* CARD */
 .card {
-    background-color: #2a2a45;
+    background-color: rgba(26, 26, 46, 0.85);
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border: 1px solid #3a3a5a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.5s ease;
+    backdrop-filter: blur(10px);
 }
 
-/* Card colori per server */
-.card.nzr-mode {
-    background-color: #00C5FF;
-    border-color: #0099CC;
-}
-
-.card.nzr-mode h2,
-.card.nzr-mode h3,
-.card.nzr-mode label,
-.card.nzr-mode .format-label,
-.card.nzr-mode .lang-label {
-    color: #1a1a2e;
-}
-
-.card.nzr-mode .preview-box {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: #1a1a2e;
-    color: #1a1a2e;
-}
-
-.card.nzr-mode .toggle-btn {
-    background-color: rgba(26, 26, 46, 0.2);
-    border-color: #1a1a2e;
-    color: #1a1a2e;
-}
-
-.card.nzr-mode .toggle-btn.active {
-    background-color: #1a1a2e;
-    border-color: #1a1a2e;
-    color: #00C5FF;
-}
-
-.card.nzr-mode .server-btn,
-.card.nzr-mode .session-type-btn,
-.card.nzr-mode .game-btn,
-.card.nzr-mode .quick-btn,
-.card.nzr-mode .quick-nzr-btn,
-.card.nzr-mode .hour-btn {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: #1a1a2e;
-    color: #1a1a2e;
-}
-
-.card.nzr-mode .server-btn:hover,
-.card.nzr-mode .session-type-btn:hover,
-.card.nzr-mode .game-btn:hover,
-.card.nzr-mode .quick-btn:hover,
-.card.nzr-mode .quick-nzr-btn:hover,
-.card.nzr-mode .hour-btn:hover {
-    background-color: rgba(26, 26, 46, 0.3);
-    color: #1a1a2e;
-}
-
-.card.nzr-mode .server-btn.active,
-.card.nzr-mode .session-type-btn.active,
-.card.nzr-mode .game-btn.active,
-.card.nzr-mode .quick-btn.active,
-.card.nzr-mode .quick-nzr-btn.active,
-.card.nzr-mode .hour-btn.active {
-    background-color: #1a1a2e;
-    border-color: #1a1a2e;
-    color: #00C5FF;
-}
-
-.card.nzr-mode .format-code {
-    background-color: rgba(26, 26, 46, 0.15);
-    color: #1a1a2e;
-}
-
-.card.nzr-mode .format-code:hover {
-    background-color: rgba(26, 26, 46, 0.3);
-}
-
-.card.nzr-mode .btn-secondary {
-    background-color: rgba(26, 26, 46, 0.2);
-    color: #1a1a2e;
-}
-
-.card.nzr-mode .btn-secondary:hover {
-    background-color: rgba(26, 26, 46, 0.4);
-}
-
-.card.nzr-mode .timestamp-item {
-    background-color: rgba(26, 26, 46, 0.1);
-}
-
-.card.nzr-mode input,
-.card.nzr-mode select {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: #1a1a2e;
-    color: #1a1a2e;
-}
-
-.card.nzr-mode input::placeholder {
-    color: rgba(26, 26, 46, 0.5);
-}
-
-.card.nzr-mode input:focus,
-.card.nzr-mode select:focus {
-    border-color: #1a1a2e;
-}
-
-.card.champ-mode {
-    background-color: #FEFF00;
-    border-color: #CCCC00;
-}
-
-.card.champ-mode h2,
-.card.champ-mode h3,
-.card.champ-mode label,
-.card.champ-mode .format-label,
-.card.champ-mode .lang-label {
-    color: #1a1a2e;
-}
-
-.card.champ-mode .preview-box {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: #1a1a2e;
-    color: #1a1a2e;
-}
-
-.card.champ-mode .toggle-btn {
-    background-color: rgba(26, 26, 46, 0.2);
-    border-color: #1a1a2e;
-    color: #1a1a2e;
-}
-
-.card.champ-mode .toggle-btn.active {
-    background-color: #1a1a2e;
-    border-color: #1a1a2e;
-    color: #FEFF00;
-}
-
-.card.champ-mode .server-btn,
-.card.champ-mode .session-type-btn,
-.card.champ-mode .game-btn,
-.card.champ-mode .quick-btn,
-.card.champ-mode .quick-nzr-btn,
-.card.champ-mode .hour-btn {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: #1a1a2e;
-    color: #1a1a2e;
-}
-
-.card.champ-mode .server-btn:hover,
-.card.champ-mode .session-type-btn:hover,
-.card.champ-mode .game-btn:hover,
-.card.champ-mode .quick-btn:hover,
-.card.champ-mode .quick-nzr-btn:hover,
-.card.champ-mode .hour-btn:hover {
-    background-color: rgba(26, 26, 46, 0.3);
-    color: #1a1a2e;
-}
-
-.card.champ-mode .server-btn.active,
-.card.champ-mode .session-type-btn.active,
-.card.champ-mode .game-btn.active,
-.card.champ-mode .quick-btn.active,
-.card.champ-mode .quick-nzr-btn.active,
-.card.champ-mode .hour-btn.active {
-    background-color: #1a1a2e;
-    border-color: #1a1a2e;
-    color: #FEFF00;
-}
-
-.card.champ-mode .format-code {
-    background-color: rgba(26, 26, 46, 0.15);
-    color: #1a1a2e;
-}
-
-.card.champ-mode .format-code:hover {
-    background-color: rgba(26, 26, 46, 0.3);
-}
-
-.card.champ-mode .btn-secondary {
-    background-color: rgba(26, 26, 46, 0.2);
-    color: #1a1a2e;
-}
-
-.card.champ-mode .btn-secondary:hover {
-    background-color: rgba(26, 26, 46, 0.4);
-}
-
-.card.champ-mode .timestamp-item {
-    background-color: rgba(26, 26, 46, 0.1);
-}
-
-.card.champ-mode input,
-.card.champ-mode select {
-    background-color: rgba(26, 26, 46, 0.15);
-    border-color: #1a1a2e;
-    color: #1a1a2e;
-}
-
-.card.champ-mode input::placeholder {
-    color: rgba(26, 26, 46, 0.5);
-}
-
-.card.champ-mode input:focus,
-.card.champ-mode select:focus {
-    border-color: #1a1a2e;
+body.nzr-bg .card,
+body.champ-bg .card {
+    background-color: rgba(26, 26, 46, 0.7);
+    border-color: rgba(26, 26, 46, 0.2);
 }
 
 .card h2 {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #8888bb;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 16px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    border-bottom: 1px solid #3a3a5a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 10px;
     transition: all 0.5s ease;
 }
 
-.card.nzr-mode h2,
-.card.champ-mode h2 {
-    border-bottom-color: #1a1a2e;
+body.nzr-bg .card h2,
+body.champ-bg .card h2 {
+    color: #1a1a2e;
+    border-bottom-color: rgba(26, 26, 46, 0.2);
 }
 
 .card h3 {
     font-size: 0.8rem;
     font-weight: 600;
-    color: #8888bb;
+    color: rgba(255, 255, 255, 0.6);
     margin-bottom: 10px;
     margin-top: 16px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    transition: color 0.5s ease;
+}
+
+body.nzr-bg .card h3,
+body.champ-bg .card h3 {
+    color: #1a1a2e;
 }
 
 /* FORM ELEMENTI */
@@ -356,21 +203,35 @@ body {
     display: block;
     margin-bottom: 4px;
     font-weight: 500;
-    color: #c0c0d0;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.8rem;
-    transition: all 0.5s ease;
+    transition: color 0.5s ease;
+}
+
+body.nzr-bg .form-group label,
+body.champ-bg .form-group label {
+    color: #1a1a2e;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 8px 12px;
-    background-color: #1e1e32;
-    border: 1px solid #3a3a5a;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 6px;
     color: #ffffff;
     font-size: 0.9rem;
     transition: all 0.5s ease;
+}
+
+body.nzr-bg .form-group input,
+body.champ-bg .form-group input,
+body.nzr-bg .form-group select,
+body.champ-bg .form-group select {
+    background-color: rgba(26, 26, 46, 0.15);
+    border-color: rgba(26, 26, 46, 0.2);
+    color: #1a1a2e;
 }
 
 .form-group input:focus,
@@ -380,7 +241,12 @@ body {
 }
 
 .form-group input::placeholder {
-    color: #555577;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+body.nzr-bg .form-group input::placeholder,
+body.champ-bg .form-group input::placeholder {
+    color: rgba(26, 26, 46, 0.4);
 }
 
 /* SERVER BUTTONS */
@@ -391,28 +257,52 @@ body {
 }
 
 .server-btn {
-    background-color: #1e1e32;
-    border: 1px solid #3a3a5a;
-    color: #b0b0c0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
     padding: 8px 14px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.85rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     font-weight: 500;
     text-align: left;
     width: 100%;
 }
 
+body.nzr-bg .server-btn,
+body.champ-bg .server-btn {
+    background-color: rgba(26, 26, 46, 0.15);
+    border-color: rgba(26, 26, 46, 0.2);
+    color: #1a1a2e;
+}
+
 .server-btn:hover {
-    background-color: #3a3a5a;
+    background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
+}
+
+body.nzr-bg .server-btn:hover,
+body.champ-bg .server-btn:hover {
+    background-color: rgba(26, 26, 46, 0.3);
+    color: #1a1a2e;
 }
 
 .server-btn.active {
     background-color: #6c6cff;
     border-color: #6c6cff;
     color: white;
+}
+
+body.nzr-bg .server-btn.active,
+body.champ-bg .server-btn.active {
+    background-color: #1a1a2e;
+    border-color: #1a1a2e;
+    color: #00C5FF;
+}
+
+body.champ-bg .server-btn.active {
+    color: #FEFF00;
 }
 
 /* SESSION TYPE BUTTONS */
@@ -423,28 +313,52 @@ body {
 }
 
 .session-type-btn {
-    background-color: #1e1e32;
-    border: 1px solid #3a3a5a;
-    color: #b0b0c0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.75rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     font-weight: 500;
     flex: 1;
     text-align: center;
 }
 
+body.nzr-bg .session-type-btn,
+body.champ-bg .session-type-btn {
+    background-color: rgba(26, 26, 46, 0.15);
+    border-color: rgba(26, 26, 46, 0.2);
+    color: #1a1a2e;
+}
+
 .session-type-btn:hover {
-    background-color: #3a3a5a;
+    background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
+}
+
+body.nzr-bg .session-type-btn:hover,
+body.champ-bg .session-type-btn:hover {
+    background-color: rgba(26, 26, 46, 0.3);
+    color: #1a1a2e;
 }
 
 .session-type-btn.active {
     background-color: #6c6cff;
     border-color: #6c6cff;
     color: white;
+}
+
+body.nzr-bg .session-type-btn.active,
+body.champ-bg .session-type-btn.active {
+    background-color: #1a1a2e;
+    border-color: #1a1a2e;
+    color: #00C5FF;
+}
+
+body.champ-bg .session-type-btn.active {
+    color: #FEFF00;
 }
 
 /* GAME BUTTONS */
@@ -454,22 +368,35 @@ body {
 }
 
 .game-btn {
-    background-color: #1e1e32;
-    border: 1px solid #3a3a5a;
-    color: #b0b0c0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
     padding: 6px 14px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.75rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     font-weight: 500;
     flex: 1;
     text-align: center;
 }
 
+body.nzr-bg .game-btn,
+body.champ-bg .game-btn {
+    background-color: rgba(26, 26, 46, 0.15);
+    border-color: rgba(26, 26, 46, 0.2);
+    color: #1a1a2e;
+}
+
 .game-btn:hover {
-    background-color: #3a3a5a;
+    background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
+}
+
+body.nzr-bg .game-btn:hover,
+body.champ-bg .game-btn:hover {
+    background-color: rgba(26, 26, 46, 0.3);
+    color: #1a1a2e;
 }
 
 .game-btn.active {
@@ -478,19 +405,37 @@ body {
     color: white;
 }
 
+body.nzr-bg .game-btn.active,
+body.champ-bg .game-btn.active {
+    background-color: #1a1a2e;
+    border-color: #1a1a2e;
+    color: #00C5FF;
+}
+
+body.champ-bg .game-btn.active {
+    color: #FEFF00;
+}
+
 /* TOGGLE BUTTON */
 .toggle-btn {
-    background-color: #3a3a5a;
-    border: 2px solid #3a3a5a;
-    color: #e0e0e0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
     padding: 8px 20px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 600;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     width: 100%;
     text-align: center;
+}
+
+body.nzr-bg .toggle-btn,
+body.champ-bg .toggle-btn {
+    background-color: rgba(26, 26, 46, 0.15);
+    border-color: rgba(26, 26, 46, 0.2);
+    color: #1a1a2e;
 }
 
 .toggle-btn.active {
@@ -498,6 +443,17 @@ body {
     border-color: #6c6cff;
     color: white;
     box-shadow: 0 0 20px rgba(108, 108, 255, 0.3);
+}
+
+body.nzr-bg .toggle-btn.active,
+body.champ-bg .toggle-btn.active {
+    background-color: #1a1a2e;
+    border-color: #1a1a2e;
+    color: #00C5FF;
+}
+
+body.champ-bg .toggle-btn.active {
+    color: #FEFF00;
 }
 
 .toggle-btn:hover {
@@ -513,19 +469,32 @@ body {
 }
 
 .quick-btn {
-    background-color: #1e1e32;
-    border: 1px solid #3a3a5a;
-    color: #b0b0c0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.7rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+}
+
+body.nzr-bg .quick-btn,
+body.champ-bg .quick-btn {
+    background-color: rgba(26, 26, 46, 0.15);
+    border-color: rgba(26, 26, 46, 0.2);
+    color: #1a1a2e;
 }
 
 .quick-btn:hover {
-    background-color: #3a3a5a;
+    background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
+}
+
+body.nzr-bg .quick-btn:hover,
+body.champ-bg .quick-btn:hover {
+    background-color: rgba(26, 26, 46, 0.3);
+    color: #1a1a2e;
 }
 
 .quick-btn.active {
@@ -534,26 +503,61 @@ body {
     color: white;
 }
 
+body.nzr-bg .quick-btn.active,
+body.champ-bg .quick-btn.active {
+    background-color: #1a1a2e;
+    border-color: #1a1a2e;
+    color: #00C5FF;
+}
+
+body.champ-bg .quick-btn.active {
+    color: #FEFF00;
+}
+
 .quick-nzr-btn {
-    background-color: #1e1e32;
-    border: 1px solid #3a3a5a;
-    color: #b0b0c0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.7rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+}
+
+body.nzr-bg .quick-nzr-btn,
+body.champ-bg .quick-nzr-btn {
+    background-color: rgba(26, 26, 46, 0.15);
+    border-color: rgba(26, 26, 46, 0.2);
+    color: #1a1a2e;
 }
 
 .quick-nzr-btn:hover {
-    background-color: #3a3a5a;
+    background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
+}
+
+body.nzr-bg .quick-nzr-btn:hover,
+body.champ-bg .quick-nzr-btn:hover {
+    background-color: rgba(26, 26, 46, 0.3);
+    color: #1a1a2e;
 }
 
 .quick-nzr-btn.active {
     background-color: #6c6cff;
     border-color: #6c6cff;
     color: white;
+}
+
+body.nzr-bg .quick-nzr-btn.active,
+body.champ-bg .quick-nzr-btn.active {
+    background-color: #1a1a2e;
+    border-color: #1a1a2e;
+    color: #00C5FF;
+}
+
+body.champ-bg .quick-nzr-btn.active {
+    color: #FEFF00;
 }
 
 /* QUICK HOURS */
@@ -568,26 +572,50 @@ body {
 }
 
 .hour-btn {
-    background-color: #1e1e32;
-    border: 1px solid #3a3a5a;
-    color: #b0b0c0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.7);
     padding: 5px 4px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.7rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     text-align: center;
 }
 
+body.nzr-bg .hour-btn,
+body.champ-bg .hour-btn {
+    background-color: rgba(26, 26, 46, 0.15);
+    border-color: rgba(26, 26, 46, 0.2);
+    color: #1a1a2e;
+}
+
 .hour-btn:hover {
-    background-color: #3a3a5a;
+    background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
+}
+
+body.nzr-bg .hour-btn:hover,
+body.champ-bg .hour-btn:hover {
+    background-color: rgba(26, 26, 46, 0.3);
+    color: #1a1a2e;
 }
 
 .hour-btn.active {
     background-color: #6c6cff;
     border-color: #6c6cff;
     color: white;
+}
+
+body.nzr-bg .hour-btn.active,
+body.champ-bg .hour-btn.active {
+    background-color: #1a1a2e;
+    border-color: #1a1a2e;
+    color: #00C5FF;
+}
+
+body.champ-bg .hour-btn.active {
+    color: #FEFF00;
 }
 
 /* TIMESTAMP HELPER */
@@ -602,25 +630,35 @@ body {
     display: grid;
     grid-template-columns: 90px 1fr 1fr;
     align-items: center;
-    background-color: #1e1e32;
+    background-color: rgba(255, 255, 255, 0.05);
     padding: 4px 10px;
     border-radius: 4px;
     gap: 6px;
     transition: all 0.5s ease;
 }
 
+body.nzr-bg .timestamp-item,
+body.champ-bg .timestamp-item {
+    background-color: rgba(26, 26, 46, 0.1);
+}
+
 .format-label {
     font-weight: 500;
-    color: #8888aa;
+    color: rgba(255, 255, 255, 0.6);
     font-size: 0.7rem;
-    transition: all 0.5s ease;
+    transition: color 0.5s ease;
+}
+
+body.nzr-bg .format-label,
+body.champ-bg .format-label {
+    color: #1a1a2e;
 }
 
 .format-code {
     font-family: 'Courier New', monospace;
-    color: #8f8fcf;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.65rem;
-    background-color: #14141f;
+    background-color: rgba(255, 255, 255, 0.05);
     padding: 2px 6px;
     border-radius: 3px;
     text-align: center;
@@ -629,29 +667,45 @@ body {
     transition: all 0.5s ease;
 }
 
+body.nzr-bg .format-code,
+body.champ-bg .format-code {
+    background-color: rgba(26, 26, 46, 0.1);
+    color: #1a1a2e;
+}
+
 .format-code:hover {
-    background-color: #2a2a4a;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+body.nzr-bg .format-code:hover,
+body.champ-bg .format-code:hover {
+    background-color: rgba(26, 26, 46, 0.2);
 }
 
 .format-preview {
-    color: #b0b0d0;
+    color: rgba(255, 255, 255, 0.6);
     font-size: 0.7rem;
     text-align: right;
-    transition: all 0.5s ease;
+    transition: color 0.5s ease;
+}
+
+body.nzr-bg .format-preview,
+body.champ-bg .format-preview {
+    color: #1a1a2e;
 }
 
 /* PREVIEW BOX */
 .preview-box {
-    background-color: #1a1a2e;
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 14px;
     border-radius: 6px;
     min-height: 300px;
     margin-bottom: 10px;
-    border: 1px solid #3a3a5a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     font-family: 'Courier New', monospace;
     white-space: pre-wrap;
     word-break: break-word;
-    color: #d0d0e0;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 0.78rem;
     max-height: 600px;
     overflow-y: auto;
@@ -659,14 +713,21 @@ body {
     transition: all 0.5s ease;
 }
 
+body.nzr-bg .preview-box,
+body.champ-bg .preview-box {
+    background-color: rgba(26, 26, 46, 0.15);
+    border-color: rgba(26, 26, 46, 0.2);
+    color: #1a1a2e;
+}
+
 /* PULSANTI PRINCIPALI */
 .btn-secondary {
     flex: 1;
     padding: 8px;
-    background-color: #3a3a5a;
+    background-color: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 6px;
-    color: #e0e0e0;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.75rem;
     font-weight: 500;
     cursor: pointer;
@@ -674,8 +735,21 @@ body {
     text-align: center;
 }
 
+body.nzr-bg .btn-secondary,
+body.champ-bg .btn-secondary {
+    background-color: rgba(26, 26, 46, 0.15);
+    color: #1a1a2e;
+}
+
 .btn-secondary:hover {
-    background-color: #4a4a7a;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+body.nzr-bg .btn-secondary:hover,
+body.champ-bg .btn-secondary:hover {
+    background-color: rgba(26, 26, 46, 0.3);
+    color: #1a1a2e;
 }
 
 .button-group {
