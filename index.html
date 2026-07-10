@@ -46,13 +46,13 @@
                     <div class="form-group">
                         <label id="sessionTypeLabel">🏷️ TIPO SESSIONE</label>
                         <div class="session-type-buttons">
-                            <button class="session-type-btn active" data-type="Duos" data-reacts="55">Duos</button>
-                            <button class="session-type-btn" data-type="Trios" data-reacts="40">Trios</button>
-                            <button class="session-type-btn" data-type="Squads" data-reacts="55">Squads</button>
+                            <button class="session-type-btn active" data-type="Duo" data-reacts="55">Duo</button>
+                            <button class="session-type-btn" data-type="Trio" data-reacts="40">Trio</button>
+                            <button class="session-type-btn" data-type="Squad" data-reacts="55">Squad</button>
                             <button class="session-type-btn" data-type="Reload" data-reacts="30">Reload</button>
                             <button class="session-type-btn" data-type="Solo" data-reacts="110">Solo</button>
                         </div>
-                        <input type="hidden" id="sessionType" value="Duos">
+                        <input type="hidden" id="sessionType" value="Duo">
                         <input type="hidden" id="requiredReacts" value="55">
                     </div>
 
@@ -93,6 +93,11 @@
                                 <button class="game-btn" data-games="3">3 Games</button>
                             </div>
                             <input type="hidden" id="gameCount" value="2">
+                        </div>
+
+                        <div class="form-group">
+                            <label id="roleLabel">🏅 ROLE ID (opzionale)</label>
+                            <input type="text" id="roleId" value="1521712260370796584" placeholder="es. 1521712260370796584">
                         </div>
                     </div>
 
