@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const lateNightInput = document.getElementById('lateNight');
     const lateNightToggle = document.getElementById('lateNightToggle');
     const languageSelect = document.getElementById('languageSelect');
-    const gameDelay = document.getElementById('gameDelay');
-    const gameDelayDisplay = document.getElementById('gameDelayDisplay');
     
     const championFields = document.getElementById('championFields');
     const registrationTime = document.getElementById('registrationTime');
@@ -70,8 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedServer = this.dataset.server;
             selectedDelay = parseInt(this.dataset.delay) || 15;
             serverNameInput.value = selectedServer;
-            gameDelay.value = selectedDelay;
-            gameDelayDisplay.textContent = `+${selectedDelay} min`;
             
             if (selectedServer === 'Nova No Zone Rules') {
                 championFields.style.display = 'none';
@@ -104,20 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             gameCountInput.value = this.dataset.games;
             generateAnnouncement();
-        });
-    });
-
-    // GAME DELAY - SLIDER
-    gameDelay.addEventListener('input', function() {
-        gameDelayDisplay.textContent = `+${this.value} min`;
-        generateAnnouncement();
-    });
-
-    // LOBBY BUTTONS - ora non fanno più nulla di visibile
-    document.querySelectorAll('.lobby-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            // I bottoni sono solo per mostrare le opzioni
-            console.log(this.textContent + ' clicked');
         });
     });
 
@@ -283,8 +265,8 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Inserisci una data valida!');
             return;
         }
-        const delay = parseInt(gameDelay.value) || 15;
-        const gameDate = new Date(regDate.getTime() + (delay * 60000));
+        const dur = parseInt(gameDuration.value) || 15;
+        const gameDate = new Date(regDate.getTime() + (dur * 60000));
         const unix = toUnixTimestamp(gameDate);
         copyToClipboard(`<t:${unix}:t>`, this);
     });
