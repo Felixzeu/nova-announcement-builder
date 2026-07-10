@@ -30,11 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const formatPreviews = document.querySelectorAll('.format-preview');
     const formatCodes = document.querySelectorAll('.format-code');
 
-    let selectedServer = 'Nova No Zone Rules';
+    let selectedServer = 'Nova Division 0';
     let selectedType = 'Duo';
     let selectedReacts = 55;
     let isLateNight = false;
     let currentLang = 'it';
+    let selectedDelay = 15;
 
     // --- TRADUZIONI ---
     const translations = {
@@ -265,7 +266,14 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.server-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             selectedServer = this.dataset.server;
+            selectedDelay = parseInt(this.dataset.delay) || 15;
             serverNameInput.value = selectedServer;
+            
+            // Aggiorna il game delay display se necessario
+            if (document.getElementById('gameDelay')) {
+                document.getElementById('gameDelay').value = selectedDelay;
+                document.getElementById('gameDelayDisplay').textContent = `+${selectedDelay} min`;
+            }
             
             if (selectedServer === 'Nova No Zone Rules') {
                 championFields.style.display = 'none';
