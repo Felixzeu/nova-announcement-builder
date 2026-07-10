@@ -28,24 +28,58 @@
 
         <!-- MAIN CONTENT -->
         <div class="main-grid">
-            <!-- COLONNA DI SINISTRA -->
+            <!-- COLONNA DI SINISTRA: SERVER LIST -->
             <div class="left-column">
+                <div class="card servers-card">
+                    <h2>📡 SERVERS</h2>
+                    <div class="server-list">
+                        <button class="server-btn active" data-server="Nova Division 0" data-delay="15">
+                            <span class="server-name">Nova Division 0</span>
+                            <span class="server-delay">+15 min</span>
+                        </button>
+                        <button class="server-btn" data-server="Nova Division 3" data-delay="15">
+                            <span class="server-name">Nova Division 3</span>
+                            <span class="server-delay">+15 min</span>
+                        </button>
+                        <button class="server-btn" data-server="Nova Division 2" data-delay="15">
+                            <span class="server-name">Nova Division 2</span>
+                            <span class="server-delay">+15 min</span>
+                        </button>
+                        <button class="server-btn" data-server="Nova 24/7" data-delay="20">
+                            <span class="server-name">Nova 24/7</span>
+                            <span class="server-delay">+20 min</span>
+                        </button>
+                        <button class="server-btn" data-server="Nova Solos" data-delay="20">
+                            <span class="server-name">Nova Solos</span>
+                            <span class="server-delay">+20 min</span>
+                        </button>
+                        <button class="server-btn" data-server="Solos Closed" data-delay="20">
+                            <span class="server-name">Solos Closed</span>
+                            <span class="server-delay">+20 min</span>
+                        </button>
+                    </div>
+                    <input type="hidden" id="serverName" value="Nova Division 0">
+                </div>
+
                 <!-- SETUP -->
                 <div class="card">
-                    <h2 id="setupTitle">📋 SETUP</h2>
+                    <h2 id="setupTitle">⚙️ SETUP</h2>
 
                     <div class="form-group">
-                        <label id="serverLabel">🌐 SERVER</label>
-                        <div class="server-buttons">
-                            <button class="server-btn active" data-server="Nova No Zone Rules" data-delay="15">Nova No Zone Rules</button>
-                            <button class="server-btn" data-server="Nova Champion Division" data-delay="15">Nova Champion Division</button>
-                            <button class="server-btn" data-server="Nova Division 0" data-delay="15">Nova Division 0 +15 min</button>
-                            <button class="server-btn" data-server="Nova Division 3" data-delay="15">Nova Division 3 +15 min</button>
-                            <button class="server-btn" data-server="Nova Division 2" data-delay="15">Nova Division 2 +15 min</button>
-                            <button class="server-btn" data-server="Nova 24/7" data-delay="20">Nova 24/7 +20 min</button>
-                            <button class="server-btn" data-server="Nova Solos" data-delay="20">Nova Solos +20 min</button>
-                        </div>
-                        <input type="hidden" id="serverName" value="Nova No Zone Rules">
+                        <label id="registrationLabel">📅 REGISTRATION OPENS</label>
+                        <input type="datetime-local" id="registrationTime">
+                    </div>
+
+                    <div class="quick-minutes">
+                        <button class="quick-btn" data-minutes="0" id="nowBtn">Use Current Time</button>
+                        <button class="quick-btn" data-minutes="5">+5 min</button>
+                        <button class="quick-btn" data-minutes="15">+15 min</button>
+                        <button class="quick-btn" data-minutes="20">+20 min</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="staffLabel">👤 STAFF IN CHARGE (Discord ID)</label>
+                        <input type="text" id="staffId" value="640637074491441152" placeholder="Discord ID dello staff">
                     </div>
 
                     <div class="form-group">
@@ -67,81 +101,68 @@
                         <input type="hidden" id="lateNight" value="false">
                     </div>
 
-                    <!-- Campi per Champion Division -->
-                    <div id="championFields">
-                        <div class="form-group">
-                            <label id="registrationLabel">📅 REGISTRATION OPENS</label>
-                            <input type="datetime-local" id="registrationTime">
+                    <div class="form-group">
+                        <label id="gamesLabel">🎮 NUMERO DI PARTITE</label>
+                        <div class="game-buttons">
+                            <button class="game-btn active" data-games="2">2 Games</button>
+                            <button class="game-btn" data-games="3">3 Games</button>
                         </div>
+                        <input type="hidden" id="gameCount" value="2">
+                    </div>
+                </div>
 
-                        <div class="quick-minutes">
-                            <button class="quick-btn" data-minutes="0" id="nowBtn">Ora</button>
-                            <button class="quick-btn" data-minutes="5">+5 min</button>
-                            <button class="quick-btn" data-minutes="15">+15 min</button>
-                            <button class="quick-btn" data-minutes="20">+20 min</button>
-                        </div>
-
-                        <div class="form-group">
-                            <label id="durationLabel">⏱️ DURATA PRIMA PARTITA (minuti)</label>
-                            <input type="number" id="gameDuration" value="15" placeholder="es. 15">
-                        </div>
-
-                        <div class="form-group">
-                            <label id="staffLabel">👤 STAFF IN CHARGE (Discord ID)</label>
-                            <input type="text" id="staffId" value="640637074491441152" placeholder="Discord ID dello staff">
-                        </div>
-
-                        <div class="form-group">
-                            <label id="gamesLabel">🎮 NUMERO DI PARTITE</label>
-                            <div class="game-buttons">
-                                <button class="game-btn active" data-games="2">2 Games</button>
-                                <button class="game-btn" data-games="3">3 Games</button>
-                            </div>
-                            <input type="hidden" id="gameCount" value="2">
+                <!-- LOBBY / TYPE -->
+                <div class="card">
+                    <h2>🏠 LOBBY / TYPE</h2>
+                    <div class="lobby-grid">
+                        <button class="lobby-btn" id="firstLobbyBtn">First Lobby</button>
+                        <button class="lobby-btn" id="reloadBtn">Reload</button>
+                        <button class="lobby-btn" id="lateNight1stBtn">Late Night 1st Lobby</button>
+                        <button class="lobby-btn" id="secondLobbyBtn">Second Lobby</button>
+                        <button class="lobby-btn" id="reload2ndBtn">Reload 2nd Lobby</button>
+                        <button class="lobby-btn" id="lateNight2ndBtn">Late Night 2nd Lobby</button>
+                        <button class="lobby-btn" id="thirdLobbyBtn">Third Lobby</button>
+                        <button class="lobby-btn" id="reload3rdBtn">Reload 3rd Lobby</button>
+                    </div>
+                    <div class="form-group" style="margin-top: 12px;">
+                        <label>First Game: <span id="gameDelayDisplay">+15 min</span></label>
+                        <input type="range" id="gameDelay" min="0" max="60" value="15" step="5">
+                        <div class="range-labels">
+                            <span>0 min</span>
+                            <span>60 min</span>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Campi per No Zone Rules -->
-                    <div id="nzrFields" style="display:none;">
-                        <div class="form-group">
-                            <label id="firstSessionLabel">📅 DATA PRIMA SESSIONE</label>
-                            <input type="datetime-local" id="nzrStartTime">
-                        </div>
-
-                        <div class="quick-minutes">
-                            <button class="quick-nzr-btn" data-minutes="0" id="nzrNowBtn">Ora</button>
-                            <button class="quick-nzr-btn" data-minutes="5">+5 min</button>
-                            <button class="quick-nzr-btn" data-minutes="15">+15 min</button>
-                            <button class="quick-nzr-btn" data-minutes="20">+20 min</button>
-                        </div>
-
-                        <div class="form-group">
-                            <label id="totalSessionsLabel">📊 NUMERO TOTALE SESSIONI</label>
-                            <input type="number" id="nzrSessionCount" value="8" min="1" max="10">
-                        </div>
-
-                        <div class="form-group">
-                            <label id="gapLabel">⏱️ GAP TRA SESSIONI (minuti)</label>
-                            <input type="number" id="nzrGap" value="80" placeholder="es. 80">
-                        </div>
+            <!-- COLONNA DI DESTRA -->
+            <div class="right-column">
+                <!-- QUICK HOURS -->
+                <div class="card">
+                    <h2>⏰ QUICK HOURS</h2>
+                    <div class="quick-hours-grid">
+                        <button class="hour-btn" data-hour="13">13:00</button>
+                        <button class="hour-btn" data-hour="14">14:00</button>
+                        <button class="hour-btn" data-hour="15">15:00</button>
+                        <button class="hour-btn" data-hour="16">16:00</button>
+                        <button class="hour-btn" data-hour="17">17:00</button>
+                        <button class="hour-btn" data-hour="18">18:00</button>
+                        <button class="hour-btn" data-hour="19">19:00</button>
+                        <button class="hour-btn" data-hour="20">20:00</button>
+                        <button class="hour-btn" data-hour="21">21:00</button>
+                        <button class="hour-btn" data-hour="22">22:00</button>
+                        <button class="hour-btn" data-hour="23">23:00</button>
                     </div>
+                </div>
 
-                    <!-- QUICK HOURS -->
-                    <div class="quick-hours-section">
-                        <h3 id="quickHoursTitle">⏰ QUICK HOURS</h3>
-                        <div class="quick-hours-grid">
-                            <button class="hour-btn" data-hour="13">13:00</button>
-                            <button class="hour-btn" data-hour="14">14:00</button>
-                            <button class="hour-btn" data-hour="15">15:00</button>
-                            <button class="hour-btn" data-hour="16">16:00</button>
-                            <button class="hour-btn" data-hour="17">17:00</button>
-                            <button class="hour-btn" data-hour="18">18:00</button>
-                            <button class="hour-btn" data-hour="19">19:00</button>
-                            <button class="hour-btn" data-hour="20">20:00</button>
-                            <button class="hour-btn" data-hour="21">21:00</button>
-                            <button class="hour-btn" data-hour="22">22:00</button>
-                            <button class="hour-btn" data-hour="23">23:00</button>
-                        </div>
+                <!-- GENERATED MESSAGE -->
+                <div class="card">
+                    <h2 id="generatedTitle">📋 GENERATED MESSAGE</h2>
+                    <div id="announcementPreview" class="preview-box"></div>
+                    <div class="button-group">
+                        <button id="copyAnnouncementBtn" class="btn-secondary">📋 Copy Announcement</button>
+                        <button id="copyRegTimestampBtn" class="btn-secondary">⏰ Copy Reg Timestamp</button>
+                        <button id="copyGameTimestampBtn" class="btn-secondary">⏰ Copy Game Timestamp</button>
                     </div>
                 </div>
 
@@ -193,19 +214,6 @@
                             <span class="format-code" data-format="R">&lt;t:TIMESTAMP:R&gt;</span>
                             <span class="format-preview" data-format="R">-</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- COLONNA DI DESTRA: GENERATED MESSAGE -->
-            <div class="right-column">
-                <div class="card">
-                    <h2 id="generatedTitle">📋 GENERATED MESSAGE</h2>
-                    <div id="announcementPreview" class="preview-box"></div>
-                    <div class="button-group">
-                        <button id="copyAnnouncementBtn" class="btn-secondary">📋 Copy Announcement</button>
-                        <button id="copyRegTimestampBtn" class="btn-secondary">⏰ Copy Reg Timestamp</button>
-                        <button id="copyGameTimestampBtn" class="btn-secondary">⏰ Copy Game Timestamp</button>
                     </div>
                 </div>
             </div>
