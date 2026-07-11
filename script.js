@@ -465,6 +465,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const regUnix = toUnixTimestamp(regDate);
             const gameUnix = regUnix + (dur * 60);
 
+            // Messaggio Champion aggiornato
             announcement.push(`### ${lateNightText}${selectedType} Practice Session <:champion:1472618819502608404>`);
             announcement.push('');
             announcement.push(`> * **Registration Opens:** ${formatDiscordTime(regUnix, 't')} `);
@@ -474,6 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
             announcement.push('');
             announcement.push(`**-** Session lasts **${games} games**, **Miss a single game and you will be banned.**`);
             announcement.push(`**-** Make sure to read https://discord.com/channels/1471487091551633410/1471490037945204918 & https://discord.com/channels/1471487091551633410/1471489805979484333 **before** playing.`);
+            announcement.push(`**-** Playing this session will grant you the <@&1521712260370796584> role. https://discord.com/channels/1471487091551633410/1521106660368842772`);
             announcement.push(`**-** Bottom 3 will lose access.`);
             announcement.push('');
             announcement.push(`**Need at least ${reacts}+ reacts to host ** (1 per duo)`);
