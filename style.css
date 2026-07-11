@@ -282,7 +282,7 @@ body::after {
     font-size: 0.7rem;
 }
 
-/* GENERATED CARD - con pulsanti sopra */
+/* GENERATED CARD - con pulsanti sopra e preview che riempie */
 .generated-card {
     flex: 1;
     min-height: 350px;
@@ -298,9 +298,9 @@ body::after {
 
 .preview-box {
     background: rgba(0, 0, 0, 0.2);
-    padding: 12px;
+    padding: 14px;
     border-radius: 6px;
-    min-height: 250px;
+    min-height: 200px;
     margin-bottom: 0;
     border: 1px solid rgba(255, 255, 255, 0.05);
     font-family: 'Courier New', monospace;
@@ -308,7 +308,7 @@ body::after {
     word-break: break-word;
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.75rem;
-    max-height: 450px;
+    max-height: none;
     overflow-y: auto;
     line-height: 1.6;
     flex: 1;
@@ -668,8 +668,8 @@ body::after {
         min-height: 160px;
     }
     .preview-box {
-        min-height: 150px;
-        max-height: 300px;
+        min-height: 200px;
+        max-height: none;
     }
 }
 
