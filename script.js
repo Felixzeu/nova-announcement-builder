@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentLang = 'it';
     let selectedDelay = 15;
     let currentUnixTimestamp = null;
+    let isInitialized = false;
 
     // --- TRADUZIONI ---
     const translations = {
@@ -352,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedServer === 'Nova No Zone Rules') {
             // ===== NO ZONE RULES =====
             const startDate = new Date(nzrStartTime.value);
-            if (isNaN(startDate.getTime())) {
+            if (isNaN(startDate.getTime()) || !nzrStartTime.value) {
                 announcementPreview.textContent = currentLang === 'it' ? '⚠️ Inserisci una data e ora valida.' : '⚠️ Please enter a valid date and time.';
                 return;
             }
@@ -396,7 +397,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             // ===== CHAMPION DIVISION =====
             const regDate = new Date(registrationTime.value);
-            if (isNaN(regDate.getTime())) {
+            if (isNaN(regDate.getTime()) || !registrationTime.value) {
                 announcementPreview.textContent = currentLang === 'it' ? '⚠️ Inserisci una data e ora valida.' : '⚠️ Please enter a valid date and time.';
                 return;
             }
@@ -623,11 +624,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // INIT
+    // INIT - Imposta le date di default PRIMA di generateAnnouncement
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
     now.setSeconds(0, 0);
     const dateStr = formatDateForInput(now);
+    
+    // Imposta entrambi i campi data
     registrationTime.value = dateStr;
     nzrStartTime.value = dateStr;
 
@@ -641,9 +644,4 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Applica lingua iniziale (Italiano)
     changeLanguage('it');
-    
-    // Forza il generatore a eseguire dopo il setup
-    setTimeout(function() {
-        generateAnnouncement();
-    }, 100);
 });
