@@ -352,8 +352,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (selectedServer === 'Nova No Zone Rules') {
             // ===== NO ZONE RULES =====
+            if (!nzrStartTime || !nzrStartTime.value) {
+                announcementPreview.textContent = currentLang === 'it' ? '⚠️ Inserisci una data e ora valida.' : '⚠️ Please enter a valid date and time.';
+                return;
+            }
+            
             const startDate = new Date(nzrStartTime.value);
-            if (isNaN(startDate.getTime()) || !nzrStartTime.value) {
+            if (isNaN(startDate.getTime())) {
                 announcementPreview.textContent = currentLang === 'it' ? '⚠️ Inserisci una data e ora valida.' : '⚠️ Please enter a valid date and time.';
                 return;
             }
@@ -396,8 +401,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
             // ===== CHAMPION DIVISION =====
+            if (!registrationTime || !registrationTime.value) {
+                announcementPreview.textContent = currentLang === 'it' ? '⚠️ Inserisci una data e ora valida.' : '⚠️ Please enter a valid date and time.';
+                return;
+            }
+            
             const regDate = new Date(registrationTime.value);
-            if (isNaN(regDate.getTime()) || !registrationTime.value) {
+            if (isNaN(regDate.getTime())) {
                 announcementPreview.textContent = currentLang === 'it' ? '⚠️ Inserisci una data e ora valida.' : '⚠️ Please enter a valid date and time.';
                 return;
             }
@@ -501,6 +511,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     copyRegTimestampBtn.addEventListener('click', function() {
+        if (!registrationTime || !registrationTime.value) {
+            alert(currentLang === 'it' ? 'Inserisci una data valida!' : 'Please enter a valid date!');
+            return;
+        }
         const regDate = new Date(registrationTime.value);
         if (isNaN(regDate.getTime())) {
             alert(currentLang === 'it' ? 'Inserisci una data valida!' : 'Please enter a valid date!');
@@ -511,6 +525,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     copyGameTimestampBtn.addEventListener('click', function() {
+        if (!registrationTime || !registrationTime.value) {
+            alert(currentLang === 'it' ? 'Inserisci una data valida!' : 'Please enter a valid date!');
+            return;
+        }
         const regDate = new Date(registrationTime.value);
         if (isNaN(regDate.getTime())) {
             alert(currentLang === 'it' ? 'Inserisci una data valida!' : 'Please enter a valid date!');
@@ -624,24 +642,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // INIT - Imposta le date di default PRIMA di generateAnnouncement
+    // INIT - Imposta le date di default PRIMA di qualsiasi altra operazione
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
     now.setSeconds(0, 0);
     const dateStr = formatDateForInput(now);
     
     // Imposta entrambi i campi data
-    registrationTime.value = dateStr;
-    nzrStartTime.value = dateStr;
+    if (registrationTime) registrationTime.value = dateStr;
+    if (nzrStartTime) nzrStartTime.value = dateStr;
 
     const nowHelper = new Date();
-    dateTimePicker.value = formatDateForInput(nowHelper);
-    handleDateTimePicker();
+    if (dateTimePicker) {
+        dateTimePicker.value = formatDateForInput(nowHelper);
+        handleDateTimePicker();
+    }
     
     // ALL'AVVIO: NASCONDI CHAMPION, MOSTRA NZR
-    championFields.style.display = 'none';
-    nzrFields.style.display = 'block';
+    if (championFields) championFields.style.display = 'none';
+    if (nzrFields) nzrFields.style.display = 'block';
     
     // Applica lingua iniziale (Italiano)
-    changeLanguage('it');
+    if (typeof changeLanguage === 'function') {
+        changeLanguage('it');
+    } else {
+        // Fallback: genera annuncio direttamente
+        setTimeout(function() {
+            generateAnnouncement();
+        }, 50);
+    }
 });
