@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <!-- COLONNA CENTRALE: SETUP + QUICK HOURS -->
+            <!-- COLONNA CENTRALE: SETUP + TIMESTAMP HELPER -->
             <div class="center-column">
                 <!-- SETUP -->
                 <div class="card setup-card">
@@ -166,38 +166,6 @@
                     </div>
                 </div>
 
-                <!-- QUICK HOURS -->
-                <div class="card quick-hours-card">
-                    <h2 id="quickHoursTitle">⏰ QUICK HOURS</h2>
-                    <div class="quick-hours-grid">
-                        <button class="hour-btn" data-hour="13">13:00</button>
-                        <button class="hour-btn" data-hour="14">14:00</button>
-                        <button class="hour-btn" data-hour="15">15:00</button>
-                        <button class="hour-btn" data-hour="16">16:00</button>
-                        <button class="hour-btn" data-hour="17">17:00</button>
-                        <button class="hour-btn" data-hour="18">18:00</button>
-                        <button class="hour-btn" data-hour="19">19:00</button>
-                        <button class="hour-btn" data-hour="20">20:00</button>
-                        <button class="hour-btn" data-hour="21">21:00</button>
-                        <button class="hour-btn" data-hour="22">22:00</button>
-                        <button class="hour-btn" data-hour="23">23:00</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- COLONNA DI DESTRA: GENERATED MESSAGE + TIMESTAMP HELPER -->
-            <div class="right-column">
-                <!-- GENERATED MESSAGE -->
-                <div class="card generated-card">
-                    <h2 id="generatedTitle">📋 GENERATED MESSAGE</h2>
-                    <div id="announcementPreview" class="preview-box"></div>
-                    <div class="button-group">
-                        <button id="copyAnnouncementBtn" class="btn-secondary">📋 Copy Announcement</button>
-                        <button id="copyRegTimestampBtn" class="btn-secondary">⏰ Copy Reg Timestamp</button>
-                        <button id="copyGameTimestampBtn" class="btn-secondary">⏰ Copy Game Timestamp</button>
-                    </div>
-                </div>
-
                 <!-- DISCORD TIMESTAMP HELPER -->
                 <div class="card timestamp-card">
                     <h2 id="timestampTitle">⏰ Discord Timestamp Helper</h2>
@@ -212,40 +180,53 @@
 
                     <div class="timestamp-grid">
                         <div class="timestamp-item">
-                            <span class="format-label" id="shortDateLabel">Short Date</span>
+                            <span class="format-label" id="shortDateLabel">Data Corta</span>
                             <span class="format-code" data-format="d">&lt;t:TIMESTAMP:d&gt;</span>
                             <span class="format-preview" data-format="d">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="longDateLabel">Long Date</span>
+                            <span class="format-label" id="longDateLabel">Data Lunga</span>
                             <span class="format-code" data-format="D">&lt;t:TIMESTAMP:D&gt;</span>
                             <span class="format-preview" data-format="D">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="shortTimeLabel">Short Time</span>
+                            <span class="format-label" id="shortTimeLabel">Ora Corta</span>
                             <span class="format-code" data-format="t">&lt;t:TIMESTAMP:t&gt;</span>
                             <span class="format-preview" data-format="t">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="longTimeLabel">Long Time</span>
+                            <span class="format-label" id="longTimeLabel">Ora Lunga</span>
                             <span class="format-code" data-format="T">&lt;t:TIMESTAMP:T&gt;</span>
                             <span class="format-preview" data-format="T">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="shortDateTimeLabel">Short Date/Time</span>
+                            <span class="format-label" id="shortDateTimeLabel">Data/Ora Corta</span>
                             <span class="format-code" data-format="f">&lt;t:TIMESTAMP:f&gt;</span>
                             <span class="format-preview" data-format="f">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="longDateTimeLabel">Long Date/Time</span>
+                            <span class="format-label" id="longDateTimeLabel">Data/Ora Lunga</span>
                             <span class="format-code" data-format="F">&lt;t:TIMESTAMP:F&gt;</span>
                             <span class="format-preview" data-format="F">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label" id="relativeTimeLabel">Relative Time</span>
+                            <span class="format-label" id="relativeTimeLabel">Tempo Relativo</span>
                             <span class="format-code" data-format="R">&lt;t:TIMESTAMP:R&gt;</span>
                             <span class="format-preview" data-format="R">-</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLONNA DI DESTRA: GENERATED MESSAGE -->
+            <div class="right-column">
+                <div class="card generated-card">
+                    <h2 id="generatedTitle">📋 GENERATED MESSAGE</h2>
+                    <div id="announcementPreview" class="preview-box"></div>
+                    <div class="button-group">
+                        <button id="copyAnnouncementBtn" class="btn-secondary">📋 Copy Announcement</button>
+                        <button id="copyRegTimestampBtn" class="btn-secondary">⏰ Copy Reg Timestamp</button>
+                        <button id="copyGameTimestampBtn" class="btn-secondary">⏰ Copy Game Timestamp</button>
                     </div>
                 </div>
             </div>
