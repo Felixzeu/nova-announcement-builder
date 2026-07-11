@@ -135,10 +135,10 @@ body::after {
     color: #ffffff;
 }
 
-/* MAIN GRID - 3 colonne con altezza uguale */
+/* MAIN GRID - 3 colonne */
 .main-grid {
     display: grid;
-    grid-template-columns: 220px 1fr 1fr;
+    grid-template-columns: 200px 1fr 1.2fr;
     gap: 20px;
     align-items: stretch;
 }
@@ -192,13 +192,16 @@ body::after {
     flex-shrink: 0;
 }
 
-/* SERVER LIST */
+/* SERVER LIST - in alto */
+.servers-card {
+    flex: 1;
+    min-height: 200px;
+}
+
 .server-list {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    flex: 1;
-    justify-content: center;
 }
 
 .server-btn {
@@ -259,7 +262,7 @@ body::after {
     background: rgba(108, 108, 255, 0.2);
 }
 
-/* SETUP CARD - PIÙ ALTA */
+/* SETUP CARD */
 .setup-card {
     flex: 1;
     min-height: 280px;
@@ -279,54 +282,18 @@ body::after {
     font-size: 0.7rem;
 }
 
-/* QUICK HOURS CARD */
-.quick-hours-card {
-    flex: 0 0 auto;
-    min-height: 140px;
-}
-
-.quick-hours-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
-    flex: 1;
-    align-content: center;
-}
-
-.hour-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 6px 4px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.65rem;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.hour-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.hour-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-}
-
-/* GENERATED CARD - PIÙ ALTA */
+/* GENERATED CARD - più stretto e allungato */
 .generated-card {
     flex: 1;
-    min-height: 280px;
+    min-height: 350px;
+    max-width: 100%;
 }
 
 .preview-box {
     background: rgba(0, 0, 0, 0.2);
     padding: 10px;
     border-radius: 6px;
-    min-height: 160px;
+    min-height: 200px;
     margin-bottom: 8px;
     border: 1px solid rgba(255, 255, 255, 0.05);
     font-family: 'Courier New', monospace;
@@ -334,7 +301,7 @@ body::after {
     word-break: break-word;
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.7rem;
-    max-height: 280px;
+    max-height: 400px;
     overflow-y: auto;
     line-height: 1.5;
     flex: 1;
@@ -366,7 +333,7 @@ body::after {
     flex-shrink: 0;
 }
 
-/* TIMESTAMP CARD - PIÙ ALTA */
+/* TIMESTAMP CARD */
 .timestamp-card {
     flex: 1;
     min-height: 280px;
@@ -653,9 +620,6 @@ body::after {
         flex-direction: column;
         gap: 16px;
     }
-    .quick-hours-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
     .timestamp-item {
         grid-template-columns: 1fr;
         gap: 3px;
@@ -677,12 +641,13 @@ body::after {
     .card {
         min-height: 160px;
     }
+    .preview-box {
+        min-height: 150px;
+        max-height: 300px;
+    }
 }
 
 @media (max-width: 500px) {
-    .quick-hours-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
     .header-top h1 {
         font-size: 1.2rem;
     }
