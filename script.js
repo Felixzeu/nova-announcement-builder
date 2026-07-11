@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameDuration = document.getElementById('gameDuration');
     const staffId = document.getElementById('staffId');
     const gameCountInput = document.getElementById('gameCount');
-    const roleId = document.getElementById('roleId');
     const lateNightToggle = document.getElementById('lateNightToggle');
     const lateNightInput = document.getElementById('lateNight');
     
@@ -40,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentLang = 'it';
     let selectedDelay = 15;
     let currentUnixTimestamp = null;
-    let isInitialized = false;
 
     // --- TRADUZIONI ---
     const translations = {
@@ -54,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ FIRST GAME DURATION (minutes)',
             staff: '👤 STAFF IN CHARGE (Discord ID)',
             games: '🎮 NUMBER OF GAMES',
-            role: '🏅 ROLE ID (optional)',
             sessionType: '🏷️ SESSION TYPE',
             lateNight: '🌙 LATE NIGHT',
             firstSession: '📅 FIRST SESSION DATE',
@@ -85,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ DURATA PRIMA PARTITA (minuti)',
             staff: '👤 STAFF IN CHARGE (Discord ID)',
             games: '🎮 NUMERO DI PARTITE',
-            role: '🏅 ROLE ID (opzionale)',
             sessionType: '🏷️ TIPO SESSIONE',
             lateNight: '🌙 LATE NIGHT',
             firstSession: '📅 DATA PRIMA SESSIONE',
@@ -116,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ DURACIÓN DEL PRIMER JUEGO (minutos)',
             staff: '👤 PERSONAL A CARGO (ID Discord)',
             games: '🎮 NÚMERO DE JUEGOS',
-            role: '🏅 ROLE ID (opcional)',
             sessionType: '🏷️ TIPO DE SESIÓN',
             lateNight: '🌙 NOCHE',
             firstSession: '📅 FECHA DE LA PRIMERA SESIÓN',
@@ -147,7 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ DURÉE DU PREMIER JEU (minutes)',
             staff: '👤 PERSONNEL RESPONSABLE (ID Discord)',
             games: '🎮 NOMBRE DE JEUX',
-            role: '🏅 ROLE ID (optionnel)',
             sessionType: '🏷️ TYPE DE SESSION',
             lateNight: '🌙 NUIT',
             firstSession: '📅 DATE DE LA PREMIÈRE SESSION',
@@ -178,7 +172,6 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: '⏱️ DAUER DES ERSTEN SPIELS (Minuten)',
             staff: '👤 VERANTWORTLICHER MITARBEITER (Discord ID)',
             games: '🎮 ANZAHL DER SPIELE',
-            role: '🏅 ROLE ID (optional)',
             sessionType: '🏷️ SITZUNGSTYP',
             lateNight: '🌙 SPÄTE NACHT',
             firstSession: '📅 DATUM DER ERSTEN SITZUNG',
@@ -215,7 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('durationLabel').textContent = t.duration;
         document.getElementById('staffLabel').textContent = t.staff;
         document.getElementById('gamesLabel').textContent = t.games;
-        document.getElementById('roleLabel').textContent = t.role;
         document.getElementById('sessionTypeLabel').textContent = t.sessionType;
         document.getElementById('lateNightLabel').textContent = t.lateNight;
         document.getElementById('firstSessionLabel').textContent = t.firstSession;
@@ -416,7 +408,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const games = parseInt(gameCountInput.value) || 2;
             const dur = parseInt(gameDuration.value) || 15;
             const reacts = selectedReacts;
-            const role = roleId.value.trim();
             const regUnix = toUnixTimestamp(regDate);
             const gameUnix = regUnix + (dur * 60);
 
@@ -429,9 +420,6 @@ document.addEventListener('DOMContentLoaded', function() {
             announcement.push('');
             announcement.push(`**-** Session lasts **${games} games**, **Miss a single game and you will be banned.**`);
             announcement.push(`**-** Make sure to read https://discord.com/channels/1471487091551633410/1471490037945204918 & https://discord.com/channels/1471487091551633410/1471489805979484333 **before** playing.`);
-            if (role) {
-                announcement.push(`**-** Playing this session will grant you the <@&${role}> role. https://discord.com/channels/1471487091551633410/1521106660368842772`);
-            }
             announcement.push(`**-** Bottom 3 will lose access.`);
             announcement.push('');
             announcement.push(`**Need at least ${reacts}+ reacts to host ** (1 per duo)`);
@@ -635,20 +623,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     dateTimePicker.addEventListener('input', handleDateTimePicker);
 
-    [registrationTime, gameDuration, staffId, roleId, nzrStartTime, nzrSessionCount, nzrGap, nzrGameDuration].forEach(el => {
+    [registrationTime, gameDuration, staffId, nzrStartTime, nzrSessionCount, nzrGap, nzrGameDuration].forEach(el => {
         if (el) {
             el.addEventListener('change', generateAnnouncement);
             el.addEventListener('input', generateAnnouncement);
         }
     });
 
-    // INIT - Imposta le date di default PRIMA di qualsiasi altra operazione
+    // INIT
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
     now.setSeconds(0, 0);
     const dateStr = formatDateForInput(now);
     
-    // Imposta entrambi i campi data
     if (registrationTime) registrationTime.value = dateStr;
     if (nzrStartTime) nzrStartTime.value = dateStr;
 
@@ -658,17 +645,13 @@ document.addEventListener('DOMContentLoaded', function() {
         handleDateTimePicker();
     }
     
-    // ALL'AVVIO: NASCONDI CHAMPION, MOSTRA NZR
     if (championFields) championFields.style.display = 'none';
     if (nzrFields) nzrFields.style.display = 'block';
     
-    // Applica lingua iniziale (Italiano)
+    // Applica lingua iniziale
     if (typeof changeLanguage === 'function') {
         changeLanguage('it');
     } else {
-        // Fallback: genera annuncio direttamente
-        setTimeout(function() {
-            generateAnnouncement();
-        }, 50);
+        generateAnnouncement();
     }
 });
