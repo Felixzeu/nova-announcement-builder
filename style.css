@@ -138,7 +138,7 @@ body::after {
 /* MAIN GRID - 3 colonne */
 .main-grid {
     display: grid;
-    grid-template-columns: 240px 1fr 1fr;
+    grid-template-columns: 220px 1fr 1fr;
     gap: 20px;
 }
 
@@ -164,7 +164,7 @@ body::after {
 .card {
     background: rgba(26, 26, 46, 0.75);
     border-radius: 12px;
-    padding: 18px;
+    padding: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
@@ -177,14 +177,14 @@ body::after {
 }
 
 .card h2 {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 8px;
+    padding-bottom: 6px;
 }
 
 /* SERVER LIST */
@@ -223,13 +223,13 @@ body::after {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 500;
 }
 
 .server-btn .server-name .server-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid rgba(255, 255, 255, 0.15);
@@ -240,7 +240,7 @@ body::after {
 }
 
 .server-btn .server-delay {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.08);
     padding: 2px 8px;
@@ -254,26 +254,26 @@ body::after {
 
 /* FORM ELEMENTI */
 .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 5px 10px;
+    padding: 4px 8px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
     color: #ffffff;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     transition: all 0.3s ease;
 }
 
@@ -291,7 +291,7 @@ body::after {
 .quick-minutes {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 3px;
     margin-bottom: 4px;
 }
 
@@ -299,10 +299,10 @@ body::after {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
-    padding: 3px 8px;
+    padding: 2px 8px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     transition: all 0.3s ease;
 }
 
@@ -321,10 +321,10 @@ body::after {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
-    padding: 3px 8px;
+    padding: 2px 8px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     transition: all 0.3s ease;
 }
 
@@ -349,10 +349,10 @@ body::after {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
-    padding: 3px 8px;
+    padding: 3px 6px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     transition: all 0.3s ease;
     font-weight: 500;
     flex: 1;
@@ -372,17 +372,17 @@ body::after {
 
 .game-buttons {
     display: flex;
-    gap: 4px;
+    gap: 3px;
 }
 
 .game-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
-    padding: 3px 10px;
+    padding: 3px 8px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     transition: all 0.3s ease;
     font-weight: 500;
     flex: 1;
@@ -404,10 +404,10 @@ body::after {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
-    padding: 5px 14px;
+    padding: 4px 12px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     transition: all 0.3s ease;
     width: 100%;
@@ -475,12 +475,12 @@ body::after {
 
 .btn-secondary {
     flex: 1;
-    padding: 5px;
+    padding: 4px;
     background: rgba(255, 255, 255, 0.05);
     border: none;
     border-radius: 6px;
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.5s ease;
@@ -508,10 +508,10 @@ body::after {
 
 .timestamp-item {
     display: grid;
-    grid-template-columns: 70px 1fr 1fr;
+    grid-template-columns: 65px 1fr 1fr;
     align-items: center;
     background: rgba(255, 255, 255, 0.03);
-    padding: 2px 8px;
+    padding: 2px 6px;
     border-radius: 4px;
     gap: 4px;
 }
@@ -519,15 +519,15 @@ body::after {
 .format-label {
     font-weight: 500;
     color: rgba(255, 255, 255, 0.5);
-    font-size: 0.6rem;
+    font-size: 0.55rem;
 }
 
 .format-code {
     font-family: 'Courier New', monospace;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     background: rgba(255, 255, 255, 0.05);
-    padding: 2px 6px;
+    padding: 2px 4px;
     border-radius: 3px;
     text-align: center;
     cursor: pointer;
@@ -540,14 +540,14 @@ body::after {
 
 .format-preview {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     text-align: right;
 }
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
     .main-grid {
-        grid-template-columns: 200px 1fr 1fr;
+        grid-template-columns: 180px 1fr 1fr;
         gap: 16px;
     }
 }
