@@ -235,7 +235,8 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTimestampPreviews(currentUnixTimestamp);
     };
 
-    // --- ALL'AVVIO: MOSTRA I CAMPI NZR, NASCONDI CHAMPION ---
+    // --- IMPOSTA STATO INIZIALE ---
+    // Mostra NZR, nascondi Champion
     championFields.style.display = 'none';
     nzrFields.style.display = 'block';
 
@@ -255,6 +256,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const minutes = String(date.getMinutes()).padStart(2, '0');
         return `${year}-${month}-${day}T${hours}:${minutes}`;
     }
+
+    // --- IMPOSTA DATA DI DEFAULT PER NZR ---
+    const defaultNow = new Date();
+    defaultNow.setMinutes(defaultNow.getMinutes() + 15);
+    defaultNow.setSeconds(0, 0);
+    const defaultDateStr = formatDateForInput(defaultNow);
+    if (nzrStartTime) nzrStartTime.value = defaultDateStr;
 
     // LATE NIGHT TOGGLE (Champion)
     lateNightToggle.addEventListener('click', function() {
@@ -321,12 +329,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // GAME COUNT
+    // GAME COUNT (Champion)
     document.querySelectorAll('.game-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.game-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             gameCountInput.value = this.dataset.games;
+            generateAnnouncement();
+        });
+    });
+
+    // QUICK BUTTONS (Champion)
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const minutes = parseInt(this.dataset.minutes);
+            const now = new Date();
+            now.setMinutes(now.getMinutes() + minutes);
+            now.setSeconds(0, 0);
+            registrationTime.value = formatDateForInput(now);
+            document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            generateAnnouncement();
+        });
+    });
+
+    // QUICK BUTTONS (NZR)
+    document.querySelectorAll('.quick-nzr-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const minutes = parseInt(this.dataset.minutes);
+            const now = new Date();
+            now.setMinutes(now.getMinutes() + minutes);
+            now.setSeconds(0, 0);
+            nzrStartTime.value = formatDateForInput(now);
+            document.querySelectorAll('.quick-nzr-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            generateAnnouncement();
+        });
+    });
+
+    // QUICK HOURS
+    document.querySelectorAll('.hour-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const hour = parseInt(this.dataset.hour);
+            const now = new Date();
+            now.setHours(hour, 0, 0, 0);
+            if (now < new Date()) {
+                now.setDate(now.getDate() + 1);
+            }
+            const dateStr = formatDateForInput(now);
+            if (registrationTime) registrationTime.value = dateStr;
+            if (nzrStartTime) nzrStartTime.value = dateStr;
+            document.querySelectorAll('.hour-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
             generateAnnouncement();
         });
     });
@@ -429,52 +483,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         announcementPreview.textContent = announcement.join('\n');
     }
-
-    // QUICK BUTTONS (Champion)
-    document.querySelectorAll('.quick-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const minutes = parseInt(this.dataset.minutes);
-            const now = new Date();
-            now.setMinutes(now.getMinutes() + minutes);
-            now.setSeconds(0, 0);
-            registrationTime.value = formatDateForInput(now);
-            document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            generateAnnouncement();
-        });
-    });
-
-    // QUICK BUTTONS (NZR)
-    document.querySelectorAll('.quick-nzr-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const minutes = parseInt(this.dataset.minutes);
-            const now = new Date();
-            now.setMinutes(now.getMinutes() + minutes);
-            now.setSeconds(0, 0);
-            nzrStartTime.value = formatDateForInput(now);
-            document.querySelectorAll('.quick-nzr-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            generateAnnouncement();
-        });
-    });
-
-    // QUICK HOURS
-    document.querySelectorAll('.hour-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const hour = parseInt(this.dataset.hour);
-            const now = new Date();
-            now.setHours(hour, 0, 0, 0);
-            if (now < new Date()) {
-                now.setDate(now.getDate() + 1);
-            }
-            const dateStr = formatDateForInput(now);
-            registrationTime.value = dateStr;
-            nzrStartTime.value = dateStr;
-            document.querySelectorAll('.hour-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            generateAnnouncement();
-        });
-    });
 
     // COPY FUNCTIONS
     function copyToClipboard(text, button) {
@@ -630,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // INIT
+    // --- INIT ---
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
     now.setSeconds(0, 0);
@@ -645,6 +653,7 @@ document.addEventListener('DOMContentLoaded', function() {
         handleDateTimePicker();
     }
     
+    // Forza NZR all'avvio
     if (championFields) championFields.style.display = 'none';
     if (nzrFields) nzrFields.style.display = 'block';
     
