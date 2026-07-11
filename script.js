@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (selectedServer === 'Nova No Zone Rules') {
+            // ===== NO ZONE RULES =====
             const startDate = new Date(nzrStartTime.value);
             if (isNaN(startDate.getTime())) {
                 announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
@@ -188,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
             announcement.push('-# @everyone');
 
         } else {
+            // ===== CHAMPION DIVISION =====
             const regDate = new Date(registrationTime.value);
             if (isNaN(regDate.getTime())) {
                 announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
@@ -393,6 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
         generateAnnouncement();
     });
 
+    // INIT
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
     now.setSeconds(0, 0);
@@ -404,6 +407,9 @@ document.addEventListener('DOMContentLoaded', function() {
     dateTimePicker.value = formatDateForInput(nowHelper);
     handleDateTimePicker();
     
-    nzrFields.style.display = 'none';
+    // MOSTRA I CAMPI CORRETTI ALL'AVVIO (NZR)
+    championFields.style.display = 'none';
+    nzrFields.style.display = 'block';
+    
     generateAnnouncement();
 });
