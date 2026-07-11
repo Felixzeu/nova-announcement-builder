@@ -140,6 +140,7 @@ body::after {
     display: grid;
     grid-template-columns: 220px 1fr 1fr;
     gap: 20px;
+    align-items: stretch;
 }
 
 .left-column {
@@ -160,7 +161,7 @@ body::after {
     gap: 20px;
 }
 
-/* CARD */
+/* CARD - TUTTE DELLA STESSA ALTEZZA */
 .card {
     background: rgba(26, 26, 46, 0.75);
     border-radius: 12px;
@@ -169,6 +170,10 @@ body::after {
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 280px;
 }
 
 .card:hover {
@@ -185,6 +190,7 @@ body::after {
     letter-spacing: 0.3px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: 6px;
+    flex-shrink: 0;
 }
 
 /* SERVER LIST */
@@ -192,6 +198,8 @@ body::after {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    flex: 1;
+    justify-content: center;
 }
 
 .server-btn {
@@ -201,7 +209,7 @@ body::after {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 6px;
-    padding: 8px 12px;
+    padding: 10px 14px;
     cursor: pointer;
     transition: all 0.3s ease;
     color: rgba(255, 255, 255, 0.8);
@@ -223,13 +231,13 @@ body::after {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
 .server-btn .server-name .server-icon {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid rgba(255, 255, 255, 0.15);
@@ -240,10 +248,10 @@ body::after {
 }
 
 .server-btn .server-delay {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     color: rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.08);
-    padding: 2px 8px;
+    padding: 2px 10px;
     border-radius: 12px;
 }
 
@@ -252,9 +260,164 @@ body::after {
     background: rgba(108, 108, 255, 0.2);
 }
 
-/* FORM ELEMENTI */
-.form-group {
+/* SETUP CARD */
+.setup-card {
+    min-height: 280px;
+}
+
+.setup-card .form-group {
+    margin-bottom: 6px;
+}
+
+.setup-card .form-group label {
+    font-size: 0.6rem;
+    margin-bottom: 2px;
+}
+
+.setup-card .form-group input {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+}
+
+/* QUICK HOURS CARD */
+.quick-hours-card {
+    min-height: 140px;
+}
+
+.quick-hours-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    flex: 1;
+    align-content: center;
+}
+
+.hour-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 6px 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.65rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.hour-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.hour-btn.active {
+    background: #6c6cff;
+    border-color: #6c6cff;
+    color: white;
+}
+
+/* GENERATED CARD */
+.generated-card {
+    min-height: 280px;
+}
+
+.preview-box {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 6px;
+    min-height: 160px;
     margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.7rem;
+    max-height: 280px;
+    overflow-y: auto;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.btn-secondary {
+    flex: 1;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.6rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.button-group {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+/* TIMESTAMP CARD */
+.timestamp-card {
+    min-height: 280px;
+}
+
+.timestamp-grid {
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.timestamp-item {
+    display: grid;
+    grid-template-columns: 65px 1fr 1fr;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 3px 8px;
+    border-radius: 4px;
+    gap: 4px;
+}
+
+.format-label {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.55rem;
+}
+
+.format-code {
+    font-family: 'Courier New', monospace;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 4px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    word-break: break-all;
+}
+
+.format-code:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.format-preview {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.55rem;
+    text-align: right;
+}
+
+/* FORM ELEMENTI PER SETUP */
+.form-group {
+    margin-bottom: 6px;
 }
 
 .form-group label {
@@ -262,7 +425,7 @@ body::after {
     margin-bottom: 2px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
 }
 
 .form-group input,
@@ -273,7 +436,7 @@ body::after {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
     color: #ffffff;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     transition: all 0.3s ease;
 }
 
@@ -282,10 +445,6 @@ body::after {
     outline: none;
     border-color: rgba(108, 108, 255, 0.5);
     background: rgba(255, 255, 255, 0.08);
-}
-
-.form-group input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
 }
 
 .quick-minutes {
@@ -407,7 +566,7 @@ body::after {
     padding: 4px 12px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     transition: all 0.3s ease;
     width: 100%;
@@ -423,125 +582,6 @@ body::after {
 
 .toggle-btn:hover {
     opacity: 0.8;
-}
-
-/* QUICK HOURS */
-.quick-hours-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
-}
-
-.hour-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 4px 4px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.65rem;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.hour-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.hour-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-}
-
-/* PREVIEW BOX */
-.preview-box {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 6px;
-    min-height: 150px;
-    margin-bottom: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    font-family: 'Courier New', monospace;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 0.7rem;
-    max-height: 350px;
-    overflow-y: auto;
-    line-height: 1.5;
-}
-
-.btn-secondary {
-    flex: 1;
-    padding: 4px;
-    background: rgba(255, 255, 255, 0.05);
-    border: none;
-    border-radius: 6px;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.6rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    text-align: center;
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-}
-
-.button-group {
-    display: flex;
-    gap: 4px;
-    margin-top: 4px;
-}
-
-/* TIMESTAMP HELPER */
-.timestamp-grid {
-    margin-top: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.timestamp-item {
-    display: grid;
-    grid-template-columns: 65px 1fr 1fr;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 2px 6px;
-    border-radius: 4px;
-    gap: 4px;
-}
-
-.format-label {
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.55rem;
-}
-
-.format-code {
-    font-family: 'Courier New', monospace;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2px 4px;
-    border-radius: 3px;
-    text-align: center;
-    cursor: pointer;
-    word-break: break-all;
-}
-
-.format-code:hover {
-    background: rgba(255, 255, 255, 0.12);
-}
-
-.format-preview {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.55rem;
-    text-align: right;
 }
 
 /* RESPONSIVE */
@@ -571,6 +611,9 @@ body::after {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 16px;
+    }
+    .card {
+        min-height: 200px;
     }
 }
 
@@ -627,6 +670,9 @@ body::after {
     }
     .game-buttons {
         flex-direction: column;
+    }
+    .card {
+        min-height: 160px;
     }
 }
 
