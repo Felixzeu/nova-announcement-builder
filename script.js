@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const serverNameInput = document.getElementById('serverName');
     const sessionTypeInput = document.getElementById('sessionType');
     const requiredReactsInput = document.getElementById('requiredReacts');
-    const languageSelect = document.getElementById('languageSelect');
     
     // Champion fields
     const championFields = document.getElementById('championFields');
@@ -210,7 +209,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    function applyLanguage(lang) {
+    // --- FUNZIONE CAMBIO LINGUA ---
+    window.changeLanguage = function(lang) {
         const t = translations[lang] || translations.it;
         currentLang = lang;
         
@@ -248,7 +248,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('shortDateTimeLabel').textContent = t.shortDateTime;
         document.getElementById('longDateTimeLabel').textContent = t.longDateTime;
         document.getElementById('relativeTimeLabel').textContent = t.relativeTime;
-    }
+        
+        generateAnnouncement();
+        updateTimestampPreviews(parseInt(timestampInput.value) || null);
+    };
 
     // --- ALL'AVVIO: MOSTRA I CAMPI NZR, NASCONDI CHAMPION ---
     championFields.style.display = 'none';
@@ -612,13 +615,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // LANGUAGE SELECTOR
-    languageSelect.addEventListener('change', function() {
-        applyLanguage(this.value);
-        generateAnnouncement();
-        updateTimestampPreviews(parseInt(timestampInput.value) || null);
-    });
-
     // INIT
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
@@ -635,7 +631,6 @@ document.addEventListener('DOMContentLoaded', function() {
     championFields.style.display = 'none';
     nzrFields.style.display = 'block';
     
-    // Applica lingua iniziale
-    applyLanguage('it');
-    generateAnnouncement();
+    // Applica lingua iniziale (Italiano)
+    changeLanguage('it');
 });
