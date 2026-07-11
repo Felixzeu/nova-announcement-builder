@@ -170,10 +170,6 @@
                 <div class="card timestamp-card">
                     <h2 id="timestampTitle">⏰ Discord Timestamp Helper</h2>
                     <div class="form-group">
-                        <label id="unixLabel">Unix Timestamp</label>
-                        <input type="number" id="timestampInput" placeholder="Inserisci timestamp...">
-                    </div>
-                    <div class="form-group">
                         <label id="datePickerLabel">📅 Selezione Data/ora</label>
                         <input type="datetime-local" id="dateTimePicker">
                     </div>
@@ -181,38 +177,45 @@
                     <div class="timestamp-grid">
                         <div class="timestamp-item">
                             <span class="format-label" id="shortDateLabel">Data Corta</span>
-                            <span class="format-code" data-format="d">&lt;t:TIMESTAMP:d&gt;</span>
-                            <span class="format-preview" data-format="d">-</span>
+                            <span class="format-code" data-format="d" id="code-d">&lt;t:TIMESTAMP:d&gt;</span>
+                            <span class="format-preview" id="preview-d">-</span>
+                            <button class="copy-timestamp-btn" data-format="d">📋</button>
                         </div>
                         <div class="timestamp-item">
                             <span class="format-label" id="longDateLabel">Data Lunga</span>
-                            <span class="format-code" data-format="D">&lt;t:TIMESTAMP:D&gt;</span>
-                            <span class="format-preview" data-format="D">-</span>
+                            <span class="format-code" data-format="D" id="code-D">&lt;t:TIMESTAMP:D&gt;</span>
+                            <span class="format-preview" id="preview-D">-</span>
+                            <button class="copy-timestamp-btn" data-format="D">📋</button>
                         </div>
                         <div class="timestamp-item">
                             <span class="format-label" id="shortTimeLabel">Ora Corta</span>
-                            <span class="format-code" data-format="t">&lt;t:TIMESTAMP:t&gt;</span>
-                            <span class="format-preview" data-format="t">-</span>
+                            <span class="format-code" data-format="t" id="code-t">&lt;t:TIMESTAMP:t&gt;</span>
+                            <span class="format-preview" id="preview-t">-</span>
+                            <button class="copy-timestamp-btn" data-format="t">📋</button>
                         </div>
                         <div class="timestamp-item">
                             <span class="format-label" id="longTimeLabel">Ora Lunga</span>
-                            <span class="format-code" data-format="T">&lt;t:TIMESTAMP:T&gt;</span>
-                            <span class="format-preview" data-format="T">-</span>
+                            <span class="format-code" data-format="T" id="code-T">&lt;t:TIMESTAMP:T&gt;</span>
+                            <span class="format-preview" id="preview-T">-</span>
+                            <button class="copy-timestamp-btn" data-format="T">📋</button>
                         </div>
                         <div class="timestamp-item">
                             <span class="format-label" id="shortDateTimeLabel">Data/Ora Corta</span>
-                            <span class="format-code" data-format="f">&lt;t:TIMESTAMP:f&gt;</span>
-                            <span class="format-preview" data-format="f">-</span>
+                            <span class="format-code" data-format="f" id="code-f">&lt;t:TIMESTAMP:f&gt;</span>
+                            <span class="format-preview" id="preview-f">-</span>
+                            <button class="copy-timestamp-btn" data-format="f">📋</button>
                         </div>
                         <div class="timestamp-item">
                             <span class="format-label" id="longDateTimeLabel">Data/Ora Lunga</span>
-                            <span class="format-code" data-format="F">&lt;t:TIMESTAMP:F&gt;</span>
-                            <span class="format-preview" data-format="F">-</span>
+                            <span class="format-code" data-format="F" id="code-F">&lt;t:TIMESTAMP:F&gt;</span>
+                            <span class="format-preview" id="preview-F">-</span>
+                            <button class="copy-timestamp-btn" data-format="F">📋</button>
                         </div>
                         <div class="timestamp-item">
                             <span class="format-label" id="relativeTimeLabel">Tempo Relativo</span>
-                            <span class="format-code" data-format="R">&lt;t:TIMESTAMP:R&gt;</span>
-                            <span class="format-preview" data-format="R">-</span>
+                            <span class="format-code" data-format="R" id="code-R">&lt;t:TIMESTAMP:R&gt;</span>
+                            <span class="format-preview" id="preview-R">-</span>
+                            <button class="copy-timestamp-btn" data-format="R">📋</button>
                         </div>
                     </div>
                 </div>
