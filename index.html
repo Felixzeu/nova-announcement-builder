@@ -13,7 +13,7 @@
             <div class="header-top">
                 <h1>⚡ Nova Announcement Builder</h1>
                 <div class="language-selector">
-                    <span class="lang-label">🌐 PAGE LANGUAGE</span>
+                    <span class="lang-label" id="langLabel">🌐 PAGE LANGUAGE</span>
                     <select id="languageSelect">
                         <option value="en">🇬🇧 English</option>
                         <option value="it" selected>🇮🇹 Italiano</option>
@@ -23,7 +23,7 @@
                     </select>
                 </div>
             </div>
-            <p class="subtitle">Select a server, lobby and time — the announcement generates automatically. Then just copy it.</p>
+            <p class="subtitle" id="subtitleText">Select a server, lobby and time — the announcement generates automatically. Then just copy it.</p>
         </div>
 
         <!-- MAIN CONTENT -->
@@ -32,7 +32,7 @@
             <div class="left-column">
                 <!-- SERVERS -->
                 <div class="card">
-                    <h2>📡 SERVERS</h2>
+                    <h2 id="serversTitle">📡 SERVERS</h2>
                     <div class="server-list">
                         <button class="server-btn active" data-server="Nova No Zone Rules" data-delay="15">
                             <span class="server-name">
@@ -54,12 +54,12 @@
 
                 <!-- SETUP -->
                 <div class="card">
-                    <h2>⚙️ SETUP</h2>
+                    <h2 id="setupTitle">⚙️ SETUP</h2>
 
                     <!-- Campi per Champion Division -->
                     <div id="championFields">
                         <div class="form-group">
-                            <label>📅 REGISTRATION OPENS</label>
+                            <label id="registrationLabel">📅 REGISTRATION OPENS</label>
                             <input type="datetime-local" id="registrationTime">
                         </div>
 
@@ -71,17 +71,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label>⏱️ DURATA PRIMA PARTITA (minuti)</label>
+                            <label id="durationLabel">⏱️ DURATA PRIMA PARTITA (minuti)</label>
                             <input type="number" id="gameDuration" value="15" placeholder="es. 15">
                         </div>
 
                         <div class="form-group">
-                            <label>👤 STAFF IN CHARGE (Discord ID)</label>
+                            <label id="staffLabel">👤 STAFF IN CHARGE (Discord ID)</label>
                             <input type="text" id="staffId" value="1361685617775345935" placeholder="Discord ID dello staff">
                         </div>
 
                         <div class="form-group">
-                            <label>🎮 NUMERO DI PARTITE</label>
+                            <label id="gamesLabel">🎮 NUMERO DI PARTITE</label>
                             <div class="game-buttons">
                                 <button class="game-btn active" data-games="2">2 Games</button>
                                 <button class="game-btn" data-games="3">3 Games</button>
@@ -90,12 +90,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label>🏅 ROLE ID (opzionale)</label>
+                            <label id="roleLabel">🏅 ROLE ID (opzionale)</label>
                             <input type="text" id="roleId" value="1521712260370796584" placeholder="es. 1521712260370796584">
                         </div>
 
                         <div class="form-group">
-                            <label>🏷️ TIPO SESSIONE</label>
+                            <label id="sessionTypeLabel">🏷️ TIPO SESSIONE</label>
                             <div class="session-type-buttons">
                                 <button class="session-type-btn active" data-type="Duo" data-reacts="55">Duo</button>
                                 <button class="session-type-btn" data-type="Trio" data-reacts="40">Trio</button>
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>🌙 LATE NIGHT</label>
+                            <label id="lateNightLabel">🌙 LATE NIGHT</label>
                             <button id="lateNightToggle" class="toggle-btn">OFF</button>
                             <input type="hidden" id="lateNight" value="false">
                         </div>
@@ -117,7 +117,7 @@
                     <!-- Campi per No Zone Rules -->
                     <div id="nzrFields" style="display:none;">
                         <div class="form-group">
-                            <label>📅 DATA PRIMA SESSIONE</label>
+                            <label id="firstSessionLabel">📅 DATA PRIMA SESSIONE</label>
                             <input type="datetime-local" id="nzrStartTime">
                         </div>
 
@@ -129,22 +129,22 @@
                         </div>
 
                         <div class="form-group">
-                            <label>📊 NUMERO TOTALE SESSIONI</label>
+                            <label id="totalSessionsLabel">📊 NUMERO TOTALE SESSIONI</label>
                             <input type="number" id="nzrSessionCount" value="7" min="1" max="10">
                         </div>
 
                         <div class="form-group">
-                            <label>⏱️ GAP TRA SESSIONI (minuti)</label>
+                            <label id="gapLabel">⏱️ GAP TRA SESSIONI (minuti)</label>
                             <input type="number" id="nzrGap" value="90" placeholder="es. 90">
                         </div>
 
                         <div class="form-group">
-                            <label>⏱️ DURATA PARTITA (minuti)</label>
+                            <label id="nzrGameDurationLabel">⏱️ DURATA PARTITA (minuti)</label>
                             <input type="number" id="nzrGameDuration" value="10" placeholder="es. 10">
                         </div>
 
                         <div class="form-group">
-                            <label>🏷️ TIPO SESSIONE</label>
+                            <label id="sessionTypeLabelNZR">🏷️ TIPO SESSIONE</label>
                             <div class="session-type-buttons">
                                 <button class="session-type-btn active" data-type="Duo" data-reacts="55">Duo</button>
                                 <button class="session-type-btn" data-type="Trio" data-reacts="40">Trio</button>
@@ -157,7 +157,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>🌙 LATE NIGHT</label>
+                            <label id="lateNightLabelNZR">🌙 LATE NIGHT</label>
                             <button id="lateNightToggleNZR" class="toggle-btn">OFF</button>
                             <input type="hidden" id="lateNightNZR" value="false">
                         </div>
@@ -169,7 +169,7 @@
             <div class="right-column">
                 <!-- QUICK HOURS -->
                 <div class="card">
-                    <h2>⏰ QUICK HOURS</h2>
+                    <h2 id="quickHoursTitle">⏰ QUICK HOURS</h2>
                     <div class="quick-hours-grid">
                         <button class="hour-btn" data-hour="13">13:00</button>
                         <button class="hour-btn" data-hour="14">14:00</button>
@@ -187,7 +187,7 @@
 
                 <!-- GENERATED MESSAGE -->
                 <div class="card">
-                    <h2>📋 GENERATED MESSAGE</h2>
+                    <h2 id="generatedTitle">📋 GENERATED MESSAGE</h2>
                     <div id="announcementPreview" class="preview-box"></div>
                     <div class="button-group">
                         <button id="copyAnnouncementBtn" class="btn-secondary">📋 Copy Announcement</button>
@@ -198,49 +198,49 @@
 
                 <!-- DISCORD TIMESTAMP HELPER -->
                 <div class="card">
-                    <h2>⏰ Discord Timestamp Helper</h2>
+                    <h2 id="timestampTitle">⏰ Discord Timestamp Helper</h2>
                     <div class="form-group">
-                        <label>Unix Timestamp</label>
+                        <label id="unixLabel">Unix Timestamp</label>
                         <input type="number" id="timestampInput" placeholder="Inserisci timestamp...">
                     </div>
                     <div class="form-group">
-                        <label>📅 Selezione Data/ora</label>
+                        <label id="datePickerLabel">📅 Selezione Data/ora</label>
                         <input type="datetime-local" id="dateTimePicker">
                     </div>
 
                     <div class="timestamp-grid">
                         <div class="timestamp-item">
-                            <span class="format-label">Short Date</span>
+                            <span class="format-label" id="shortDateLabel">Short Date</span>
                             <span class="format-code" data-format="d">&lt;t:TIMESTAMP:d&gt;</span>
                             <span class="format-preview" data-format="d">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label">Long Date</span>
+                            <span class="format-label" id="longDateLabel">Long Date</span>
                             <span class="format-code" data-format="D">&lt;t:TIMESTAMP:D&gt;</span>
                             <span class="format-preview" data-format="D">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label">Short Time</span>
+                            <span class="format-label" id="shortTimeLabel">Short Time</span>
                             <span class="format-code" data-format="t">&lt;t:TIMESTAMP:t&gt;</span>
                             <span class="format-preview" data-format="t">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label">Long Time</span>
+                            <span class="format-label" id="longTimeLabel">Long Time</span>
                             <span class="format-code" data-format="T">&lt;t:TIMESTAMP:T&gt;</span>
                             <span class="format-preview" data-format="T">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label">Short Date/Time</span>
+                            <span class="format-label" id="shortDateTimeLabel">Short Date/Time</span>
                             <span class="format-code" data-format="f">&lt;t:TIMESTAMP:f&gt;</span>
                             <span class="format-preview" data-format="f">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label">Long Date/Time</span>
+                            <span class="format-label" id="longDateTimeLabel">Long Date/Time</span>
                             <span class="format-code" data-format="F">&lt;t:TIMESTAMP:F&gt;</span>
                             <span class="format-preview" data-format="F">-</span>
                         </div>
                         <div class="timestamp-item">
-                            <span class="format-label">Relative Time</span>
+                            <span class="format-label" id="relativeTimeLabel">Relative Time</span>
                             <span class="format-code" data-format="R">&lt;t:TIMESTAMP:R&gt;</span>
                             <span class="format-preview" data-format="R">-</span>
                         </div>
