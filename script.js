@@ -236,7 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // --- IMPOSTA STATO INIZIALE ---
-    // Mostra NZR, nascondi Champion
     championFields.style.display = 'none';
     nzrFields.style.display = 'block';
 
@@ -655,11 +654,9 @@ document.addEventListener('DOMContentLoaded', function() {
         handleDateTimePicker();
     }
     
-    // Forza NZR all'avvio
     if (championFields) championFields.style.display = 'none';
     if (nzrFields) nzrFields.style.display = 'block';
     
-    // Applica lingua iniziale
     if (typeof changeLanguage === 'function') {
         changeLanguage('it');
     } else {
