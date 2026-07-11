@@ -437,7 +437,7 @@ body::after {
     opacity: 0.8;
 }
 
-/* GENERATED CARD - riempie tutto lo spazio */
+/* GENERATED CARD */
 .generated-card {
     flex: 1;
     min-height: 280px;
