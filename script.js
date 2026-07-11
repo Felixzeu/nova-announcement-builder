@@ -2,22 +2,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const serverNameInput = document.getElementById('serverName');
     const sessionTypeInput = document.getElementById('sessionType');
     const requiredReactsInput = document.getElementById('requiredReacts');
-    const lateNightInput = document.getElementById('lateNight');
-    const lateNightToggle = document.getElementById('lateNightToggle');
     const languageSelect = document.getElementById('languageSelect');
     
+    // Champion fields
     const championFields = document.getElementById('championFields');
     const registrationTime = document.getElementById('registrationTime');
     const gameDuration = document.getElementById('gameDuration');
     const staffId = document.getElementById('staffId');
     const gameCountInput = document.getElementById('gameCount');
     const roleId = document.getElementById('roleId');
+    const lateNightToggle = document.getElementById('lateNightToggle');
+    const lateNightInput = document.getElementById('lateNight');
     
+    // NZR fields
     const nzrFields = document.getElementById('nzrFields');
     const nzrStartTime = document.getElementById('nzrStartTime');
     const nzrSessionCount = document.getElementById('nzrSessionCount');
     const nzrGap = document.getElementById('nzrGap');
     const nzrGameDuration = document.getElementById('nzrGameDuration');
+    const lateNightToggleNZR = document.getElementById('lateNightToggleNZR');
+    const lateNightNZR = document.getElementById('lateNightNZR');
     
     const announcementPreview = document.getElementById('announcementPreview');
     const copyAnnouncementBtn = document.getElementById('copyAnnouncementBtn');
@@ -33,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedType = 'Duo';
     let selectedReacts = 55;
     let isLateNight = false;
+    let isLateNightNZR = false;
     let currentLang = 'it';
     let selectedDelay = 15;
 
@@ -53,12 +58,21 @@ document.addEventListener('DOMContentLoaded', function() {
         return `${year}-${month}-${day}T${hours}:${minutes}`;
     }
 
-    // LATE NIGHT TOGGLE
+    // LATE NIGHT TOGGLE (Champion)
     lateNightToggle.addEventListener('click', function() {
         isLateNight = !isLateNight;
         this.textContent = isLateNight ? 'ON' : 'OFF';
         this.classList.toggle('active');
         lateNightInput.value = isLateNight ? 'true' : 'false';
+        generateAnnouncement();
+    });
+
+    // LATE NIGHT TOGGLE (NZR)
+    lateNightToggleNZR.addEventListener('click', function() {
+        isLateNightNZR = !isLateNightNZR;
+        this.textContent = isLateNightNZR ? 'ON' : 'OFF';
+        this.classList.toggle('active');
+        lateNightNZR.value = isLateNightNZR ? 'true' : 'false';
         generateAnnouncement();
     });
 
@@ -74,9 +88,25 @@ document.addEventListener('DOMContentLoaded', function() {
             if (selectedServer === 'Nova No Zone Rules') {
                 championFields.style.display = 'none';
                 nzrFields.style.display = 'block';
+                // Sincronizza lo stato di late night per NZR
+                if (isLateNightNZR) {
+                    lateNightToggleNZR.textContent = 'ON';
+                    lateNightToggleNZR.classList.add('active');
+                } else {
+                    lateNightToggleNZR.textContent = 'OFF';
+                    lateNightToggleNZR.classList.remove('active');
+                }
             } else {
                 championFields.style.display = 'block';
                 nzrFields.style.display = 'none';
+                // Sincronizza lo stato di late night per Champion
+                if (isLateNight) {
+                    lateNightToggle.textContent = 'ON';
+                    lateNightToggle.classList.add('active');
+                } else {
+                    lateNightToggle.textContent = 'OFF';
+                    lateNightToggle.classList.remove('active');
+                }
             }
             generateAnnouncement();
         });
@@ -108,7 +138,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // GENERATE ANNOUNCEMENT
     function generateAnnouncement() {
         let announcement = [];
-        const lateNightText = isLateNight ? 'Late Night ' : '';
+
+        // Determina quale late night usare in base al server
+        let lateNightText = '';
+        if (selectedServer === 'Nova No Zone Rules') {
+            lateNightText = isLateNightNZR ? 'Late Night ' : '';
+        } else {
+            lateNightText = isLateNight ? 'Late Night ' : '';
+        }
 
         if (selectedServer === 'Nova No Zone Rules') {
             // ===== NO ZONE RULES =====
