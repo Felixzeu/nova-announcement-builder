@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyRegTimestampBtn = document.getElementById('copyRegTimestampBtn');
     const copyGameTimestampBtn = document.getElementById('copyGameTimestampBtn');
 
-    const timestampInput = document.getElementById('timestampInput');
     const dateTimePicker = document.getElementById('dateTimePicker');
     const formatPreviews = document.querySelectorAll('.format-preview');
     const formatCodes = document.querySelectorAll('.format-code');
+    const copyTimestampBtns = document.querySelectorAll('.copy-timestamp-btn');
 
     let selectedServer = 'Nova No Zone Rules';
     let selectedType = 'Duo';
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isLateNightNZR = false;
     let currentLang = 'it';
     let selectedDelay = 15;
+    let currentUnixTimestamp = null;
 
     // --- TRADUZIONI ---
     const translations = {
@@ -64,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
             copyReg: '⏰ Copy Reg Timestamp',
             copyGame: '⏰ Copy Game Timestamp',
             timestampHelper: '⏰ Discord Timestamp Helper',
-            unix: 'Unix Timestamp',
             datePicker: '📅 Select Date/Time',
             shortDate: 'Short Date',
             longDate: 'Long Date',
@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
             copyReg: '⏰ Copy Reg Timestamp',
             copyGame: '⏰ Copy Game Timestamp',
             timestampHelper: '⏰ Discord Timestamp Helper',
-            unix: 'Unix Timestamp',
             datePicker: '📅 Selezione Data/ora',
             shortDate: 'Data Corta',
             longDate: 'Data Lunga',
@@ -128,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
             copyReg: '⏰ Copiar Reg Timestamp',
             copyGame: '⏰ Copiar Game Timestamp',
             timestampHelper: '⏰ Ayudante de Timestamp Discord',
-            unix: 'Timestamp Unix',
             datePicker: '📅 Seleccionar Fecha/Hora',
             shortDate: 'Fecha Corta',
             longDate: 'Fecha Larga',
@@ -160,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
             copyReg: '⏰ Copier Reg Timestamp',
             copyGame: '⏰ Copier Game Timestamp',
             timestampHelper: '⏰ Aide Timestamp Discord',
-            unix: 'Timestamp Unix',
             datePicker: '📅 Sélectionner Date/Heure',
             shortDate: 'Date Courte',
             longDate: 'Date Longue',
@@ -192,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
             copyReg: '⏰ Reg Timestamp kopieren',
             copyGame: '⏰ Game Timestamp kopieren',
             timestampHelper: '⏰ Discord Timestamp Helfer',
-            unix: 'Unix Timestamp',
             datePicker: '📅 Datum/Uhrzeit auswählen',
             shortDate: 'Kurzes Datum',
             longDate: 'Langes Datum',
@@ -233,7 +229,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('copyRegTimestampBtn').textContent = t.copyReg;
         document.getElementById('copyGameTimestampBtn').textContent = t.copyGame;
         document.getElementById('timestampTitle').textContent = t.timestampHelper;
-        document.getElementById('unixLabel').textContent = t.unix;
         document.getElementById('datePickerLabel').textContent = t.datePicker;
         document.getElementById('shortDateLabel').textContent = t.shortDate;
         document.getElementById('longDateLabel').textContent = t.longDate;
@@ -244,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('relativeTimeLabel').textContent = t.relativeTime;
         
         generateAnnouncement();
-        updateTimestampPreviews(parseInt(timestampInput.value) || null);
+        updateTimestampPreviews(currentUnixTimestamp);
     };
 
     // --- ALL'AVVIO: MOSTRA I CAMPI NZR, NASCONDI CHAMPION ---
@@ -526,21 +521,31 @@ document.addEventListener('DOMContentLoaded', function() {
         copyToClipboard(`<t:${unix}:t>`, this);
     });
 
-    // TIMESTAMP HELPER
+    // --- TIMESTAMP HELPER ---
     function updateTimestampPreviews(unixTimestamp) {
+        currentUnixTimestamp = unixTimestamp;
+        
         if (!unixTimestamp || isNaN(unixTimestamp) || unixTimestamp <= 0) {
             formatPreviews.forEach(el => el.textContent = '-');
+            formatCodes.forEach(el => {
+                const format = el.dataset.format;
+                el.textContent = `<t:TIMESTAMP:${format}>`;
+            });
             return;
         }
+        
         formatCodes.forEach((codeEl, index) => {
             const format = codeEl.dataset.format;
-            codeEl.textContent = `<t:${unixTimestamp}:${format}>`;
+            const fullCode = `<t:${unixTimestamp}:${format}>`;
+            codeEl.textContent = fullCode;
+
             const previewEl = formatPreviews[index];
             const date = new Date(unixTimestamp * 1000);
             if (isNaN(date.getTime())) {
                 previewEl.textContent = currentLang === 'it' ? 'Data non valida' : 'Invalid date';
                 return;
             }
+            
             let previewText = '';
             const locale = currentLang === 'it' ? 'it-IT' : 'en-US';
             switch(format) {
@@ -572,19 +577,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function handleTimestampInput() {
-        let unix = parseInt(timestampInput.value);
-        if (!isNaN(unix) && unix > 0) {
-            const date = new Date(unix * 1000);
-            if (!isNaN(date.getTime())) {
-                dateTimePicker.value = formatDateForInput(date);
-                updateTimestampPreviews(unix);
+    // --- COPY TIMESTAMP BUTTONS ---
+    copyTimestampBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const format = this.dataset.format;
+            if (!currentUnixTimestamp) {
+                alert(currentLang === 'it' ? 'Seleziona una data/ora prima!' : 'Please select a date/time first!');
                 return;
             }
-        }
-        handleDateTimePicker();
-    }
+            const text = `<t:${currentUnixTimestamp}:${format}>`;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = this.textContent;
+                this.textContent = '✅';
+                this.classList.add('copied');
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.classList.remove('copied');
+                }, 1500);
+            }).catch(err => {
+                alert(currentLang === 'it' ? 'Errore nella copia: ' + err : 'Error copying: ' + err);
+            });
+        });
+    });
 
+    // --- TIMESTAMP INPUT ---
     function handleDateTimePicker() {
         const dateStr = dateTimePicker.value;
         if (!dateStr) {
@@ -594,12 +610,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const date = new Date(dateStr);
         if (!isNaN(date.getTime())) {
             const unix = toUnixTimestamp(date);
-            timestampInput.value = unix;
             updateTimestampPreviews(unix);
         }
     }
 
-    timestampInput.addEventListener('input', handleTimestampInput);
     dateTimePicker.addEventListener('input', handleDateTimePicker);
 
     [registrationTime, gameDuration, staffId, roleId, nzrStartTime, nzrSessionCount, nzrGap, nzrGameDuration].forEach(el => {
