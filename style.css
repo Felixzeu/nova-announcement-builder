@@ -343,16 +343,16 @@ body::after {
     margin-top: 6px;
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     flex: 1;
 }
 
 .timestamp-item {
     display: grid;
-    grid-template-columns: 65px 1fr 1fr;
+    grid-template-columns: 65px 1fr 1fr 30px;
     align-items: center;
     background: rgba(255, 255, 255, 0.03);
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: 4px;
     gap: 4px;
 }
@@ -382,7 +382,33 @@ body::after {
 .format-preview {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.55rem;
-    text-align: right;
+    text-align: left;
+}
+
+.copy-timestamp-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    width: 28px;
+    text-align: center;
+}
+
+.copy-timestamp-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.copy-timestamp-btn.copied {
+    background: rgba(108, 108, 255, 0.3);
+    border-color: #6c6cff;
+    color: #6c6cff;
 }
 
 /* FORM ELEMENTI PER SETUP */
@@ -621,7 +647,7 @@ body::after {
         gap: 16px;
     }
     .timestamp-item {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr 30px;
         gap: 3px;
         text-align: center;
         padding: 6px;
