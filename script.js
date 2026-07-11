@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
             totalSessions: '📊 TOTAL SESSIONS',
             gap: '⏱️ GAP BETWEEN SESSIONS (minutes)',
             nzrGameDuration: '⏱️ GAME DURATION (minutes)',
-            quickHours: '⏰ QUICK HOURS',
             generated: '📋 GENERATED MESSAGE',
             copyAnnouncement: '📋 Copy Announcement',
             copyReg: '⏰ Copy Reg Timestamp',
@@ -92,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
             totalSessions: '📊 NUMERO TOTALE SESSIONI',
             gap: '⏱️ GAP TRA SESSIONI (minuti)',
             nzrGameDuration: '⏱️ DURATA PARTITA (minuti)',
-            quickHours: '⏰ QUICK HOURS',
             generated: '📋 GENERATED MESSAGE',
             copyAnnouncement: '📋 Copy Announcement',
             copyReg: '⏰ Copy Reg Timestamp',
@@ -125,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
             totalSessions: '📊 TOTAL DE SESIONES',
             gap: '⏱️ ESPACIO ENTRE SESIONES (minutos)',
             nzrGameDuration: '⏱️ DURACIÓN DEL JUEGO (minutos)',
-            quickHours: '⏰ HORAS RÁPIDAS',
             generated: '📋 MENSAJE GENERADO',
             copyAnnouncement: '📋 Copiar Anuncio',
             copyReg: '⏰ Copiar Reg Timestamp',
@@ -158,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
             totalSessions: '📊 TOTAL DES SESSIONS',
             gap: '⏱️ ÉCART ENTRE LES SESSIONS (minutes)',
             nzrGameDuration: '⏱️ DURÉE DU JEU (minutes)',
-            quickHours: '⏰ HEURES RAPIDES',
             generated: '📋 MESSAGE GÉNÉRÉ',
             copyAnnouncement: '📋 Copier Annonce',
             copyReg: '⏰ Copier Reg Timestamp',
@@ -191,7 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
             totalSessions: '📊 GESAMTZAHL DER SITZUNGEN',
             gap: '⏱️ ABSTAND ZWISCHEN SITZUNGEN (Minuten)',
             nzrGameDuration: '⏱️ SPIELDAUER (Minuten)',
-            quickHours: '⏰ SCHNELLE STUNDEN',
             generated: '📋 GENERIERTE NACHRICHT',
             copyAnnouncement: '📋 Ankündigung kopieren',
             copyReg: '⏰ Reg Timestamp kopieren',
@@ -233,7 +228,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('nzrGameDurationLabel').textContent = t.nzrGameDuration;
         document.getElementById('sessionTypeLabelNZR').textContent = t.sessionType;
         document.getElementById('lateNightLabelNZR').textContent = t.lateNight;
-        document.getElementById('quickHoursTitle').textContent = t.quickHours;
         document.getElementById('generatedTitle').textContent = t.generated;
         document.getElementById('copyAnnouncementBtn').textContent = t.copyAnnouncement;
         document.getElementById('copyRegTimestampBtn').textContent = t.copyReg;
