@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // SESSION TYPE
+    // SESSION TYPE (sia per Champion che NZR)
     document.querySelectorAll('.session-type-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.session-type-btn').forEach(b => b.classList.remove('active'));
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // GAME COUNT
+    // GAME COUNT (solo Champion)
     document.querySelectorAll('.game-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.game-btn').forEach(b => b.classList.remove('active'));
@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 '8_:1362589685595242628'
             ];
 
+            // Late Night nel titolo
             announcement.push(`## **${lateNightText}${selectedType} Practice Sessions <:nzr:1433978431804280852>**`);
             announcement.push('');
 
@@ -207,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const regUnix = toUnixTimestamp(regDate);
             const gameUnix = regUnix + (dur * 60);
 
+            // Late Night nel titolo
             announcement.push(`### ${lateNightText}${selectedType} Practice Session <:champion:1472618819502608404>`);
             announcement.push('');
             announcement.push(`> * **Registration Opens:** ${formatDiscordTime(regUnix, 't')} `);
