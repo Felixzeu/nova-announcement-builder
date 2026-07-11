@@ -641,4 +641,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Applica lingua iniziale (Italiano)
     changeLanguage('it');
+    
+    // Forza il generatore a eseguire dopo il setup
+    setTimeout(function() {
+        generateAnnouncement();
+    }, 100);
 });
