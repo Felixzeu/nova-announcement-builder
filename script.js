@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return `${year}-${month}-${day}T${hours}:${minutes}`;
     }
 
+    // --- ALL'AVVIO: MOSTRA I CAMPI NZR, NASCONDI CHAMPION ---
+    championFields.style.display = 'none';
+    nzrFields.style.display = 'block';
+
     // LATE NIGHT TOGGLE (Champion)
     lateNightToggle.addEventListener('click', function() {
         isLateNight = !isLateNight;
@@ -407,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
     dateTimePicker.value = formatDateForInput(nowHelper);
     handleDateTimePicker();
     
-    // MOSTRA I CAMPI CORRETTI ALL'AVVIO (NZR)
+    // ALL'AVVIO: NASCONDI CHAMPION, MOSTRA NZR
     championFields.style.display = 'none';
     nzrFields.style.display = 'block';
     
