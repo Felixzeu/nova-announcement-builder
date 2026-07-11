@@ -161,7 +161,7 @@ body::after {
     gap: 20px;
 }
 
-/* CARD - TUTTE DELLA STESSA ALTEZZA */
+/* CARD */
 .card {
     background: rgba(26, 26, 46, 0.75);
     border-radius: 12px;
@@ -192,7 +192,7 @@ body::after {
     flex-shrink: 0;
 }
 
-/* SERVER LIST - in alto */
+/* SERVER LIST */
 .servers-card {
     flex: 0 0 auto;
     min-height: auto;
@@ -282,7 +282,7 @@ body::after {
     font-size: 0.7rem;
 }
 
-/* GENERATED CARD - con pulsanti sopra e preview che riempie */
+/* GENERATED CARD */
 .generated-card {
     flex: 1;
     min-height: 350px;
@@ -300,7 +300,7 @@ body::after {
     background: rgba(0, 0, 0, 0.2);
     padding: 14px;
     border-radius: 6px;
-    min-height: 200px;
+    min-height: 220px;
     margin-bottom: 0;
     border: 1px solid rgba(255, 255, 255, 0.05);
     font-family: 'Courier New', monospace;
@@ -411,7 +411,7 @@ body::after {
     color: #6c6cff;
 }
 
-/* FORM ELEMENTI PER SETUP */
+/* FORM ELEMENTI */
 .form-group {
     margin-bottom: 6px;
 }
@@ -668,7 +668,7 @@ body::after {
         min-height: 160px;
     }
     .preview-box {
-        min-height: 200px;
+        min-height: 180px;
         max-height: none;
     }
 }
