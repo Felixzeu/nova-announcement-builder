@@ -297,6 +297,57 @@ body::after {
     background: rgba(255, 255, 255, 0.08);
 }
 
+.setup-card .quick-minutes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-bottom: 4px;
+}
+
+.setup-card .quick-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.setup-card .quick-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.setup-card .quick-btn.active {
+    background: #6c6cff;
+    border-color: #6c6cff;
+    color: white;
+}
+
+.setup-card .quick-nzr-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.setup-card .quick-nzr-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.setup-card .quick-nzr-btn.active {
+    background: #6c6cff;
+    border-color: #6c6cff;
+    color: white;
+}
+
 .setup-card .session-type-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -358,36 +409,6 @@ body::after {
     color: white;
 }
 
-.setup-card .quick-minutes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-    margin-bottom: 4px;
-}
-
-.setup-card .quick-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 2px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.6rem;
-    transition: all 0.3s ease;
-}
-
-.setup-card .quick-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.setup-card .quick-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-}
-
-/* TOGGLE BUTTON - FIX POSIZIONE */
 .setup-card .toggle-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
