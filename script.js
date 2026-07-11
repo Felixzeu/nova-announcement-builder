@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentLang = 'it';
     let selectedDelay = 15;
     let currentUnixTimestamp = null;
-    let isInitialized = false;
 
     // --- TRADUZIONI ---
     const translations = {
@@ -642,13 +641,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // INIT - Imposta le date di default PRIMA di qualsiasi altra operazione
+    // INIT
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
     now.setSeconds(0, 0);
     const dateStr = formatDateForInput(now);
     
-    // Imposta entrambi i campi data
     if (registrationTime) registrationTime.value = dateStr;
     if (nzrStartTime) nzrStartTime.value = dateStr;
 
@@ -658,17 +656,13 @@ document.addEventListener('DOMContentLoaded', function() {
         handleDateTimePicker();
     }
     
-    // ALL'AVVIO: NASCONDI CHAMPION, MOSTRA NZR
     if (championFields) championFields.style.display = 'none';
     if (nzrFields) nzrFields.style.display = 'block';
     
-    // Applica lingua iniziale (Italiano)
+    // Applica lingua iniziale
     if (typeof changeLanguage === 'function') {
         changeLanguage('it');
     } else {
-        // Fallback: genera annuncio direttamente
-        setTimeout(function() {
-            generateAnnouncement();
-        }, 50);
+        generateAnnouncement();
     }
 });
