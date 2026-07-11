@@ -11,11 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameDuration = document.getElementById('gameDuration');
     const staffId = document.getElementById('staffId');
     const gameCountInput = document.getElementById('gameCount');
+    const roleId = document.getElementById('roleId');
     
     const nzrFields = document.getElementById('nzrFields');
     const nzrStartTime = document.getElementById('nzrStartTime');
     const nzrSessionCount = document.getElementById('nzrSessionCount');
     const nzrGap = document.getElementById('nzrGap');
+    const nzrGameDuration = document.getElementById('nzrGameDuration');
     
     const announcementPreview = document.getElementById('announcementPreview');
     const copyAnnouncementBtn = document.getElementById('copyAnnouncementBtn');
@@ -116,8 +118,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const sessions = parseInt(nzrSessionCount.value) || 8;
-            const gap = parseInt(nzrGap.value) || 80;
+            const sessions = parseInt(nzrSessionCount.value) || 7;
+            const gap = parseInt(nzrGap.value) || 90;
+            const gameDur = parseInt(nzrGameDuration.value) || 10;
             const startUnix = toUnixTimestamp(startDate);
             const emojis = [
                 '1_:1362589687339810906',
@@ -132,17 +135,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
             announcement.push(`## **${lateNightText}${selectedType} Practice Sessions <:nzr:1433978431804280852>**`);
             announcement.push('');
+
             for (let i = 0; i < Math.min(sessions, emojis.length); i++) {
                 const sessionTime = startUnix + (i * gap * 60);
+                const gameTime = sessionTime + (gameDur * 60);
                 announcement.push(`- **Session** <:${emojis[i]}>`);
                 announcement.push(`  - **Registration:** ${formatDiscordTime(sessionTime, 't')}`);
-                announcement.push(`  - **First Game:** ${formatDiscordTime(sessionTime + 600, 't')}`);
+                announcement.push(`  - **First Game:** ${formatDiscordTime(gameTime, 't')}`);
                 announcement.push('');
             }
+
             announcement.push(`* **Information <:Info:1342824791039541328>**`);
             announcement.push(`  * Session lasts **__2 Games__**`);
             announcement.push(`  * Top 1 = <@&1443285911839178844>`);
-            announcement.push(`  * Top 5 = [**Champion Division Access**](<https://discord.com/channels/1267285458962878464/1471321891850424361>) <:newdiv:1472341015968088126>`);
+            announcement.push(`  * Top 5 = [**Champion Division Access**](<https://discord.com/channels/1267285458962878464/1471321891850424361>) <:champion:1472618819502608404>`);
             announcement.push(`  * https://discord.com/channels/1267285458962878464/1492700150831911122 & https://discord.com/channels/1267285458962878464/1492703045879070871`);
             announcement.push(`_ _`);
             announcement.push('`React if playing!`');
@@ -160,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const games = parseInt(gameCountInput.value) || 2;
             const dur = parseInt(gameDuration.value) || 15;
             const reacts = selectedReacts;
+            const role = roleId.value.trim();
             const regUnix = toUnixTimestamp(regDate);
             const gameUnix = regUnix + (dur * 60);
 
@@ -172,6 +179,9 @@ document.addEventListener('DOMContentLoaded', function() {
             announcement.push('');
             announcement.push(`**-** Session lasts **${games} games**, **Miss a single game and you will be banned.**`);
             announcement.push(`**-** Make sure to read https://discord.com/channels/1471487091551633410/1471490037945204918 & https://discord.com/channels/1471487091551633410/1471489805979484333 **before** playing.`);
+            if (role) {
+                announcement.push(`**-** Playing this session will grant you the <@&${role}> role. https://discord.com/channels/1471487091551633410/1521106660368842772`);
+            }
             announcement.push(`**-** Bottom 3 will lose access.`);
             announcement.push('');
             announcement.push(`**Need at least ${reacts}+ reacts to host ** (1 per duo)`);
@@ -339,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
     timestampInput.addEventListener('input', handleTimestampInput);
     dateTimePicker.addEventListener('input', handleDateTimePicker);
 
-    [registrationTime, gameDuration, staffId, nzrStartTime, nzrSessionCount, nzrGap].forEach(el => {
+    [registrationTime, gameDuration, staffId, roleId, nzrStartTime, nzrSessionCount, nzrGap, nzrGameDuration].forEach(el => {
         if (el) {
             el.addEventListener('change', generateAnnouncement);
             el.addEventListener('input', generateAnnouncement);
