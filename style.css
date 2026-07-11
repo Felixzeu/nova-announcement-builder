@@ -282,10 +282,10 @@ body::after {
     font-size: 0.7rem;
 }
 
-/* GENERATED CARD - stessa dimensione degli altri */
+/* GENERATED CARD */
 .generated-card {
     flex: 1;
-    min-height: 280px;
+    min-height: 350px;
     max-width: 100%;
 }
 
@@ -296,26 +296,21 @@ body::after {
     flex-shrink: 0;
 }
 
-.top-buttons .btn-secondary {
-    padding: 6px 10px;
-    font-size: 0.65rem;
-}
-
 .preview-box {
     background: rgba(0, 0, 0, 0.2);
-    padding: 12px 14px;
+    padding: 14px;
     border-radius: 6px;
-    min-height: 160px;
+    min-height: 220px;
     margin-bottom: 0;
     border: 1px solid rgba(255, 255, 255, 0.05);
     font-family: 'Courier New', monospace;
     white-space: pre-wrap;
     word-break: break-word;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 0.7rem;
-    max-height: 320px;
+    font-size: 0.75rem;
+    max-height: none;
     overflow-y: auto;
-    line-height: 1.5;
+    line-height: 1.6;
     flex: 1;
 }
 
@@ -673,8 +668,8 @@ body::after {
         min-height: 160px;
     }
     .preview-box {
-        min-height: 140px;
-        max-height: 250px;
+        min-height: 180px;
+        max-height: none;
     }
 }
 
