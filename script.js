@@ -88,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (selectedServer === 'Nova No Zone Rules') {
                 championFields.style.display = 'none';
                 nzrFields.style.display = 'block';
-                // Sincronizza lo stato di late night per NZR
                 if (isLateNightNZR) {
                     lateNightToggleNZR.textContent = 'ON';
                     lateNightToggleNZR.classList.add('active');
@@ -99,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 championFields.style.display = 'block';
                 nzrFields.style.display = 'none';
-                // Sincronizza lo stato di late night per Champion
                 if (isLateNight) {
                     lateNightToggle.textContent = 'ON';
                     lateNightToggle.classList.add('active');
@@ -112,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // SESSION TYPE (sia per Champion che NZR)
+    // SESSION TYPE
     document.querySelectorAll('.session-type-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.session-type-btn').forEach(b => b.classList.remove('active'));
@@ -125,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // GAME COUNT (solo Champion)
+    // GAME COUNT
     document.querySelectorAll('.game-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.game-btn').forEach(b => b.classList.remove('active'));
@@ -139,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function generateAnnouncement() {
         let announcement = [];
 
-        // Determina quale late night usare in base al server
         let lateNightText = '';
         if (selectedServer === 'Nova No Zone Rules') {
             lateNightText = isLateNightNZR ? 'Late Night ' : '';
@@ -148,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (selectedServer === 'Nova No Zone Rules') {
-            // ===== NO ZONE RULES =====
             const startDate = new Date(nzrStartTime.value);
             if (isNaN(startDate.getTime())) {
                 announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
@@ -170,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 '8_:1362589685595242628'
             ];
 
-            // Late Night nel titolo
             announcement.push(`## **${lateNightText}${selectedType} Practice Sessions <:nzr:1433978431804280852>**`);
             announcement.push('');
 
@@ -193,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
             announcement.push('-# @everyone');
 
         } else {
-            // ===== CHAMPION DIVISION =====
             const regDate = new Date(registrationTime.value);
             if (isNaN(regDate.getTime())) {
                 announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
@@ -208,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const regUnix = toUnixTimestamp(regDate);
             const gameUnix = regUnix + (dur * 60);
 
-            // Late Night nel titolo
             announcement.push(`### ${lateNightText}${selectedType} Practice Session <:champion:1472618819502608404>`);
             announcement.push('');
             announcement.push(`> * **Registration Opens:** ${formatDiscordTime(regUnix, 't')} `);
@@ -395,13 +388,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // LANGUAGE SELECTOR
     languageSelect.addEventListener('change', function() {
         currentLang = this.value;
         generateAnnouncement();
     });
 
-    // INIT
     const now = new Date();
     now.setMinutes(now.getMinutes() + 15);
     now.setSeconds(0, 0);
