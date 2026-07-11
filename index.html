@@ -28,9 +28,8 @@
 
         <!-- MAIN CONTENT -->
         <div class="main-grid">
-            <!-- COLONNA DI SINISTRA -->
+            <!-- COLONNA DI SINISTRA: SERVERS -->
             <div class="left-column">
-                <!-- SERVERS -->
                 <div class="card">
                     <h2 id="serversTitle">📡 SERVERS</h2>
                     <div class="server-list">
@@ -51,7 +50,10 @@
                     </div>
                     <input type="hidden" id="serverName" value="Nova No Zone Rules">
                 </div>
+            </div>
 
+            <!-- COLONNA CENTRALE: SETUP + QUICK HOURS -->
+            <div class="center-column">
                 <!-- SETUP -->
                 <div class="card">
                     <h2 id="setupTitle">⚙️ SETUP</h2>
@@ -163,10 +165,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- COLONNA DI DESTRA -->
-            <div class="right-column">
                 <!-- QUICK HOURS -->
                 <div class="card">
                     <h2 id="quickHoursTitle">⏰ QUICK HOURS</h2>
@@ -184,7 +183,10 @@
                         <button class="hour-btn" data-hour="23">23:00</button>
                     </div>
                 </div>
+            </div>
 
+            <!-- COLONNA DI DESTRA: GENERATED MESSAGE + TIMESTAMP HELPER -->
+            <div class="right-column">
                 <!-- GENERATED MESSAGE -->
                 <div class="card">
                     <h2 id="generatedTitle">📋 GENERATED MESSAGE</h2>
