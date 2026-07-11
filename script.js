@@ -41,6 +41,219 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentLang = 'it';
     let selectedDelay = 15;
 
+    // --- TRADUZIONI ---
+    const translations = {
+        en: {
+            langLabel: '🌐 PAGE LANGUAGE',
+            subtitle: 'Select a server, lobby and time — the announcement generates automatically. Then just copy it.',
+            servers: '📡 SERVERS',
+            setup: '⚙️ SETUP',
+            registration: '📅 REGISTRATION OPENS',
+            now: 'Use Current Time',
+            duration: '⏱️ FIRST GAME DURATION (minutes)',
+            staff: '👤 STAFF IN CHARGE (Discord ID)',
+            games: '🎮 NUMBER OF GAMES',
+            role: '🏅 ROLE ID (optional)',
+            sessionType: '🏷️ SESSION TYPE',
+            lateNight: '🌙 LATE NIGHT',
+            firstSession: '📅 FIRST SESSION DATE',
+            totalSessions: '📊 TOTAL SESSIONS',
+            gap: '⏱️ GAP BETWEEN SESSIONS (minutes)',
+            nzrGameDuration: '⏱️ GAME DURATION (minutes)',
+            quickHours: '⏰ QUICK HOURS',
+            generated: '📋 GENERATED MESSAGE',
+            copyAnnouncement: '📋 Copy Announcement',
+            copyReg: '⏰ Copy Reg Timestamp',
+            copyGame: '⏰ Copy Game Timestamp',
+            timestampHelper: '⏰ Discord Timestamp Helper',
+            unix: 'Unix Timestamp',
+            datePicker: '📅 Select Date/Time',
+            shortDate: 'Short Date',
+            longDate: 'Long Date',
+            shortTime: 'Short Time',
+            longTime: 'Long Time',
+            shortDateTime: 'Short Date/Time',
+            longDateTime: 'Long Date/Time',
+            relativeTime: 'Relative Time'
+        },
+        it: {
+            langLabel: '🌐 PAGE LANGUAGE',
+            subtitle: 'Seleziona un server, lobby e orario — l\'annuncio viene generato automaticamente. Poi copialo.',
+            servers: '📡 SERVERS',
+            setup: '⚙️ SETUP',
+            registration: '📅 REGISTRATION OPENS',
+            now: 'Use Current Time',
+            duration: '⏱️ DURATA PRIMA PARTITA (minuti)',
+            staff: '👤 STAFF IN CHARGE (Discord ID)',
+            games: '🎮 NUMERO DI PARTITE',
+            role: '🏅 ROLE ID (opzionale)',
+            sessionType: '🏷️ TIPO SESSIONE',
+            lateNight: '🌙 LATE NIGHT',
+            firstSession: '📅 DATA PRIMA SESSIONE',
+            totalSessions: '📊 NUMERO TOTALE SESSIONI',
+            gap: '⏱️ GAP TRA SESSIONI (minuti)',
+            nzrGameDuration: '⏱️ DURATA PARTITA (minuti)',
+            quickHours: '⏰ QUICK HOURS',
+            generated: '📋 GENERATED MESSAGE',
+            copyAnnouncement: '📋 Copy Announcement',
+            copyReg: '⏰ Copy Reg Timestamp',
+            copyGame: '⏰ Copy Game Timestamp',
+            timestampHelper: '⏰ Discord Timestamp Helper',
+            unix: 'Unix Timestamp',
+            datePicker: '📅 Selezione Data/ora',
+            shortDate: 'Data Corta',
+            longDate: 'Data Lunga',
+            shortTime: 'Ora Corta',
+            longTime: 'Ora Lunga',
+            shortDateTime: 'Data/Ora Corta',
+            longDateTime: 'Data/Ora Lunga',
+            relativeTime: 'Tempo Relativo'
+        },
+        es: {
+            langLabel: '🌐 IDIOMA DE LA PÁGINA',
+            subtitle: 'Selecciona un servidor, sala y hora — el anuncio se genera automáticamente. Luego cópialo.',
+            servers: '📡 SERVIDORES',
+            setup: '⚙️ CONFIGURACIÓN',
+            registration: '📅 APERTURA DE REGISTRO',
+            now: 'Usar hora actual',
+            duration: '⏱️ DURACIÓN DEL PRIMER JUEGO (minutos)',
+            staff: '👤 PERSONAL A CARGO (ID Discord)',
+            games: '🎮 NÚMERO DE JUEGOS',
+            role: '🏅 ROLE ID (opcional)',
+            sessionType: '🏷️ TIPO DE SESIÓN',
+            lateNight: '🌙 NOCHE',
+            firstSession: '📅 FECHA DE LA PRIMERA SESIÓN',
+            totalSessions: '📊 TOTAL DE SESIONES',
+            gap: '⏱️ ESPACIO ENTRE SESIONES (minutos)',
+            nzrGameDuration: '⏱️ DURACIÓN DEL JUEGO (minutos)',
+            quickHours: '⏰ HORAS RÁPIDAS',
+            generated: '📋 MENSAJE GENERADO',
+            copyAnnouncement: '📋 Copiar Anuncio',
+            copyReg: '⏰ Copiar Reg Timestamp',
+            copyGame: '⏰ Copiar Game Timestamp',
+            timestampHelper: '⏰ Ayudante de Timestamp Discord',
+            unix: 'Timestamp Unix',
+            datePicker: '📅 Seleccionar Fecha/Hora',
+            shortDate: 'Fecha Corta',
+            longDate: 'Fecha Larga',
+            shortTime: 'Hora Corta',
+            longTime: 'Hora Larga',
+            shortDateTime: 'Fecha/Hora Corta',
+            longDateTime: 'Fecha/Hora Larga',
+            relativeTime: 'Tiempo Relativo'
+        },
+        fr: {
+            langLabel: '🌐 LANGUE DE LA PAGE',
+            subtitle: 'Sélectionnez un serveur, un lobby et une heure — l\'annonce est générée automatiquement. Copiez-la ensuite.',
+            servers: '📡 SERVEURS',
+            setup: '⚙️ CONFIGURATION',
+            registration: '📅 OUVERTURE DES INSCRIPTIONS',
+            now: 'Utiliser l\'heure actuelle',
+            duration: '⏱️ DURÉE DU PREMIER JEU (minutes)',
+            staff: '👤 PERSONNEL RESPONSABLE (ID Discord)',
+            games: '🎮 NOMBRE DE JEUX',
+            role: '🏅 ROLE ID (optionnel)',
+            sessionType: '🏷️ TYPE DE SESSION',
+            lateNight: '🌙 NUIT',
+            firstSession: '📅 DATE DE LA PREMIÈRE SESSION',
+            totalSessions: '📊 TOTAL DES SESSIONS',
+            gap: '⏱️ ÉCART ENTRE LES SESSIONS (minutes)',
+            nzrGameDuration: '⏱️ DURÉE DU JEU (minutes)',
+            quickHours: '⏰ HEURES RAPIDES',
+            generated: '📋 MESSAGE GÉNÉRÉ',
+            copyAnnouncement: '📋 Copier Annonce',
+            copyReg: '⏰ Copier Reg Timestamp',
+            copyGame: '⏰ Copier Game Timestamp',
+            timestampHelper: '⏰ Aide Timestamp Discord',
+            unix: 'Timestamp Unix',
+            datePicker: '📅 Sélectionner Date/Heure',
+            shortDate: 'Date Courte',
+            longDate: 'Date Longue',
+            shortTime: 'Heure Courte',
+            longTime: 'Heure Longue',
+            shortDateTime: 'Date/Heure Courte',
+            longDateTime: 'Date/Heure Longue',
+            relativeTime: 'Temps Relatif'
+        },
+        de: {
+            langLabel: '🌐 SEITENSPRACHE',
+            subtitle: 'Wählen Sie einen Server, eine Lobby und eine Uhrzeit — die Ankündigung wird automatisch generiert. Dann kopieren Sie sie einfach.',
+            servers: '📡 SERVER',
+            setup: '⚙️ EINRICHTUNG',
+            registration: '📅 REGISTRIERUNG ÖFFNET',
+            now: 'Aktuelle Uhrzeit verwenden',
+            duration: '⏱️ DAUER DES ERSTEN SPIELS (Minuten)',
+            staff: '👤 VERANTWORTLICHER MITARBEITER (Discord ID)',
+            games: '🎮 ANZAHL DER SPIELE',
+            role: '🏅 ROLE ID (optional)',
+            sessionType: '🏷️ SITZUNGSTYP',
+            lateNight: '🌙 SPÄTE NACHT',
+            firstSession: '📅 DATUM DER ERSTEN SITZUNG',
+            totalSessions: '📊 GESAMTZAHL DER SITZUNGEN',
+            gap: '⏱️ ABSTAND ZWISCHEN SITZUNGEN (Minuten)',
+            nzrGameDuration: '⏱️ SPIELDAUER (Minuten)',
+            quickHours: '⏰ SCHNELLE STUNDEN',
+            generated: '📋 GENERIERTE NACHRICHT',
+            copyAnnouncement: '📋 Ankündigung kopieren',
+            copyReg: '⏰ Reg Timestamp kopieren',
+            copyGame: '⏰ Game Timestamp kopieren',
+            timestampHelper: '⏰ Discord Timestamp Helfer',
+            unix: 'Unix Timestamp',
+            datePicker: '📅 Datum/Uhrzeit auswählen',
+            shortDate: 'Kurzes Datum',
+            longDate: 'Langes Datum',
+            shortTime: 'Kurze Zeit',
+            longTime: 'Lange Zeit',
+            shortDateTime: 'Kurzes Datum/Uhrzeit',
+            longDateTime: 'Langes Datum/Uhrzeit',
+            relativeTime: 'Relative Zeit'
+        }
+    };
+
+    function applyLanguage(lang) {
+        const t = translations[lang] || translations.it;
+        currentLang = lang;
+        
+        document.getElementById('langLabel').textContent = t.langLabel;
+        document.getElementById('subtitleText').textContent = t.subtitle;
+        document.getElementById('serversTitle').textContent = t.servers;
+        document.getElementById('setupTitle').textContent = t.setup;
+        document.getElementById('registrationLabel').textContent = t.registration;
+        document.getElementById('nowBtn').textContent = t.now;
+        document.getElementById('durationLabel').textContent = t.duration;
+        document.getElementById('staffLabel').textContent = t.staff;
+        document.getElementById('gamesLabel').textContent = t.games;
+        document.getElementById('roleLabel').textContent = t.role;
+        document.getElementById('sessionTypeLabel').textContent = t.sessionType;
+        document.getElementById('lateNightLabel').textContent = t.lateNight;
+        document.getElementById('firstSessionLabel').textContent = t.firstSession;
+        document.getElementById('nzrNowBtn').textContent = t.now;
+        document.getElementById('totalSessionsLabel').textContent = t.totalSessions;
+        document.getElementById('gapLabel').textContent = t.gap;
+        document.getElementById('nzrGameDurationLabel').textContent = t.nzrGameDuration;
+        document.getElementById('sessionTypeLabelNZR').textContent = t.sessionType;
+        document.getElementById('lateNightLabelNZR').textContent = t.lateNight;
+        document.getElementById('quickHoursTitle').textContent = t.quickHours;
+        document.getElementById('generatedTitle').textContent = t.generated;
+        document.getElementById('copyAnnouncementBtn').textContent = t.copyAnnouncement;
+        document.getElementById('copyRegTimestampBtn').textContent = t.copyReg;
+        document.getElementById('copyGameTimestampBtn').textContent = t.copyGame;
+        document.getElementById('timestampTitle').textContent = t.timestampHelper;
+        document.getElementById('unixLabel').textContent = t.unix;
+        document.getElementById('datePickerLabel').textContent = t.datePicker;
+        document.getElementById('shortDateLabel').textContent = t.shortDate;
+        document.getElementById('longDateLabel').textContent = t.longDate;
+        document.getElementById('shortTimeLabel').textContent = t.shortTime;
+        document.getElementById('longTimeLabel').textContent = t.longTime;
+        document.getElementById('shortDateTimeLabel').textContent = t.shortDateTime;
+        document.getElementById('longDateTimeLabel').textContent = t.longDateTime;
+        document.getElementById('relativeTimeLabel').textContent = t.relativeTime;
+    }
+
+    // --- ALL'AVVIO: MOSTRA I CAMPI NZR, NASCONDI CHAMPION ---
+    championFields.style.display = 'none';
+    nzrFields.style.display = 'block';
+
     function toUnixTimestamp(date) {
         return Math.floor(date.getTime() / 1000);
     }
@@ -57,10 +270,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const minutes = String(date.getMinutes()).padStart(2, '0');
         return `${year}-${month}-${day}T${hours}:${minutes}`;
     }
-
-    // --- ALL'AVVIO: MOSTRA I CAMPI NZR, NASCONDI CHAMPION ---
-    championFields.style.display = 'none';
-    nzrFields.style.display = 'block';
 
     // LATE NIGHT TOGGLE (Champion)
     lateNightToggle.addEventListener('click', function() {
@@ -152,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // ===== NO ZONE RULES =====
             const startDate = new Date(nzrStartTime.value);
             if (isNaN(startDate.getTime())) {
-                announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
+                announcementPreview.textContent = currentLang === 'it' ? '⚠️ Inserisci una data e ora valida.' : '⚠️ Please enter a valid date and time.';
                 return;
             }
 
@@ -196,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // ===== CHAMPION DIVISION =====
             const regDate = new Date(registrationTime.value);
             if (isNaN(regDate.getTime())) {
-                announcementPreview.textContent = '⚠️ Inserisci una data e ora valida.';
+                announcementPreview.textContent = currentLang === 'it' ? '⚠️ Inserisci una data e ora valida.' : '⚠️ Please enter a valid date and time.';
                 return;
             }
 
@@ -278,8 +487,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // COPY FUNCTIONS
     function copyToClipboard(text, button) {
+        const msg = currentLang === 'it' ? 'Genera prima un annuncio!' : 'Please generate an announcement first!';
         if (!text || text.startsWith('⚠️')) {
-            alert('Genera prima un annuncio!');
+            alert(msg);
             return;
         }
         navigator.clipboard.writeText(text).then(() => {
@@ -289,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.innerHTML = originalText;
             }, 2000);
         }).catch(err => {
-            alert('Errore nella copia: ' + err);
+            alert(currentLang === 'it' ? 'Errore nella copia: ' + err : 'Error copying: ' + err);
         });
     }
 
@@ -300,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
     copyRegTimestampBtn.addEventListener('click', function() {
         const regDate = new Date(registrationTime.value);
         if (isNaN(regDate.getTime())) {
-            alert('Inserisci una data valida!');
+            alert(currentLang === 'it' ? 'Inserisci una data valida!' : 'Please enter a valid date!');
             return;
         }
         const unix = toUnixTimestamp(regDate);
@@ -310,7 +520,7 @@ document.addEventListener('DOMContentLoaded', function() {
     copyGameTimestampBtn.addEventListener('click', function() {
         const regDate = new Date(registrationTime.value);
         if (isNaN(regDate.getTime())) {
-            alert('Inserisci una data valida!');
+            alert(currentLang === 'it' ? 'Inserisci una data valida!' : 'Please enter a valid date!');
             return;
         }
         const dur = parseInt(gameDuration.value) || 15;
@@ -331,25 +541,33 @@ document.addEventListener('DOMContentLoaded', function() {
             const previewEl = formatPreviews[index];
             const date = new Date(unixTimestamp * 1000);
             if (isNaN(date.getTime())) {
-                previewEl.textContent = 'Data non valida';
+                previewEl.textContent = currentLang === 'it' ? 'Data non valida' : 'Invalid date';
                 return;
             }
             let previewText = '';
+            const locale = currentLang === 'it' ? 'it-IT' : 'en-US';
             switch(format) {
-                case 'd': previewText = date.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' }); break;
-                case 'D': previewText = date.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); break;
-                case 't': previewText = date.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' }); break;
-                case 'T': previewText = date.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' }); break;
-                case 'f': previewText = date.toLocaleString('it-IT', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }); break;
-                case 'F': previewText = date.toLocaleString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }); break;
+                case 'd': previewText = date.toLocaleDateString(locale, { day: '2-digit', month: '2-digit', year: 'numeric' }); break;
+                case 'D': previewText = date.toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); break;
+                case 't': previewText = date.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' }); break;
+                case 'T': previewText = date.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', second: '2-digit' }); break;
+                case 'f': previewText = date.toLocaleString(locale, { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }); break;
+                case 'F': previewText = date.toLocaleString(locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }); break;
                 case 'R':
                     const now = Math.floor(Date.now() / 1000);
                     const diff = unixTimestamp - now;
                     const mins = Math.floor(Math.abs(diff) / 60);
-                    if (Math.abs(diff) < 60) previewText = 'ora';
-                    else if (mins < 60) previewText = (diff > 0 ? 'tra ' : '') + mins + ' min' + (diff < 0 ? ' fa' : '');
-                    else if (mins < 1440) previewText = (diff > 0 ? 'tra ' : '') + Math.floor(mins/60) + ' h' + (diff < 0 ? ' fa' : '');
-                    else previewText = (diff > 0 ? 'tra ' : '') + Math.floor(mins/1440) + ' gg' + (diff < 0 ? ' fa' : '');
+                    if (currentLang === 'it') {
+                        if (Math.abs(diff) < 60) previewText = 'ora';
+                        else if (mins < 60) previewText = (diff > 0 ? 'tra ' : '') + mins + ' min' + (diff < 0 ? ' fa' : '');
+                        else if (mins < 1440) previewText = (diff > 0 ? 'tra ' : '') + Math.floor(mins/60) + ' h' + (diff < 0 ? ' fa' : '');
+                        else previewText = (diff > 0 ? 'tra ' : '') + Math.floor(mins/1440) + ' gg' + (diff < 0 ? ' fa' : '');
+                    } else {
+                        if (Math.abs(diff) < 60) previewText = 'now';
+                        else if (mins < 60) previewText = (diff > 0 ? 'in ' : '') + mins + ' min' + (diff < 0 ? ' ago' : '');
+                        else if (mins < 1440) previewText = (diff > 0 ? 'in ' : '') + Math.floor(mins/60) + ' h' + (diff < 0 ? ' ago' : '');
+                        else previewText = (diff > 0 ? 'in ' : '') + Math.floor(mins/1440) + ' d' + (diff < 0 ? ' ago' : '');
+                    }
                     break;
                 default: previewText = date.toString();
             }
@@ -394,9 +612,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // LANGUAGE SELECTOR
     languageSelect.addEventListener('change', function() {
-        currentLang = this.value;
+        applyLanguage(this.value);
         generateAnnouncement();
+        updateTimestampPreviews(parseInt(timestampInput.value) || null);
     });
 
     // INIT
@@ -415,5 +635,7 @@ document.addEventListener('DOMContentLoaded', function() {
     championFields.style.display = 'none';
     nzrFields.style.display = 'block';
     
+    // Applica lingua iniziale
+    applyLanguage('it');
     generateAnnouncement();
 });
