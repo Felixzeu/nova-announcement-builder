@@ -273,19 +273,152 @@ body::after {
 }
 
 .setup-card .form-group label {
-    font-size: 0.6rem;
+    display: block;
     margin-bottom: 2px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.6rem;
 }
 
 .setup-card .form-group input {
+    width: 100%;
     padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: #ffffff;
     font-size: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.setup-card .form-group input:focus {
+    outline: none;
+    border-color: rgba(108, 108, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.setup-card .session-type-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.setup-card .session-type-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 3px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+}
+
+.setup-card .session-type-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.setup-card .session-type-btn.active {
+    background: #6c6cff;
+    border-color: #6c6cff;
+    color: white;
+}
+
+.setup-card .game-buttons {
+    display: flex;
+    gap: 3px;
+}
+
+.setup-card .game-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+}
+
+.setup-card .game-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.setup-card .game-btn.active {
+    background: #6c6cff;
+    border-color: #6c6cff;
+    color: white;
+}
+
+.setup-card .quick-minutes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-bottom: 4px;
+}
+
+.setup-card .quick-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+.setup-card .quick-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.setup-card .quick-btn.active {
+    background: #6c6cff;
+    border-color: #6c6cff;
+    color: white;
+}
+
+/* TOGGLE BUTTON - FIX POSIZIONE */
+.setup-card .toggle-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-top: 0;
+}
+
+.setup-card .toggle-btn.active {
+    background: #6c6cff;
+    border-color: #6c6cff;
+    color: white;
+    box-shadow: 0 0 20px rgba(108, 108, 255, 0.3);
+}
+
+.setup-card .toggle-btn:hover {
+    opacity: 0.8;
 }
 
 /* GENERATED CARD */
 .generated-card {
     flex: 1;
-    min-height: 350px;
+    min-height: 280px;
     max-width: 100%;
 }
 
@@ -298,19 +431,19 @@ body::after {
 
 .preview-box {
     background: rgba(0, 0, 0, 0.2);
-    padding: 14px;
+    padding: 12px 14px;
     border-radius: 6px;
-    min-height: 220px;
+    min-height: 160px;
     margin-bottom: 0;
     border: 1px solid rgba(255, 255, 255, 0.05);
     font-family: 'Courier New', monospace;
     white-space: pre-wrap;
     word-break: break-word;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 0.75rem;
-    max-height: none;
+    font-size: 0.7rem;
+    max-height: 320px;
     overflow-y: auto;
-    line-height: 1.6;
+    line-height: 1.5;
     flex: 1;
 }
 
@@ -411,175 +544,6 @@ body::after {
     color: #6c6cff;
 }
 
-/* FORM ELEMENTI */
-.form-group {
-    margin-bottom: 6px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 2px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.6rem;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 4px 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    color: #ffffff;
-    font-size: 0.7rem;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: rgba(108, 108, 255, 0.5);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.quick-minutes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-    margin-bottom: 4px;
-}
-
-.quick-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 2px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.6rem;
-    transition: all 0.3s ease;
-}
-
-.quick-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.quick-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-}
-
-.quick-nzr-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 2px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.6rem;
-    transition: all 0.3s ease;
-}
-
-.quick-nzr-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.quick-nzr-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-}
-
-.session-type-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-}
-
-.session-type-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 3px 6px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.6rem;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    flex: 1;
-    text-align: center;
-}
-
-.session-type-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.session-type-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-}
-
-.game-buttons {
-    display: flex;
-    gap: 3px;
-}
-
-.game-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 3px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.6rem;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    flex: 1;
-    text-align: center;
-}
-
-.game-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.game-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-}
-
-.toggle-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 4px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    width: 100%;
-    text-align: center;
-}
-
-.toggle-btn.active {
-    background: #6c6cff;
-    border-color: #6c6cff;
-    color: white;
-    box-shadow: 0 0 20px rgba(108, 108, 255, 0.3);
-}
-
-.toggle-btn:hover {
-    opacity: 0.8;
-}
-
 /* RESPONSIVE */
 @media (max-width: 1200px) {
     .main-grid {
@@ -668,8 +632,8 @@ body::after {
         min-height: 160px;
     }
     .preview-box {
-        min-height: 180px;
-        max-height: none;
+        min-height: 140px;
+        max-height: 250px;
     }
 }
 
