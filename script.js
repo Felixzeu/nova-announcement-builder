@@ -438,8 +438,8 @@ document.addEventListener('DOMContentLoaded', function() {
             announcement.push(`* **Information <:Info:1342824791039541328>**`);
             announcement.push(`  * Session lasts **__2 Games__**`);
             announcement.push(`  * Top 1 = <@&1443285911839178844>`);
-            announcement.push(`  * Top 5 = [**Champion Division Access**](<https://discord.com/channels/1267285458962878464/1471321891850424361>) <:champion:1472618819502608404>`);
-            announcement.push(`  * https://discord.com/channels/1267285458962878464/1492700150831911122 & https://discord.com/channels/1267285458962878464/1492703045879070871`);
+            announcement.push(`  * Top 10 = [**Champion Division Access**](<https://discord.com/channels/1267285458962878464/1471321891850424361>) <:champion:1472618819502608404>`);
+            announcement.push(`  * https://discord.com/channels/1267285458962878464/1525465681355739296 & https://discord.com/channels/1267285458962878464/1502030497205846228`);
             announcement.push(`_ _`);
             announcement.push('`React if playing!`');
             announcement.push('-# @everyone');
